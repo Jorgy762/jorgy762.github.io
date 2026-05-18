@@ -1,0 +1,31 @@
+---
+layout: default
+title: Field Notes
+description: Writing on IT infrastructure, cybersecurity, and the Canadian Armed Forces.
+---
+
+<div class="container">
+  <div class="page-header">
+    <p class="page-header-eyebrow">Writing</p>
+    <h1 class="page-header-title">Field Notes</h1>
+    <p class="page-header-desc">Observations from the intersection of IT operations, cybersecurity, and military service. Written for practitioners, not academics.</p>
+  </div>
+
+  <div class="blog-list">
+    {% for post in site.posts %}
+    <div class="blog-list-item">
+      <span class="blog-list-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      <div class="blog-list-content">
+        <a href="{{ post.url | relative_url }}">
+          <p class="blog-list-title">{{ post.title }}</p>
+        </a>
+        {% if post.excerpt %}
+        <p class="blog-list-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% else %}
+    <p style="font-size:12px;color:var(--text-muted);padding:2rem 0;">No posts yet. First entry coming soon.</p>
+    {% endfor %}
+  </div>
+</div>

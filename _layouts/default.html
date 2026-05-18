@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} | {{ site.tagline }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
+  {% seo %}
+  {% feed_meta %}
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a href="{{ '/' | relative_url }}" class="nav-logo">
+        <span class="nav-logo-main">ThreatVector762</span>
+        <span class="nav-logo-sub">// Jorgy762</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ '/projects' | relative_url }}" {% if page.url contains 'projects' %}class="active"{% endif %}>Projects</a></li>
+        <li><a href="{{ '/blog' | relative_url }}" {% if page.url contains 'blog' %}class="active"{% endif %}>Field Notes</a></li>
+        <li><a href="{{ '/certs' | relative_url }}" {% if page.url contains 'certs' %}class="active"{% endif %}>Certs</a></li>
+        <li><a href="{{ '/contact' | relative_url }}" {% if page.url contains 'contact' %}class="active"{% endif %}>Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-text">threatvector762.dev // Jorgy762 // Calgary, AB, Canada</span>
+      <div class="footer-links">
+        <a href="https://github.com/Jorgy762" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/rjorg762/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
