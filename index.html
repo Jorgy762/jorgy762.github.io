@@ -1,0 +1,114 @@
+---
+layout: default
+---
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Sysadmin · Security · Soldier</p>
+    <h1 class="hero-name">Ryan Jorgensen</h1>
+    <p class="hero-title">Windows Server Analyst &nbsp;·&nbsp; CAF Military Police</p>
+    <p class="hero-bio">
+      Infrastructure by trade. Security by conviction. Soldier by choice.<br>
+      Building tools at the intersection of IT operations and cyber defence.<br>
+      This is where the work lives.
+    </p>
+    <div class="badges">
+      <span class="badge badge-gold">ISC2 CC</span>
+      <span class="badge badge-gold">Zero Trust</span>
+      <span class="badge badge-gold">TAISE</span>
+      <span class="badge badge-gold">AZ-900</span>
+      <span class="badge badge-gold">Fortinet FCA</span>
+      <span class="badge badge-green">CAF Reserve · 13yr</span>
+      <span class="badge badge-green">Military Police</span>
+      <span class="badge badge-dim">MSCS · In Progress</span>
+    </div>
+  </div>
+</section>
+
+<div class="home-grid container">
+
+  <div class="home-panel">
+    <p class="section-label">Projects</p>
+    <div class="project-card">
+      <p class="project-card-title">osint-domain-recon</p>
+      <p class="project-card-desc">Automated domain reconnaissance via WHOIS, DNS enumeration, and HTTP probing.</p>
+      <div class="project-card-tags">
+        <span class="tag">Python</span>
+        <span class="tag">OSINT</span>
+        <span class="tag">CLI</span>
+      </div>
+    </div>
+    <div class="project-card dim">
+      <p class="project-card-title">// Next project loading...</p>
+      <p class="project-card-desc">More tools incoming. Check back soon.</p>
+    </div>
+    <a href="/projects" style="font-size:9px;letter-spacing:2px;color:var(--green);text-transform:uppercase;display:inline-block;margin-top:1rem;">View all projects →</a>
+  </div>
+
+  <div class="home-panel">
+    <p class="section-label">Field Notes</p>
+    {% for post in site.posts limit:4 %}
+    <div class="blog-item">
+      <p class="blog-date">{{ post.date | date: "%Y-%m-%d" }}</p>
+      <a href="{{ post.url | relative_url }}" class="blog-item-title">{{ post.title }}</a>
+    </div>
+    {% else %}
+    <div class="blog-item">
+      <p class="blog-date">Coming soon</p>
+      <p class="blog-item-title">Zero Trust architecture in a sysadmin environment</p>
+    </div>
+    <div class="blog-item">
+      <p class="blog-date">Coming soon</p>
+      <p class="blog-item-title">What 13 years in the CAF taught me about security culture</p>
+    </div>
+    <div class="blog-item">
+      <p class="blog-date">Coming soon</p>
+      <p class="blog-item-title">Understanding threat vectors: a sysadmin's perspective</p>
+    </div>
+    {% endfor %}
+    <a href="/blog" style="font-size:9px;letter-spacing:2px;color:var(--green);text-transform:uppercase;display:inline-block;margin-top:1rem;">All field notes →</a>
+  </div>
+
+  <div class="home-panel-full">
+    <p class="section-label">Certifications</p>
+    <div class="cert-grid">
+      <div>
+        <div class="cert-row">
+          <span class="cert-name">ISC2 Certified in Cybersecurity</span>
+          <span class="cert-status-active">Active</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Certified Zero Trust Practitioner</span>
+          <span class="cert-status-active">Active</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Certified Threat &amp; Malware Analyst</span>
+          <span class="cert-status-active">Active</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Fortinet Certified Associate</span>
+          <span class="cert-status-active">Active</span>
+        </div>
+      </div>
+      <div>
+        <div class="cert-row">
+          <span class="cert-name">CSA Trusted AI Safety Expert</span>
+          <span class="cert-status-active">Active</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">AZ-900 Azure Fundamentals</span>
+          <span class="cert-status-active">Active</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">MD-102 Endpoint Administrator</span>
+          <span class="cert-status-progress">In Progress</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">MSCS · Univ. of Colorado Boulder</span>
+          <span class="cert-status-progress">In Progress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

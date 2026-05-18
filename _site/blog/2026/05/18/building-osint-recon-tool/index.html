@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building an OSINT domain recon tool from scratch | ThreatVector762</title>
+  <meta name="description" content="Windows Server Administrator and currently serving Canadian Armed Forces Military Police officer. Transitioning into cybersecurity.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Building an OSINT domain recon tool from scratch | ThreatVector762</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Building an OSINT domain recon tool from scratch" />
+<meta name="author" content="Jorgy762" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="How I built a Python-based domain reconnaissance tool as my first real coding project, what I learned along the way, and why it matters for practical security work." />
+<meta name="twitter:description" property="og:description" content="How I built a Python-based domain reconnaissance tool as my first real coding project, what I learned along the way, and why it matters for practical security work." />
+<link rel="canonical" href="http://localhost:4000/blog/2026/05/18/building-osint-recon-tool/" />
+<meta property="og:url" content="http://localhost:4000/blog/2026/05/18/building-osint-recon-tool/" />
+<meta property="og:site_name" content="ThreatVector762" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-05-18T00:00:00-06:00" />
+<meta property="article:modified_time" content="2026-05-18T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Building an OSINT domain recon tool from scratch" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jorgy762"},"dateModified":"2026-05-18T00:00:00-06:00","datePublished":"2026-05-18T00:00:00-06:00","description":"How I built a Python-based domain reconnaissance tool as my first real coding project, what I learned along the way, and why it matters for practical security work.","headline":"Building an OSINT domain recon tool from scratch","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2026/05/18/building-osint-recon-tool/"},"url":"http://localhost:4000/blog/2026/05/18/building-osint-recon-tool/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="ThreatVector762" />
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-main">ThreatVector762</span>
+        <span class="nav-logo-sub">// Jorgy762</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/" >Home</a></li>
+        <li><a href="/projects" >Projects</a></li>
+        <li><a href="/blog" class="active">Field Notes</a></li>
+        <li><a href="/certs" >Certs</a></li>
+        <li><a href="/contact" >Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <article class="post">
+  <header class="post-header">
+    <p class="post-meta">
+      2026-05-18
+      
+        &nbsp;·&nbsp;
+        
+          python, 
+        
+          osint, 
+        
+          cybersecurity, 
+        
+          tools
+        
+      
+    </p>
+    <h1 class="post-title">Building an OSINT domain recon tool from scratch</h1>
+  </header>
+  <div class="post-content">
+    <p>This is my first real coding project beyond PowerShell scripts and one-liners. I wanted to build something that was actually useful, tied directly to my security interests, and demonstrated skills relevant to the kind of work I want to do. A domain recon tool checked all three boxes.</p>
+
+<h2 id="what-it-does">What it does</h2>
+
+<p>The tool automates the first phase of any domain investigation. Given a target domain, it runs four checks in sequence:</p>
+
+<ul>
+  <li>IP resolution via standard DNS lookup</li>
+  <li>WHOIS data (registrar, creation date, expiry, name servers, country)</li>
+  <li>DNS record enumeration (A, AAAA, MX, NS, TXT, CNAME, SOA)</li>
+  <li>HTTP/HTTPS probing (status code, server header, redirect chain)</li>
+</ul>
+
+<p>Results print to the terminal or export to a plaintext report with the <code class="language-plaintext highlighter-rouge">-o</code> flag.</p>
+
+<h2 id="why-i-built-it-this-way">Why I built it this way</h2>
+
+<p>Most people learning Python start with calculator apps or guessing games. Those are fine for syntax, but they don’t teach you anything about how tools actually work in the field. Starting with a recon tool meant I had to learn:</p>
+
+<ul>
+  <li>How DNS resolution actually works under the hood</li>
+  <li>What WHOIS data tells you and what it doesn’t</li>
+  <li>How HTTP redirects chain together</li>
+  <li>How to handle errors gracefully when a host is unreachable</li>
+  <li>How to structure a CLI tool with argument parsing</li>
+</ul>
+
+<p>Every one of those things is directly applicable to real security work.</p>
+
+<h2 id="the-hardest-part">The hardest part</h2>
+
+<p>Error handling. When you’re probing domains across the internet, everything can and will fail. DNS timeouts, NXDOMAIN responses, SSL certificate errors, connection refusals. The first version of this tool crashed constantly because I wasn’t catching exceptions properly.</p>
+
+<p>Learning to anticipate failure modes and handle them gracefully is one of the most valuable things a security practitioner can learn. Production systems fail in the same ways.</p>
+
+<h2 id="what-id-add-next">What I’d add next</h2>
+
+<p>The current version is functional but basic. The roadmap includes:</p>
+
+<ul>
+  <li>Subdomain enumeration</li>
+  <li>SSL/TLS certificate inspection</li>
+  <li>Shodan API integration for open port data</li>
+  <li>JSON report export</li>
+</ul>
+
+<h2 id="the-code">The code</h2>
+
+<p>The full project with installation instructions is on GitHub:</p>
+
+<p><a href="https://github.com/Jorgy762/osint-domain-recon">github.com/Jorgy762/osint-domain-recon</a></p>
+
+<p>If you’re just getting started with Python and want a real project to work through, feel free to fork it, break it, and improve it.</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-text">threatvector762.dev // Jorgy762 // Calgary, AB, Canada</span>
+      <div class="footer-links">
+        <a href="https://github.com/Jorgy762" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/rjorg762/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
