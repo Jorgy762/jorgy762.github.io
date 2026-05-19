@@ -1,0 +1,70 @@
+---
+layout: default
+title: Gaming
+description: The games I play, the worlds I return to, and the stories that stick.
+---
+
+<div class="container">
+  <div class="page-header">
+    <p class="page-header-eyebrow">Off the Clock</p>
+    <h1 class="page-header-title">Gaming</h1>
+    <p class="page-header-desc">
+      The aesthetic of this site exists because of Elden Ring. That should tell you something
+      about how seriously I take games. This page is where that side of things lives --
+      separate from the professional content, but just as much a part of who I am.
+    </p>
+  </div>
+
+  <div style="padding:2.5rem 0;">
+
+    <p class="section-label">Currently Playing</p>
+    <div style="margin-bottom:2.5rem;">
+      <div class="cert-row">
+        <span class="cert-name">Final Fantasy XI Online</span>
+        <span style="font-size:10px;color:var(--text-muted);">PC &nbsp;·&nbsp; On and off for 20 years</span>
+        <span class="cert-status-active">Active</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">Call of Duty</span>
+        <span style="font-size:10px;color:var(--text-muted);">PC &nbsp;·&nbsp; Casual</span>
+        <span class="cert-status-active">Active</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">Battlefield Series</span>
+        <span style="font-size:10px;color:var(--text-muted);">PC &nbsp;·&nbsp; Casual</span>
+        <span class="cert-status-active">Active</span>
+      </div>
+    </div>
+
+    <p class="section-label">Favourites</p>
+    <div style="margin-bottom:2.5rem;">
+      <div class="cert-row">
+        <span class="cert-name">Final Fantasy Series</span>
+        <span style="font-size:10px;color:var(--text-muted);">20+ years with the franchise</span>
+        <span class="cert-status-active">All-time</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">Elden Ring</span>
+        <span style="font-size:10px;color:var(--text-muted);">FromSoftware &nbsp;·&nbsp; 2022</span>
+        <span class="cert-status-active">All-time</span>
+      </div>
+    </div>
+
+    <p class="section-label">Field Notes on Gaming</p>
+    <div>
+      {% assign gaming_posts = site.posts | where_exp: "post", "post.tags contains 'gaming'" %}
+      {% for post in gaming_posts %}
+      <div class="blog-item">
+        <p class="blog-date">{{ post.date | date: "%Y-%m-%d" }}</p>
+        <a href="{{ post.url | relative_url }}" class="blog-item-title">{{ post.title }}</a>
+      </div>
+      {% else %}
+      <div class="blog-item">
+        <p class="blog-date">2026-05-18</p>
+        <a href="/blog/2026/05/18/twenty-years-in-vanadiell" class="blog-item-title">Twenty Years in Vana'diel -- What FFXI Taught Me About the Long Game</a>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
