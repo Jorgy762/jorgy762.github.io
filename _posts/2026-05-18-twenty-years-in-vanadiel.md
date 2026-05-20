@@ -32,15 +32,18 @@ The difference is depth. FFXI was built in an era when MMO designers expected pl
 
 There is also something to be said for a game that has been running for over two decades and still has an active player base. The people still in Vana'diel in 2026 are not there because the game is convenient. They are there because it means something to them.
 
+
 <figure>
   <img src="/assets/images/gaming/ffxi-asura-novius-castleoztroja-2021.jpg" alt="Castle Oztroja, Asura server 2021">
   <figcaption>Novius in Castle Oztroja, Asura server -- 2021.</figcaption>
 </figure>
 
+
 <figure>
   <img src="/assets/images/gaming/ffxi-asura-novius-uptala-2021.jpg" alt="Uptala, Asura server 2021">
   <figcaption>Uptala, VWNM, Asura server -- 2021.</figcaption>
 </figure>
+
 
 ## The friendships
 
