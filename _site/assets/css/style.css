@@ -609,3 +609,33 @@ main { flex: 1; }
   .blog-list-item { flex-direction: column; gap: 0.5rem; }
   .site-footer .container { flex-direction: column; gap: 1rem; text-align: center; }
 }
+
+/*
+  threatvector762.dev — site structure/code
+  Copyright (c) 2026 Ryan Jorgensen. Reuse of site code permitted under
+  Section 2 of LICENSE.md. Written/lecture content is NOT covered — see
+  Section 1 (all rights reserved).
+
+  Optional styling for the copyright footer include.
+  Append to your existing site stylesheet (e.g. assets/css/style.scss or
+  main.css). Tuned to the dark monospace / gold (#c9a84c) theme.
+*/
+
+.site-copyright {
+  font-family: "Share Tech Mono", monospace;
+  font-size: inherit;
+  color: #777;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.site-copyright a {
+  color: #c9a84c;
+  text-decoration: none;
+  border-bottom: 1px dotted #c9a84c;
+}
+
+.site-copyright a:hover {
+  color: #e0c878;
+  border-bottom-style: solid;
+}

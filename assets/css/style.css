@@ -657,12 +657,10 @@ main { flex: 1; }
 
 .site-copyright {
   font-family: "Share Tech Mono", monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.03em;
+  font-size: inherit;
   color: #777;
   text-align: center;
-  padding: 1.5rem 1rem;
-  border-top: 1px solid #2a2a2a;
+  margin-top: 0.5rem;
 }
 
 .site-copyright a {
