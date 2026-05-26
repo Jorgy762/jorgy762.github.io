@@ -655,20 +655,10 @@ main { flex: 1; }
   main.css). Tuned to the dark monospace / gold (#c9a84c) theme.
 */
 
-.site-copyright {
-  font-family: "Share Tech Mono", monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  color: #6b6b6b;
-  text-transform: uppercase;
-}
-
-.site-copyright a {
+.footer-text a {
   color: #c9a84c;
   text-decoration: none;
 }
-
-.site-copyright a:hover {
-  color: #e0c878;
+.footer-text a:hover {
   text-decoration: underline;
 }
