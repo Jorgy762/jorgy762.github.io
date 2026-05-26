@@ -1,12 +1,17 @@
+# threatvector762.dev — site structure/code
+# Copyright (c) 2026 Ryan Jorgensen. Reuse of site code permitted under
+# Section 2 of LICENSE.md. Written/lecture content is NOT covered — see
+# Section 1 (all rights reserved).
+
 title: "ThreatVector762"
 tagline: "Sysadmin. Security. Soldier."
 description: "Windows Server Administrator and serving Senior Non-Commissioned Officer in Canadian Forces Military Police. Transitioning into cybersecurity."
 url: "https://threatvector762.dev"
 baseurl: ""
 author:
-  name: "Jorgy762"
+  name: "Ryan Jorgensen"
   github: "Jorgy762"
-  linkedin: "rjorg556"
+  linkedin: "rjorg762"
   location: "Calgary, AB, Canada"
 
 # Build

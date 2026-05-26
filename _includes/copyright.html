@@ -1,0 +1,37 @@
+{%- comment -%}
+  threatvector762.dev — site structure/code
+  Copyright (c) 2026 Ryan Jorgensen. Reuse of site code permitted under
+  Section 2 of LICENSE.md. Written/lecture content is NOT covered — see
+  Section 1 (all rights reserved).
+
+  USAGE
+  -----
+  1. Save this file as:  _includes/copyright.html
+  2. In your layout (e.g. _layouts/default.html), place this line where you
+     want the notice to appear, typically just inside the closing footer:
+
+         {% include copyright.html %}
+
+  3. The year updates automatically — "site.time" is evaluated at every build,
+     and GitHub Pages rebuilds the site on each push, so the year stays current
+     with no manual edits.
+
+  Optional: set a fixed start year for a range (e.g. "2026–2027"). To do that,
+  add to _config.yml:
+
+         copyright_start_year: 2026
+
+  The markup below uses it if present and shows a range only once the current
+  year is later than the start year.
+{%- endcomment -%}
+
+<div class="site-copyright">
+  {%- assign current_year = site.time | date: "%Y" -%}
+  {%- if site.copyright_start_year and site.copyright_start_year != current_year -%}
+    &copy; {{ site.copyright_start_year }}&ndash;{{ current_year }} Ryan Jorgensen.
+  {%- else -%}
+    &copy; {{ current_year }} Ryan Jorgensen.
+  {%- endif -%}
+  All rights reserved.
+  <a href="{{ '/LICENSE.md' | relative_url }}">License</a>
+</div>
