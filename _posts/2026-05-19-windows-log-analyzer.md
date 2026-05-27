@@ -68,4 +68,4 @@ It's a subtle JS gotcha. The fallback pattern `(el || {}).method` looks safe but
 
 ---
 
-The tool is at [/projects/log-analyzer](/projects/log-analyzer). If you run into a format it doesn't handle -- Windows Firewall logs, DHCP audit logs, Sysmon XML -- let me know.
+The tool is at [/projects/log-analyzer](/projects/log-analyzer/). If you run into a format it doesn't handle -- Windows Firewall logs, DHCP audit logs, Sysmon XML -- let me know.

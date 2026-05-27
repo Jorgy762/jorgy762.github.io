@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Windows Log Analyzer
+permalink: /projects/log-analyzer/
 description: Browser-based parser for Windows Event XML, IIS W3C logs, and plain text logs. Filter, search, visualize, and export. No data leaves your browser.
 ---
 
@@ -25,7 +26,7 @@ description: Browser-based parser for Windows Event XML, IIS W3C logs, and plain
     IIS W3C logs (<code>u_ex*.log</code>) &bull;
     Plain text logs
     &nbsp;&mdash;&nbsp;
-    <a href="/2026/05/19/windows-log-analyzer.html" style="color:var(--gold,#c9a84c)">Read the write-up →</a>
+    <a href="/blog/2026/05/19/windows-log-analyzer/" style="color:var(--gold,#c9a84c)">Read the write-up →</a>
   </div>
 
   <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:3px;padding:0.85rem 1rem;margin-bottom:2rem;font-size:0.78rem;font-family:'Share Tech Mono',monospace;color:#aaa;">
