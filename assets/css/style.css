@@ -649,6 +649,21 @@ main { flex: 1; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 /* ─── Responsive ──────────────────────────────────────── */
+
+/* Desktop -- lock nav toggle off and nav links on */
+@media (min-width: 769px) {
+  .nav-toggle { display: none !important; }
+  .nav-links {
+    display: flex !important;
+    position: static !important;
+    flex-direction: row !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    gap: 2rem !important;
+  }
+}
+
 @media (max-width: 768px) {
 
   /* Nav */
