@@ -18,7 +18,7 @@
         <span class="nav-logo-main">ThreatVector762</span>
         <span class="nav-logo-sub">// Jorgy762</span>
       </a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
         <li><a href="{{ '/projects' | relative_url }}" {% if page.url contains 'projects' %}class="active"{% endif %}>Projects</a></li>
         <li><a href="{{ '/blog' | relative_url }}" {% if page.url contains 'blog' %}class="active"{% endif %}>Field Notes</a></li>
@@ -26,6 +26,11 @@
         <li><a href="{{ '/gaming' | relative_url }}" {% if page.url contains 'gaming' %}class="active"{% endif %}>Gaming</a></li>
         <li><a href="{{ '/contact' | relative_url }}" {% if page.url contains 'contact' %}class="active"{% endif %}>Contact</a></li>
       </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
@@ -35,14 +40,27 @@
 
   <footer class="site-footer">
     <div class="container">
-      <span class="footer-text">threatvector762.dev // Jorgy762 // Calgary, AB, Canada</span>
+      <span class="footer-text">threatvector762.dev // Jorgy762 // Edmonton, AB, Canada</span>
       <div class="footer-links">
         <a href="https://github.com/Jorgy762" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/rjorg762/" target="_blank" rel="noopener">LinkedIn</a>
-        {% include copyright.html %}
+        <a href="https://www.linkedin.com/in/rjorg556/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </footer>
 
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const links  = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+    });
+  });
+</script>
 </body>
 </html>
