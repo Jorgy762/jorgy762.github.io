@@ -12,21 +12,25 @@
 </head>
 <body>
 
-  <nav class="site-nav">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="brassard"></div>
+
+  <nav class="site-nav" aria-label="Primary navigation">
     <div class="container">
       <a href="{{ '/' | relative_url }}" class="nav-logo">
-        <span class="nav-logo-main">ThreatVector762</span>
+        <span class="nav-logo-main">ThreatVector<span style="color:var(--brown);">762</span></span>
         <span class="nav-logo-sub">// Jorgy762</span>
       </a>
       <ul class="nav-links" id="nav-links">
-        <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
-        <li><a href="{{ '/projects' | relative_url }}" {% if page.url contains 'projects' %}class="active"{% endif %}>Projects</a></li>
-        <li><a href="{{ '/blog' | relative_url }}" {% if page.url contains 'blog' %}class="active"{% endif %}>Field Notes</a></li>
-        <li><a href="{{ '/certs' | relative_url }}" {% if page.url contains 'certs' %}class="active"{% endif %}>Certs</a></li>
-        <li><a href="{{ '/gaming' | relative_url }}" {% if page.url contains 'gaming' %}class="active"{% endif %}>Gaming</a></li>
-        <li><a href="{{ '/contact' | relative_url }}" {% if page.url contains 'contact' %}class="active"{% endif %}>Contact</a></li>
+        <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active" aria-current="page"{% endif %}>Home</a></li>
+        <li><a href="{{ '/projects' | relative_url }}" {% if page.url contains 'projects' %}class="active" aria-current="page"{% endif %}>Projects</a></li>
+        <li><a href="{{ '/blog' | relative_url }}" {% if page.url contains 'blog' %}class="active" aria-current="page"{% endif %}>Field Notes</a></li>
+        <li><a href="{{ '/certs' | relative_url }}" {% if page.url contains 'certs' %}class="active" aria-current="page"{% endif %}>Certs</a></li>
+        <li><a href="{{ '/gaming' | relative_url }}" {% if page.url contains 'gaming' %}class="active" aria-current="page"{% endif %}>Gaming</a></li>
+        <li><a href="{{ '/contact' | relative_url }}" {% if page.url contains 'contact' %}class="active" aria-current="page"{% endif %}>Contact</a></li>
       </ul>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
         <span></span>
         <span></span>
@@ -34,7 +38,16 @@
     </div>
   </nav>
 
-  <main>
+  <div class="op-bar" aria-label="Operational status">
+    <div class="container">
+      <div class="op-field"><span class="op-dot" aria-hidden="true">●</span><b>STATUS</b> OPERATIONAL</div>
+      <div class="op-field"><b>SECTOR</b> CAN-AB-CGY</div>
+      <div class="op-field"><b>UNIT</b> CAF/MP</div>
+      <div class="op-field"><b>DTG</b> {{ site.time | date: "%Y-%m-%d" }}</div>
+    </div>
+  </div>
+
+  <main id="main-content">
     {{ content }}
   </main>
 
@@ -48,17 +61,21 @@
     </div>
   </footer>
 
+  <div class="brassard"></div>
+
 <script>
   const toggle = document.getElementById('nav-toggle');
   const links  = document.getElementById('nav-links');
   toggle.addEventListener('click', () => {
-    toggle.classList.toggle('open');
+    const isOpen = toggle.classList.toggle('open');
     links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
   links.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       toggle.classList.remove('open');
       links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
     });
   });
 </script>
