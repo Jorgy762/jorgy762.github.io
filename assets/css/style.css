@@ -520,6 +520,70 @@ main { flex: 1; }
   white-space: nowrap;
 }
 
+/* ─── Cert table — certs.html 4-column grid ────────────── */
+/* .cert-row inside .cert-table uses display:contents so its */
+/* four child spans become direct grid items of the parent. */
+/* All rows then share the same auto-sized column widths,   */
+/* producing the aligned vertical stripes in name/issuer/   */
+/* date/status that the old flex layout couldn't enforce.   */
+.cert-table {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  column-gap: 1.5rem;
+}
+
+.cert-table .cert-row {
+  display: contents;
+}
+
+.cert-table .cert-row > * {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--border-warm);
+}
+
+.cert-table .cert-row:last-child > * {
+  border-bottom: none;
+}
+
+/* ─── Gaming table — gaming.html 3-column grid ─────────── */
+/* Same display:contents mechanic as .cert-table but with 3 */
+/* columns instead of 4. Meta is a single blob (platform +  */
+/* play pattern, or freeform commentary on Favourites).     */
+.gaming-table {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  column-gap: 1.5rem;
+}
+
+.gaming-table .cert-row {
+  display: contents;
+}
+
+.gaming-table .cert-row > * {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--border-warm);
+}
+
+.gaming-table .cert-row:last-child > * {
+  border-bottom: none;
+}
+
+/* The inherited .cert-meta rule right-aligns text and adds  */
+/* a padding-right meant for the old flex layout. Override   */
+/* so meta text starts at the LEFT edge of its grid cell,    */
+/* which is what makes the "PC" prefixes line up.            */
+.gaming-table .cert-meta {
+  text-align: left;
+  padding-right: 0;
+}
+
+.cert-table .cert-issuer,
+.cert-table .cert-date {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
 /* ─── Page Header ─────────────────────────────────────── */
 .page-header {
   padding: 3.5rem 0 2.5rem;

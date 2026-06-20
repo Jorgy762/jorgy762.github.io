@@ -7,8 +7,19 @@ layout: default
   Copyright (c) 2026 Ryan Jorgensen. Reuse of site code permitted under
   Section 2 of LICENSE.md. Written/lecture content is NOT covered — see
   Section 1 (all rights reserved).
+
+  Changes in this revision:
+    - MD-102 removed from the cert grid.
+    - Cert grid sorted by issue date, newest first; MSc CS sits last as
+      the only In Progress item.
+    - "Certified Threat & Malware Analyst" corrected to "Analysis" to
+      match the actual Network Intelligence cert name and certs.html.
+    - Cert grid uses the existing two-column "name | status" layout
+      (NOT the new .cert-table grid from certs.html — the home page is
+      a summary surface, not the credentials detail page).
 -->
 
+<!-- ── Hero ─────────────────────────────────────────────────── -->
 <section class="hero">
   <div class="container">
     <p class="hero-eyebrow">Sysadmin · Security · Soldier</p>
@@ -34,6 +45,7 @@ layout: default
 
 <div class="home-grid container">
 
+  <!-- ── Projects panel ───────────────────────────────────────── -->
   <div class="home-panel">
     <p class="section-label">Projects</p>
 
@@ -67,6 +79,7 @@ layout: default
     <a href="/projects" style="font-size:11px;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;display:inline-block;margin-top:1rem;">View all projects →</a>
   </div>
 
+  <!-- ── Field Notes panel (auto-populates from _posts) ───────── -->
   <div class="home-panel">
     <p class="section-label">Field Notes</p>
     {% for post in site.posts limit:4 %}
@@ -91,27 +104,14 @@ layout: default
     <a href="/blog" style="font-size:11px;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;display:inline-block;margin-top:1rem;">All field notes →</a>
   </div>
 
+  <!-- ── Certifications panel (full width) ────────────────────────
+       Two-column summary view. Sort: newest issue date first across
+       both columns, then In Progress (MSc CS) at the end. -->
   <div class="home-panel-full">
     <p class="section-label">Certifications</p>
     <div class="cert-grid">
-      <div>
-        <div class="cert-row">
-          <span class="cert-name">ISC2 · Certified in Cybersecurity (CC)</span>
-          <span class="cert-status-active">Active</span>
-        </div>
-        <div class="cert-row">
-          <span class="cert-name">Network Intelligence · Certified Zero Trust Practitioner</span>
-          <span class="cert-status-active">Active</span>
-        </div>
-        <div class="cert-row">
-          <span class="cert-name">Network Intelligence · Certified Threat &amp; Malware Analyst</span>
-          <span class="cert-status-active">Active</span>
-        </div>
-        <div class="cert-row">
-          <span class="cert-name">Fortinet Certified Associate in Cybersecurity</span>
-          <span class="cert-status-active">Active</span>
-        </div>
-      </div>
+
+      <!-- Left column: newest 4 active certs -->
       <div>
         <div class="cert-row">
           <span class="cert-name">Cloud Security Alliance · Trusted AI Safety Expert</span>
@@ -122,14 +122,31 @@ layout: default
           <span class="cert-status-active">Active</span>
         </div>
         <div class="cert-row">
-          <span class="cert-name">Microsoft · MD-102 Endpoint Administrator</span>
-          <span class="cert-status-progress">In Progress</span>
+          <span class="cert-name">Network Intelligence · Certified Zero Trust Practitioner</span>
+          <span class="cert-status-active">Active</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Network Intelligence · Certified Threat &amp; Malware Analysis</span>
+          <span class="cert-status-active">Active</span>
+        </div>
+      </div>
+
+      <!-- Right column: older 2 active + In Progress -->
+      <div>
+        <div class="cert-row">
+          <span class="cert-name">Fortinet Certified Associate in Cybersecurity</span>
+          <span class="cert-status-active">Active</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">ISC2 · Certified in Cybersecurity (CC)</span>
+          <span class="cert-status-active">Active</span>
         </div>
         <div class="cert-row">
           <span class="cert-name">Master of Science in Computer Science · Univ. of Colorado Boulder</span>
           <span class="cert-status-progress">In Progress</span>
         </div>
       </div>
+
     </div>
   </div>
 

@@ -4,7 +4,23 @@ title: Gaming
 description: The games I play, the worlds I return to, and the stories that stick.
 ---
 
+<!--
+  gaming.html
+  -----------
+  Layout: three-column grid (name | meta | status) via .gaming-table.
+  Same display:contents mechanic as .cert-table on certs.html, but with
+  one fewer column because gaming meta is a single blob:
+    Currently Playing meta = "Platform · play pattern"
+    Favourites meta        = freeform personal commentary
+
+  Each section is its own .gaming-table so column widths size to the
+  data inside that section only (the favourite-game commentary doesn't
+  drag the currently-playing meta column wider, and vice versa).
+-->
+
 <div class="container">
+
+  <!-- Page header -->
   <div class="page-header">
     <p class="page-header-eyebrow">Off the Clock</p>
     <h1 class="page-header-title">Gaming</h1>
@@ -16,39 +32,56 @@ description: The games I play, the worlds I return to, and the stories that stic
 
   <div style="padding:2.5rem 0;">
 
+    <!-- ── Currently Playing ─────────────────────────────────────
+         Three rows, all on PC. Meta = "PC · play pattern". The grid
+         anchors so every "PC" prefix lines up vertically. -->
     <p class="section-label">Currently Playing</p>
-    <div style="margin-bottom:2.5rem;">
+    <div class="gaming-table" style="margin-bottom:2.5rem;">
+
       <div class="cert-row">
         <span class="cert-name">Final Fantasy XI Online</span>
-        <span class="cert-meta">PC &nbsp;·&nbsp; On and off for 20 years</span>
+        <span class="cert-meta">PC&nbsp;&middot;&nbsp;On and off for 20 years</span>
         <span class="cert-status-active">Active</span>
       </div>
+
       <div class="cert-row">
         <span class="cert-name">Call of Duty</span>
-        <span class="cert-meta">PC &nbsp;·&nbsp; Casual</span>
+        <span class="cert-meta">PC&nbsp;&middot;&nbsp;Casual</span>
         <span class="cert-status-active">Active</span>
       </div>
+
       <div class="cert-row">
         <span class="cert-name">Battlefield Series</span>
-        <span class="cert-meta">PC &nbsp;·&nbsp; Casual</span>
+        <span class="cert-meta">PC&nbsp;&middot;&nbsp;Casual</span>
         <span class="cert-status-active">Active</span>
       </div>
+
     </div>
 
+    <!-- ── Favourites ────────────────────────────────────────────
+         Freeform commentary lives in the meta column. The column
+         width is set by whichever row's text is longest; the shorter
+         row simply has whitespace on its right inside the cell. -->
     <p class="section-label">Favourites</p>
-    <div style="margin-bottom:2.5rem;">
+    <div class="gaming-table" style="margin-bottom:2.5rem;">
+
       <div class="cert-row">
         <span class="cert-name">Final Fantasy Series</span>
         <span class="cert-meta">20+ years with the franchise</span>
         <span class="cert-status-active">All-time</span>
       </div>
+
       <div class="cert-row">
         <span class="cert-name">Elden Ring</span>
-        <span class="cert-meta">FromSoftware &nbsp;·&nbsp; 2022</span>
+        <span class="cert-meta">FromSoftware&nbsp;&middot;&nbsp;2022</span>
         <span class="cert-status-active">All-time</span>
       </div>
+
     </div>
 
+    <!-- ── Field Notes on Gaming ─────────────────────────────────
+         Pulls posts tagged "gaming". Fallback link kept for the
+         case where no tagged posts exist yet. -->
     <p class="section-label">Field Notes on Gaming</p>
     <div>
       {% assign gaming_posts = site.posts | where_exp: "post", "post.tags contains 'gaming'" %}
