@@ -4,7 +4,25 @@ title: Certifications
 description: Active certifications and credentials in cybersecurity, cloud, and IT infrastructure.
 ---
 
+<!--
+  certs.html
+  ----------
+  Layout: four-column grid (name | issuer | date | status).
+  The grid is implemented in style.css via .cert-table; each .cert-row uses
+  display:contents so its four child spans become direct grid items of the
+  parent .cert-table. That way every row across a section shares the same
+  column widths, producing aligned vertical stripes.
+
+  Sort order (Active section): newest issue date first.
+  In Progress: date cell left empty by design; the section header and the
+  IN PROGRESS status badge carry the state signal.
+  Completed Courses: same grid; uses .cert-status-active for the "Completed"
+  badge to reuse the existing styling.
+-->
+
 <div class="container">
+
+  <!-- Page header -->
   <div class="page-header">
     <p class="page-header-eyebrow">Credentials</p>
     <h1 class="page-header-title">Certifications</h1>
@@ -13,76 +31,112 @@ description: Active certifications and credentials in cybersecurity, cloud, and 
 
   <div style="padding:2.5rem 0;">
 
+    <!-- ── Active ───────────────────────────────────────────────
+         Sorted newest issue date first. Expiration ranges removed
+         from CC and FCA so we don't need to touch them on renewal. -->
     <p class="section-label">Active</p>
-    <div style="margin-bottom:2.5rem;">
-      <div class="cert-row">
-        <span class="cert-name">Certified in Cybersecurity (CC)</span>
-        <span class="cert-meta">ISC2 &nbsp;·&nbsp; Member ID 1199908 &nbsp;·&nbsp; May 2023 - May 2026</span>
-        <span class="cert-status-active">Active</span>
-      </div>
+    <div class="cert-table" style="margin-bottom:2.5rem;">
+
       <div class="cert-row">
         <span class="cert-name">Trusted AI Safety Expert (TAISE)</span>
-        <span class="cert-meta">Cloud Security Alliance &nbsp;·&nbsp; May 14, 2026</span>
+        <span class="cert-issuer">Cloud Security Alliance</span>
+        <span class="cert-date">May 14, 2026</span>
         <span class="cert-status-active">Active</span>
       </div>
+
       <div class="cert-row">
         <span class="cert-name">AZ-900 Azure Fundamentals</span>
-        <span class="cert-meta">Microsoft &nbsp;·&nbsp; April 13, 2026</span>
+        <span class="cert-issuer">Microsoft</span>
+        <span class="cert-date">April 13, 2026</span>
         <span class="cert-status-active">Active</span>
       </div>
+
       <div class="cert-row">
         <span class="cert-name">Certified Zero Trust Practitioner</span>
-        <span class="cert-meta">Network Intelligence &nbsp;·&nbsp; March 2025</span>
+        <span class="cert-issuer">Network Intelligence</span>
+        <span class="cert-date">March 2025</span>
         <span class="cert-status-active">Active</span>
       </div>
-      <div class="cert-row">
-        <span class="cert-name">Fortinet Certified Associate in Cybersecurity</span>
-        <span class="cert-meta">Fortinet &nbsp;·&nbsp; Feb 2024 - Feb 2026</span>
-        <span class="cert-status-active">Active</span>
-      </div>
+
       <div class="cert-row">
         <span class="cert-name">Certified Threat &amp; Malware Analysis</span>
-        <span class="cert-meta">Network Intelligence &nbsp;·&nbsp; Sept 2024</span>
+        <span class="cert-issuer">Network Intelligence</span>
+        <span class="cert-date">Sept 2024</span>
         <span class="cert-status-active">Active</span>
       </div>
+
+      <div class="cert-row">
+        <span class="cert-name">Fortinet Certified Associate in Cybersecurity</span>
+        <span class="cert-issuer">Fortinet</span>
+        <span class="cert-date">February 2024</span>
+        <span class="cert-status-active">Active</span>
+      </div>
+
+      <div class="cert-row">
+        <span class="cert-name">Certified in Cybersecurity (CC) &middot; ID 1199908</span>
+        <span class="cert-issuer">ISC2</span>
+        <span class="cert-date">June 2023</span>
+        <span class="cert-status-active">Active</span>
+      </div>
+
     </div>
 
+    <!-- ── In Progress ──────────────────────────────────────────
+         Date cell intentionally empty; the column stays so the grid
+         keeps consistent column anchors across all three sections. -->
     <p class="section-label">In Progress</p>
-    <div style="margin-bottom:2.5rem;">
+    <div class="cert-table" style="margin-bottom:2.5rem;">
+
       <div class="cert-row">
-        <span class="cert-name">MD-102 Microsoft 365 Endpoint Administrator</span>
-        <span class="cert-meta">Microsoft</span>
+        <span class="cert-name">Security+</span>
+        <span class="cert-issuer">CompTIA</span>
+        <span class="cert-date"></span>
         <span class="cert-status-progress">In Progress</span>
       </div>
+
       <div class="cert-row">
         <span class="cert-name">MSc Computer Science</span>
-        <span class="cert-meta">University of Colorado Boulder</span>
+        <span class="cert-issuer">University of Colorado Boulder</span>
+        <span class="cert-date"></span>
         <span class="cert-status-progress">In Progress</span>
       </div>
+
     </div>
 
+    <!-- ── Completed Courses ────────────────────────────────────
+         Reuses .cert-status-active for the "Completed" badge so it
+         picks up the same green-dot styling as Active rows. -->
     <p class="section-label">Completed Courses</p>
-    <div>
+    <div class="cert-table">
+
       <div class="cert-row">
         <span class="cert-name">Cyber Security Analyst</span>
-        <span class="cert-meta">WithYouWithMe (CAF Partnership) &nbsp;·&nbsp; Sept 2023</span>
+        <span class="cert-issuer">WithYouWithMe (CAF Partnership)</span>
+        <span class="cert-date">Sept 2023</span>
         <span class="cert-status-active">Completed</span>
       </div>
+
       <div class="cert-row">
         <span class="cert-name">Open-Source Intelligence</span>
-        <span class="cert-meta">WithYouWithMe (CAF Partnership) &nbsp;·&nbsp; Sept 2023</span>
+        <span class="cert-issuer">WithYouWithMe (CAF Partnership)</span>
+        <span class="cert-date">Sept 2023</span>
         <span class="cert-status-active">Completed</span>
       </div>
+
       <div class="cert-row">
         <span class="cert-name">Linux Fundamentals</span>
-        <span class="cert-meta">WithYouWithMe (CAF Partnership) &nbsp;·&nbsp; April 2023</span>
+        <span class="cert-issuer">WithYouWithMe (CAF Partnership)</span>
+        <span class="cert-date">April 2023</span>
         <span class="cert-status-active">Completed</span>
       </div>
+
       <div class="cert-row">
         <span class="cert-name">Networking Fundamentals</span>
-        <span class="cert-meta">WithYouWithMe (CAF Partnership) &nbsp;·&nbsp; Sept 2022</span>
+        <span class="cert-issuer">WithYouWithMe (CAF Partnership)</span>
+        <span class="cert-date">Sept 2022</span>
         <span class="cert-status-active">Completed</span>
       </div>
+
     </div>
 
   </div>
