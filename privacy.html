@@ -1,0 +1,72 @@
+---
+layout: default
+title: Privacy Policy
+description: How threatvector762.dev handles data, hosting, and cookies.
+---
+
+<!--
+  privacy.html
+  ------------
+  Static legal page, same structural pattern as certs.html and gaming.html:
+  page-header block, then a content div using .section-label for each
+  subsection heading (reusing the existing class rather than inventing a
+  new heading style).
+
+  Spacing fix: .section-label only defines margin-bottom in style.css,
+  there's no margin-top. certs.html and gaming.html get section-to-section
+  spacing from a wrapper div with margin-bottom around each section's
+  content, not from the label itself. Every section here now follows that
+  same pattern: <p class="section-label"> followed by a wrapper div that
+  carries the margin-bottom, except the last section, which doesn't need
+  trailing space.
+
+  Content reflects the actual technical reality of the site as of this
+  writing: no analytics, no third-party contact form, no backend capable
+  of storing anything. Confirmed directly before drafting rather than
+  assumed. If any of that changes (an analytics script gets added, the
+  contact page starts routing through a form service), this page needs
+  a real edit, not just a date bump.
+-->
+
+<div class="container">
+
+  <div class="page-header">
+    <p class="page-header-eyebrow">Legal</p>
+    <h1 class="page-header-title">Privacy Policy</h1>
+    <p class="page-header-desc">Last updated July 3, 2026.</p>
+  </div>
+
+  <div style="padding:2.5rem 0; max-width:720px; line-height:1.7;">
+
+    <p class="section-label">Overview</p>
+    <div style="margin-bottom:2.5rem;">
+      <p>ThreatVector762 Labs (operated by Ryan Jorgensen) runs threatvector762.dev as a static site with no server-side backend. There's no database, no user accounts, and no way for this site to store anything a visitor submits, because there's nothing running behind it capable of storing it.</p>
+    </div>
+
+    <p class="section-label">Hosting</p>
+    <div style="margin-bottom:2.5rem;">
+      <p>This site is hosted on GitHub Pages. GitHub, as the host, independently collects standard connection data from anyone visiting any GitHub Pages site, including things like IP address and browser type, as part of running its own infrastructure. That collection is governed by GitHub's own privacy statement, not by anything configured on this site. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's General Privacy Statement</a> for details.</p>
+    </div>
+
+    <p class="section-label">Cookies and tracking</p>
+    <div style="margin-bottom:2.5rem;">
+      <p>This site doesn't set cookies, run analytics, or load tracking scripts of any kind. If that changes, this page gets updated before the change goes live, not after.</p>
+    </div>
+
+    <p class="section-label">Contact</p>
+    <div style="margin-bottom:2.5rem;">
+      <p>Reaching out through the contact page sends a message directly to Ryan's inbox. There's no form backend, no third-party service, and no logging on this end. Whatever you send exists only in that email conversation.</p>
+    </div>
+
+    <p class="section-label">Children's privacy</p>
+    <div style="margin-bottom:2.5rem;">
+      <p>This site isn't directed at children and doesn't knowingly collect information from anyone, regardless of age, because it doesn't collect information from anyone in the first place.</p>
+    </div>
+
+    <p class="section-label">Changes to this policy</p>
+    <div>
+      <p>This page may be updated as the site changes. The date at the top reflects the current version.</p>
+    </div>
+
+  </div>
+</div>
