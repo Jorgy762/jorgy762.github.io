@@ -30,6 +30,7 @@
         <li><a href="{{ '/gaming' | relative_url }}" {% if page.url contains 'gaming' %}class="active" aria-current="page"{% endif %}>Gaming</a></li>
         <li><a href="{{ '/contact' | relative_url }}" {% if page.url contains 'contact' %}class="active" aria-current="page"{% endif %}>Contact</a></li>
       </ul>
+      <a class="nav-available" href="{{ '/contact' | relative_url }}"><span class="dot tv-live" aria-hidden="true">&#9679;</span>Available</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
         <span></span>
@@ -40,10 +41,11 @@
 
   <div class="op-bar" aria-label="Operational status">
     <div class="container">
-      <div class="op-field"><span class="op-dot" aria-hidden="true">●</span><b>STATUS</b> OPERATIONAL</div>
+      <div class="op-field"><span class="op-dot tv-live" aria-hidden="true">&#9679;</span><b>STATUS</b> OPERATIONAL</div>
       <div class="op-field"><b>SECTOR</b> CAN-AB-CGY</div>
       <div class="op-field"><b>UNIT</b> CAF/MP</div>
-      <div class="op-field"><b>DTG</b> {{ site.time | date: "%Y-%m-%d" }}</div>
+      <div class="op-field"><b>ROLE</b> <span style="color:var(--brown);">CYBER ANALYST</span></div>
+      <div class="op-field"><b>DTG</b> <span class="js-dtg">{{ site.time | date: "%Y-%m-%d" }}</span></div>
     </div>
   </div>
 
@@ -64,6 +66,7 @@
   <div class="brassard"></div>
 
 <script>
+  /* mobile nav */
   const toggle = document.getElementById('nav-toggle');
   const links  = document.getElementById('nav-links');
   toggle.addEventListener('click', () => {
@@ -78,6 +81,41 @@
       toggle.setAttribute('aria-expanded', 'false');
     });
   });
+
+  /* live DTG clock — updates op-bar and hero console */
+  const pad = n => String(n).padStart(2, '0');
+  function tickDTG() {
+    const d = new Date();
+    const s = d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()) +
+              ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()) + 'Z';
+    document.querySelectorAll('.js-dtg').forEach(el => { el.textContent = s; });
+  }
+  tickDTG();
+  setInterval(tickDTG, 1000);
+
+  /* hero role typewriter (home only) */
+  const role = document.getElementById('hero-role');
+  if (role) {
+    const phrases = ['Cybersecurity Analyst', 'Blue-Team Defender', 'ex-Windows Server Analyst', 'Military Police Sergeant'];
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      role.textContent = phrases[0];
+    } else {
+      let pi = 0, ci = 0, del = false;
+      (function type() {
+        const full = phrases[pi];
+        if (!del) {
+          ci++; role.textContent = full.slice(0, ci);
+          if (ci >= full.length) { del = true; return setTimeout(type, 1600); }
+          return setTimeout(type, 70);
+        } else {
+          ci--; role.textContent = full.slice(0, ci);
+          if (ci <= 0) { del = false; pi = (pi + 1) % phrases.length; return setTimeout(type, 320); }
+          return setTimeout(type, 35);
+        }
+      })();
+    }
+  }
 </script>
 </body>
 </html>
