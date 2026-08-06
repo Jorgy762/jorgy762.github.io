@@ -4,96 +4,49 @@ title: Gaming
 description: The games I play, the worlds I return to, and the stories that stick.
 ---
 
-<!--
-  gaming.html
-  -----------
-  Layout: three-column grid (name | meta | status) via .gaming-table.
-  Same display:contents mechanic as .cert-table on certs.html, but with
-  one fewer column because gaming meta is a single blob:
-    Currently Playing meta = "Platform · play pattern"
-    Favourites meta        = freeform personal commentary
-
-  Each section is its own .gaming-table so column widths size to the
-  data inside that section only (the favourite-game commentary doesn't
-  drag the currently-playing meta column wider, and vice versa).
--->
-
 <div class="container">
-
-  <!-- Page header -->
-  <div class="page-header">
-    <p class="page-header-eyebrow">Off the Clock</p>
-    <h1 class="page-header-title">Gaming</h1>
-    <p class="page-header-desc">
-      The games I play, the worlds I return to, the stories that stay with me.
-      Separate from the professional work, but just as honest a record of who I am.
-    </p>
+  <div class="tv-idxhead" style="padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--border-warm);">
+    <span class="tv-idx" aria-hidden="true">04</span>
+    <div>
+      <p class="ey">Off the Clock</p>
+      <h1>Gaming</h1>
+      <p class="desc">The worlds I return to. Separate from the professional work, but just as honest a record of who I am.</p>
+    </div>
   </div>
 
   <div style="padding:2.5rem 0;">
 
-    <!-- ── Currently Playing ─────────────────────────────────────
-         Three rows, all on PC. Meta = "PC · play pattern". The grid
-         anchors so every "PC" prefix lines up vertically. -->
     <p class="section-label">Currently Playing</p>
-    <div class="gaming-table" style="margin-bottom:2.5rem;">
-
-      <div class="cert-row">
-        <span class="cert-name">Final Fantasy XI Online</span>
-        <span class="cert-meta">PC&nbsp;&middot;&nbsp;On and off for 20 years</span>
-        <span class="cert-status-active">Active</span>
-      </div>
-
-      <div class="cert-row">
-        <span class="cert-name">Call of Duty</span>
-        <span class="cert-meta">PC&nbsp;&middot;&nbsp;Casual</span>
-        <span class="cert-status-active">Active</span>
-      </div>
-
-      <div class="cert-row">
-        <span class="cert-name">Battlefield Series</span>
-        <span class="cert-meta">PC&nbsp;&middot;&nbsp;Casual</span>
-        <span class="cert-status-active">Active</span>
-      </div>
-
+    <div class="tv-cards" style="margin-bottom:2.75rem;">
+      <div class="tv-card"><span class="name">Final Fantasy XI Online</span><span class="foot"><span class="date" style="text-transform:none;letter-spacing:.5px;font-size:12px;color:var(--text-muted);">PC &middot; On and off for 20 years</span><span class="status"><span class="dot tv-live" aria-hidden="true">&#9679;</span>Active</span></span></div>
+      <div class="tv-card"><span class="name">Call of Duty</span><span class="foot"><span class="date" style="text-transform:none;letter-spacing:.5px;font-size:12px;color:var(--text-muted);">PC &middot; Casual</span><span class="status"><span class="dot tv-live" aria-hidden="true">&#9679;</span>Active</span></span></div>
+      <div class="tv-card"><span class="name">Battlefield Series</span><span class="foot"><span class="date" style="text-transform:none;letter-spacing:.5px;font-size:12px;color:var(--text-muted);">PC &middot; Casual</span><span class="status"><span class="dot tv-live" aria-hidden="true">&#9679;</span>Active</span></span></div>
     </div>
 
-    <!-- ── Favourites ────────────────────────────────────────────
-         Freeform commentary lives in the meta column. The column
-         width is set by whichever row's text is longest; the shorter
-         row simply has whitespace on its right inside the cell. -->
     <p class="section-label">Favourites</p>
-    <div class="gaming-table" style="margin-bottom:2.5rem;">
-
-      <div class="cert-row">
-        <span class="cert-name">Final Fantasy Series</span>
-        <span class="cert-meta">20+ years with the franchise</span>
-        <span class="cert-status-active">All-time</span>
-      </div>
-
-      <div class="cert-row">
-        <span class="cert-name">Elden Ring</span>
-        <span class="cert-meta">FromSoftware&nbsp;&middot;&nbsp;2022</span>
-        <span class="cert-status-active">All-time</span>
-      </div>
-
+    <div class="tv-cards" style="margin-bottom:2.75rem;">
+      <div class="tv-card sand"><span class="name">Final Fantasy Series</span><span class="foot" style="justify-content:flex-start;"><span class="date" style="text-transform:none;letter-spacing:.5px;font-size:12px;color:var(--text-muted);">20+ years with the franchise</span></span></div>
+      <div class="tv-card sand"><span class="name">Elden Ring</span><span class="foot" style="justify-content:flex-start;"><span class="date" style="text-transform:none;letter-spacing:.5px;font-size:12px;color:var(--text-muted);">FromSoftware &middot; 2022</span></span></div>
     </div>
 
-    <!-- ── Field Notes on Gaming ─────────────────────────────────
-         Pulls posts tagged "gaming". Fallback link kept for the
-         case where no tagged posts exist yet. -->
     <p class="section-label">Field Notes on Gaming</p>
-    <div>
+    <div style="max-width:840px;">
       {% assign gaming_posts = site.posts | where_exp: "post", "post.tags contains 'gaming'" %}
       {% for post in gaming_posts %}
-      <div class="blog-item">
-        <p class="blog-date">{{ post.date | date: "%Y-%m-%d" }}</p>
-        <a href="{{ post.url | relative_url }}" class="blog-item-title">{{ post.title }}</a>
+      <div class="tv-lead">
+        <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <div>
+          <a class="title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          {% if post.excerpt %}<p class="ex">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>{% endif %}
+        </div>
       </div>
       {% else %}
-      <div class="blog-item">
-        <p class="blog-date">2026-05-18</p>
-        <a href="/blog/2026/05/18/twenty-years-in-vanadiell" class="blog-item-title">Twenty Years in Vana'diel -- What FFXI Taught Me About the Long Game</a>
+      <div class="tv-lead">
+        <span class="date">2026-05-18</span>
+        <div>
+          <a class="title" href="{{ '/blog/2026/05/18/twenty-years-in-vanadiel/' | relative_url }}">Twenty Years in Vana'diel &mdash; What FFXI Taught Me About the Long Game</a>
+          <p class="ex">Two decades in one MMO teaches patience, logistics, and trust in a fireteam you've never met in person. Turns out that's most of security work too.</p>
+        </div>
       </div>
       {% endfor %}
     </div>

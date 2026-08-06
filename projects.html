@@ -5,55 +5,37 @@ description: Tools and projects built at the intersection of IT operations and c
 ---
 
 <div class="container">
-  <div class="page-header">
-    <p class="page-header-eyebrow">Work</p>
-    <h1 class="page-header-title">Projects</h1>
-    <p class="page-header-desc">Tools built at the intersection of IT operations and cyber defence. Everything here is functional, documented, and open source.</p>
+  <div class="tv-idxhead" style="padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--border-warm);">
+    <span class="tv-idx" aria-hidden="true">01</span>
+    <div>
+      <p class="ey">Work</p>
+      <h1>Projects</h1>
+      <p class="desc">Tools built at the intersection of IT operations and cyber defence. Everything here is functional, documented, and open source.</p>
+    </div>
   </div>
 
-  <div class="projects-list">
-
-    <div class="project-full-card" id="osint-domain-recon">
-      <p class="project-full-title">osint-domain-recon</p>
-      <p class="project-full-desc">
-        A command-line Python tool for automated domain reconnaissance. Given a target domain, it pulls WHOIS registration data, enumerates DNS records, resolves IP addresses, and probes HTTP/HTTPS availability. All in one run, with optional plaintext report export.
-      </p>
-      <div class="project-card-tags" style="margin-bottom:1rem;">
-        <span class="tag">Python</span>
-        <span class="tag">OSINT</span>
-        <span class="tag">CLI</span>
-        <span class="tag">DNS</span>
-        <span class="tag">WHOIS</span>
+  <div class="tv-2col">
+    <a class="tv-pcard" id="osint-domain-recon" href="https://github.com/Jorgy762/osint-domain-recon" target="_blank" rel="noopener">
+      <p class="t">osint-domain-recon</p>
+      <p class="d">A command-line Python tool for automated domain reconnaissance. Given a target domain, it pulls WHOIS/RDAP registration data, enumerates DNS records, resolves IP addresses, probes HTTP/HTTPS availability, and runs SPF/DMARC/DKIM/BIMI email-authentication checks &mdash; all in one run, with optional plaintext report export.</p>
+      <div class="project-card-tags" style="margin:2px 0 4px;">
+        <span class="tag">Python</span><span class="tag">OSINT</span><span class="tag">CLI</span><span class="tag">DNS</span><span class="tag">WHOIS</span>
       </div>
-      <a href="https://github.com/Jorgy762/osint-domain-recon" target="_blank" rel="noopener" class="project-full-link">View on GitHub →</a>
-    </div>
+      <span class="go">View on GitHub &rarr;</span>
+    </a>
 
-    <div class="project-full-card" id="windows-log-analyzer">
-      <p class="project-full-title">windows-log-analyzer</p>
-      <p class="project-full-desc">
-        A browser-based parser for Windows Event XML exports, IIS W3C logs, and plain text log files. Drop in a file and get instant level-breakdown stats, a severity donut chart, full-text search with keyword highlighting, Event ID and severity filters, and one-click CSV or JSON export. Everything runs client-side. No data leaves the browser.
-      </p>
-      <div class="project-card-tags" style="margin-bottom:1rem;">
-        <span class="tag">JavaScript</span>
-        <span class="tag">Blue Team</span>
-        <span class="tag">Windows</span>
-        <span class="tag">Log Analysis</span>
-        <span class="tag">Client-Side</span>
+    <a class="tv-pcard" id="windows-log-analyzer" href="{{ '/projects/log-analyzer' | relative_url }}">
+      <p class="t">windows-log-analyzer</p>
+      <p class="d">A browser-based parser for Windows Event XML exports, IIS W3C logs, and plain text log files. Instant level-breakdown stats, a severity donut chart, full-text search with keyword highlighting, Event ID and severity filters, and one-click CSV/JSON export. Everything runs client-side &mdash; no data leaves the browser.</p>
+      <div class="project-card-tags" style="margin:2px 0 4px;">
+        <span class="tag">JavaScript</span><span class="tag">Blue Team</span><span class="tag">Windows</span><span class="tag">Log Analysis</span><span class="tag">Client-Side</span>
       </div>
-      <a href="/projects/log-analyzer" class="project-full-link">Open Tool →</a>
-    </div>
+      <span class="go">Open Tool &rarr;</span>
+    </a>
+  </div>
 
-    <div class="project-full-card" style="border-left-color:var(--olive);opacity:0.5;">
-      <p class="project-full-title">// More coming</p>
-      <p class="project-full-desc">
-        Additional tools in progress. Check back soon or follow the GitHub profile for updates.
-      </p>
-      <div class="project-card-tags" style="margin-bottom:1rem;">
-        <span class="tag">Python</span>
-        <span class="tag">Security</span>
-      </div>
-      <a href="https://github.com/Jorgy762" target="_blank" rel="noopener" class="project-full-link">GitHub Profile →</a>
-    </div>
-
+  <div class="tv-note">
+    <span>More tools ship as they're built. The GitHub profile is the live feed.</span>
+    <a class="tv-cta tv-cta-ghost" href="https://github.com/Jorgy762" target="_blank" rel="noopener">GitHub Profile <span aria-hidden="true">&rarr;</span></a>
   </div>
 </div>
