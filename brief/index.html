@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Your Best Defence Is You | Cyber Month 2026 Brief 01</title>
+<meta name="description" content="A 30-minute interactive cyber security brief for military and law enforcement professionals. Open sources only.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ThreatVector762">
+<meta property="og:title" content="Your Best Defence Is You | Cyber Month 2026 Brief 01">
+<meta property="og:description" content="A 30-minute interactive cyber security brief for military and law enforcement professionals. Open sources only.">
+<meta property="og:url" content="https://threatvector762.dev/brief/">
+<meta property="og:image" content="https://threatvector762.dev/brief/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://threatvector762.dev/brief/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#04080a; --panel:#08120f; --line:#1b4734; --green:#2bff88; --green-dim:#1c6b47; --red:#ff2e3d; --red-dim:#5a1a20;
+  --text:#e6f2ec; --muted:#8fa89c; --faint:#5e7a6e;
+  --display:'Barlow Condensed','Arial Narrow','Helvetica Neue',Arial,sans-serif;
+  --body:'Barlow','Helvetica Neue',Arial,sans-serif;
+  --mono:'Share Tech Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+/* Dark by design: the HUD palette holds in every viewer theme */
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#04080a; --panel:#08120f; --text:#e6f2ec; } }
+:root[data-theme="dark"]{ --bg:#04080a; --panel:#08120f; --text:#e6f2ec; }
+:root[data-theme="light"]{ --bg:#04080a; --panel:#08120f; --text:#e6f2ec; }
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px); background:var(--bg)}
+body{margin:0; background:var(--bg); color:var(--text); font-family:var(--body); font-size:17px; line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  background-image:
+    linear-gradient(rgba(43,255,136,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(43,255,136,.045) 1px,transparent 1px);
+  background-size:36px 36px;}
+body::after{content:""; position:fixed; inset:0; pointer-events:none; background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px); z-index:50}
+a{color:var(--green)}
+:focus-visible{outline:2px solid var(--green); outline-offset:3px}
+button{font:inherit; color:inherit; cursor:pointer}
+
+/* HUD bar */
+.hud{position:sticky; top:env(safe-area-inset-top,0px); z-index:40; display:flex; align-items:center; gap:12px; padding:10px 16px; background:rgba(4,8,10,.88); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+.hud .dot{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:blink 1.2s steps(2) infinite;flex:none}
+.hud .lbl{font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.06em}
+.hud .amt{font-family:var(--display); font-weight:700; font-size:22px; color:var(--text); text-shadow:0 0 10px rgba(255,46,61,.6); margin-left:auto; font-variant-numeric:tabular-nums}
+.progress{position:absolute; left:0; bottom:-1px; height:2px; width:0; background:var(--green); box-shadow:0 0 8px var(--green)}
+@keyframes blink{50%{opacity:.25}}
+
+main{max-width:980px; margin:0 auto; padding:0 18px}
+section{padding:64px 0; border-bottom:1px dashed rgba(43,255,136,.12); position:relative}
+.kicker{font-family:var(--mono); font-size:13px; color:var(--green); letter-spacing:.12em; margin:0 0 10px}
+.kicker.red{color:var(--red)}
+h1,h2,h3{font-family:var(--display); text-transform:uppercase; margin:0; line-height:.95; letter-spacing:.01em}
+h2{font-size:clamp(38px,9vw,64px); text-shadow:0 0 18px rgba(43,255,136,.35); margin-bottom:16px}
+h3{font-size:24px}
+.lede{font-size:18px; max-width:60ch; color:var(--text); margin:0 0 22px}
+.muted{color:var(--muted)}
+.src{font-family:var(--mono); font-size:11.5px; color:var(--faint); margin-top:18px}
+.src a{color:var(--faint)}
+
+/* Bracketed panel */
+.panel{position:relative; background:rgba(8,18,15,.92); border:1px solid var(--line); padding:18px}
+.panel::before,.panel::after{content:""; position:absolute; width:16px; height:16px; border-color:var(--accent,var(--green)); border-style:solid; pointer-events:none}
+.panel::before{top:-1px; left:-1px; border-width:2px 0 0 2px}
+.panel::after{bottom:-1px; right:-1px; border-width:0 2px 2px 0}
+.panel.red{--accent:var(--red); border-color:var(--red-dim)}
+.grid{display:grid; gap:14px}
+@media(min-width:720px){ .g2{grid-template-columns:1fr 1fr} .g3{grid-template-columns:repeat(3,1fr)} }
+
+/* Hero */
+.hero{min-height:calc(100svh - 52px); display:grid; align-content:center; gap:24px; padding-top:32px}
+@media(min-width:820px){ .hero{grid-template-columns:1.1fr .9fr; align-items:center} }
+.hero h1{font-size:clamp(64px,17vw,124px); text-shadow:0 0 24px rgba(43,255,136,.35)}
+.hero .tag{font-size:19px; color:var(--muted); margin:16px 0 22px}
+.topo{width:min(86vw,400px); display:block; margin:0 auto}
+.topo .g{stroke:#2bff88; stroke-opacity:.06}
+.topo .cmin{fill:none; stroke:#2bff88; stroke-opacity:.2; stroke-width:.8}
+.topo .cmaj{fill:none; stroke:#2bff88; stroke-opacity:.5; stroke-width:1.3}
+.topo .river{fill:none; stroke:#4fc3ff; stroke-opacity:.35; stroke-width:3}
+.topo .tk{font-family:var(--mono); font-size:9px; fill:#5e7a6e}
+.topo .track{fill:none; stroke:#ff2e3d; stroke-width:3; stroke-linecap:round; stroke-dasharray:1000; stroke-dashoffset:1000}
+.topo.run .track{transition:stroke-dashoffset 4.6s linear; stroke-dashoffset:0}
+.topo .house{fill:#e6f2ec; transition:fill .4s}
+.topo .ping{fill:none; stroke:#ff2e3d; stroke-width:2; opacity:0; transform-box:fill-box; transform-origin:center}
+.topo.found .house{fill:#ff2e3d}
+.topo.found .ping{animation:pinpulse 1.4s ease-out infinite}
+@keyframes pinpulse{0%{opacity:1; transform:scale(.6)}100%{opacity:0; transform:scale(2.4)}}
+.topo .scanbar{transform:translateY(-10px)}
+.topo.scan .scanbar{animation:scan 2.6s linear forwards}
+@keyframes scan{from{transform:translateY(0)}to{transform:translateY(490px)}}
+.readout{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; width:min(86vw,400px); margin:8px auto 0; font-family:var(--mono); font-size:12px; color:var(--green)}
+.readout #ro2{color:var(--muted)}
+.readout .hit{color:var(--red); text-shadow:0 0 8px rgba(255,46,61,.6)}
+.topo-cap{width:min(86vw,400px); margin:6px auto 0; font-size:13px; color:var(--faint)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes ping{0%,100%{opacity:.35}10%{opacity:1}}
+.byline{font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.2em; text-align:center; margin-top:8px}
+.btn{display:inline-flex; align-items:center; gap:10px; padding:14px 20px; border:1px solid var(--green); background:rgba(43,255,136,.08); color:var(--green); font-family:var(--display); font-weight:700; font-size:20px; text-transform:uppercase; letter-spacing:.04em; box-shadow:0 0 14px rgba(43,255,136,.25), inset 0 0 14px rgba(43,255,136,.08); text-decoration:none}
+.btn:hover{background:rgba(43,255,136,.16)}
+.btn.red{border-color:var(--red); color:var(--red); background:rgba(255,46,61,.08); box-shadow:0 0 14px rgba(255,46,61,.25)}
+
+/* Gauges */
+.gauge svg{width:100%; max-width:220px; display:block; margin:0 auto 8px}
+.needle{transform-origin:110px 112px; transform:rotate(-90deg); transition:transform 1.6s cubic-bezier(.3,1.6,.5,1)}
+.armed .needle{transform:rotate(68deg)}
+.gauge h3{color:var(--red); text-shadow:0 0 10px rgba(255,46,61,.5)}
+.gauge p{margin:6px 0 0; font-size:16px}
+.punch{font-family:var(--display); font-size:24px; text-transform:uppercase; margin:20px 0 0}
+.punch b{color:var(--red)}
+
+/* BLUF */
+.bluf .n{font-family:var(--display); font-weight:800; font-size:54px; color:var(--green-dim); line-height:1; float:right}
+.bluf h3{color:var(--green); text-shadow:0 0 10px rgba(43,255,136,.45); margin:6px 0 10px; font-size:28px}
+.bluf p{margin:0}
+
+/* Guess */
+.opts{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0}
+@media(min-width:720px){ .opts{grid-template-columns:repeat(4,1fr)} }
+.opt{padding:16px 10px; background:var(--panel); border:1px solid var(--line); font-family:var(--display); font-weight:700; font-size:24px}
+.opt[aria-pressed="true"].right{border-color:var(--green); color:var(--green); box-shadow:0 0 14px rgba(43,255,136,.35)}
+.opt[aria-pressed="true"].wrong{border-color:var(--red); color:var(--red)}
+.opt.answer{border-color:var(--green); color:var(--green)}
+.reveal{display:none}
+.reveal.show{display:block; animation:fadein .5s ease}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.bars{display:flex; align-items:flex-end; gap:10px; height:200px; padding-top:28px}
+.bar{flex:1; position:relative; background:var(--green-dim); height:0; transition:height 1.2s ease}
+.bar.now{background:var(--red); box-shadow:0 0 16px rgba(255,46,61,.6)}
+.bar span{position:absolute; top:-24px; left:50%; transform:translateX(-50%); font-family:var(--display); font-weight:700; font-size:16px; white-space:nowrap}
+.years{display:flex; gap:10px; font-family:var(--mono); font-size:12px; color:var(--muted); margin-top:6px}
+.years div{flex:1; text-align:center}
+.big{font-family:var(--display); font-weight:800; font-size:48px; line-height:1; text-shadow:0 0 14px rgba(255,46,61,.55)}
+.ppl{display:grid; grid-template-columns:repeat(10,1fr); gap:6px; margin:12px 0}
+.ppl svg{width:100%; height:auto}
+
+/* Timeline */
+.tl{display:flex; gap:12px; overflow-x:auto; padding:30px 2px 10px; scroll-snap-type:x mandatory; position:relative}
+.tl::before{content:""; position:absolute; top:12px; left:0; right:0; height:2px; background:var(--green); box-shadow:0 0 10px var(--green)}
+.ev{flex:0 0 170px; scroll-snap-align:start; position:relative}
+.ev::before{content:""; position:absolute; top:-24px; left:14px; width:14px; height:14px; border-radius:50%; background:var(--accent,var(--green)); box-shadow:0 0 12px var(--accent,var(--green))}
+.ev .yr{font-family:var(--display); font-weight:800; font-size:38px; color:var(--accent,var(--green)); line-height:1}
+.ev .nm{font-family:var(--mono); font-size:12px; margin:6px 0}
+.ev p{margin:0; font-size:15px; color:var(--muted)}
+.ev.red{--accent:var(--red)}
+.hint{font-family:var(--mono); font-size:12px; color:var(--faint)}
+
+/* Threat */
+.threat h3{color:var(--red); text-shadow:0 0 10px rgba(255,46,61,.45)}
+.threat p{margin:6px 0 0}
+
+/* Target package */
+.tp{display:grid; gap:14px}
+@media(min-width:820px){ .tp{grid-template-columns:1fr 280px 1fr; align-items:center} }
+.posts{display:grid; gap:10px}
+.post{text-align:left; background:var(--panel); border:1px solid var(--line); padding:12px 14px; display:block; width:100%}
+.post q{font-style:italic; color:var(--muted); font-size:15px}
+.post .leak{display:block; font-family:var(--display); font-weight:700; font-size:20px; text-transform:uppercase; color:var(--faint); margin-top:4px}
+.post .leak::before{content:"Tap to see what it gives away"; font-family:var(--mono); font-size:12px; text-transform:none; font-weight:400}
+.post.hit{border-color:var(--red-dim)}
+.post.hit .leak{color:var(--red); text-shadow:0 0 8px rgba(255,46,61,.5)}
+.post.hit .leak::before{content:none}
+.reticle{text-align:center}
+.reticle svg{width:min(70vw,260px)}
+.reticle .ring{stroke:var(--red); opacity:.25; transition:opacity .4s}
+.reticle .person{fill:var(--green); filter:drop-shadow(0 0 8px rgba(43,255,136,.6))}
+.reticle.locked .ring{opacity:1}
+.reticle.locked svg{animation:lock 1.4s ease-in-out infinite}
+.reticle.locked .person{fill:var(--red); filter:drop-shadow(0 0 12px rgba(255,46,61,.8))}
+@keyframes lock{50%{filter:drop-shadow(0 0 16px rgba(255,46,61,.8))}}
+.meter{font-family:var(--mono); font-size:13px; color:var(--muted); margin-top:8px}
+.meter b{color:var(--red)}
+.alias{font-family:var(--mono); font-size:12px; color:var(--red); letter-spacing:.1em}
+.verdict{font-family:var(--display); font-weight:700; text-transform:uppercase; font-size:22px; min-height:1.2em; margin-top:6px}
+
+/* Trades */
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px}
+.chip{padding:10px 14px; border:1px solid var(--line); background:var(--panel); font-family:var(--display); font-weight:700; font-size:18px; text-transform:uppercase}
+.chip[aria-selected="true"]{border-color:var(--green); color:var(--green); box-shadow:0 0 12px rgba(43,255,136,.3)}
+.trade h3{color:var(--green); text-shadow:0 0 10px rgba(43,255,136,.4)}
+
+/* Spot the fake */
+.fake{text-align:left; width:100%; background:var(--panel); border:1px solid var(--line); padding:16px; position:relative}
+.fake .who{display:flex; align-items:center; gap:10px; margin-bottom:10px}
+.fake .av{width:36px; height:36px; border-radius:50%; background:#1b2b25; flex:none}
+.fake .nm{font-weight:700} .fake .meta{font-size:13px; color:var(--muted)}
+.fake .hl{font-weight:700; font-size:17px}
+.fake .letter{position:absolute; top:12px; right:16px; font-family:var(--display); font-weight:800; font-size:36px; color:var(--green); text-shadow:0 0 10px rgba(43,255,136,.5)}
+.fake .stamp{display:none; margin-top:10px; font-family:var(--display); font-weight:800; font-size:24px; text-transform:uppercase}
+.answered .fake .stamp{display:block}
+.fake.real .stamp{color:var(--green)} .fake.false .stamp{color:var(--red)}
+.answered .fake.false{border-color:var(--red)}
+
+/* Roles */
+.role h3{font-size:30px; color:var(--green); text-shadow:0 0 10px rgba(43,255,136,.4); margin-bottom:8px}
+.role.red h3{color:var(--red); text-shadow:0 0 10px rgba(255,46,61,.45)}
+.role p{margin:0}
+
+/* Action */
+.check{display:flex; gap:14px; align-items:flex-start; padding:16px; border:1px solid var(--green); background:rgba(43,255,136,.06); cursor:pointer}
+.check input{width:28px; height:28px; accent-color:var(--green); flex:none; margin:2px 0 0}
+.check span{font-family:var(--display); font-weight:700; font-size:24px; text-transform:uppercase; line-height:1.1}
+.done-msg{color:var(--green); margin:10px 0 0}
+.stopped{margin-top:18px}
+.stopped .big{color:var(--text)}
+ul.home{margin:0; padding-left:18px} ul.home li{margin:6px 0}
+
+/* Sources */
+details summary{cursor:pointer; font-family:var(--display); font-weight:700; font-size:22px; text-transform:uppercase; color:var(--green)}
+details ol{font-size:14px; padding-left:20px; overflow-wrap:anywhere}
+details li{margin:6px 0}
+footer{padding:28px 18px 40px; text-align:center; font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.15em}
+footer i{display:inline-block; width:8px; height:8px; background:var(--green); box-shadow:0 0 8px var(--green); margin-right:8px}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important; transition:none!important}
+  .armed .needle{transform:rotate(68deg)}
+}
+</style>
+<style>
+/* Work / home tip pair */
+.tips{display:grid; gap:12px; margin-top:18px}
+@media(min-width:720px){ .tips{grid-template-columns:1fr 1fr} }
+.tip{border-left:3px solid var(--green); padding:12px 14px; background:rgba(43,255,136,.05)}
+.tip.home{border-left-color:#7fd1ff; background:rgba(127,209,255,.05)}
+.tip .who{font-family:var(--display); font-weight:700; font-size:18px; text-transform:uppercase; color:var(--green); margin-bottom:4px}
+.tip.home .who{color:#7fd1ff}
+.tip p{margin:0; font-size:16px}
+
+/* Explainer block */
+.explain{margin-top:18px}
+.explain h3{color:var(--green); font-size:26px; margin-bottom:8px; text-shadow:0 0 10px rgba(43,255,136,.35)}
+.explain p{margin:0 0 10px; max-width:68ch}
+.term{font-family:var(--mono); color:var(--green); font-size:15px}
+.fixlist{margin:6px 0 0; padding-left:20px} .fixlist li{margin:6px 0}
+
+/* Anatomy tiles */
+.anat{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0}
+@media(min-width:720px){ .anat{grid-template-columns:repeat(4,1fr)} }
+.anat .panel h3{font-size:22px; color:var(--green)}
+.anat .panel p{margin:4px 0 0; font-size:15px}
+.anat-sum{font-family:var(--display); font-size:22px; text-transform:uppercase; margin:6px 0 0}
+.anat-sum b{color:var(--red)}
+
+/* Case files */
+.cases{display:grid; gap:10px; margin-top:16px}
+.case{border:1px solid var(--line); background:var(--panel)}
+.case summary{list-style:none; display:flex; align-items:baseline; gap:14px; padding:14px 16px; cursor:pointer}
+.case summary::-webkit-details-marker{display:none}
+.case .yr{font-family:var(--display); font-weight:800; font-size:30px; color:var(--red); text-shadow:0 0 10px rgba(255,46,61,.45); flex:none; width:78px}
+.case .ttl{font-family:var(--display); font-weight:700; font-size:21px; text-transform:uppercase; line-height:1.1}
+.case .ttl small{display:block; font-family:var(--body); font-weight:400; text-transform:none; font-size:14px; color:var(--muted); margin-top:2px}
+.case summary::after{content:"+"; margin-left:auto; font-family:var(--mono); font-size:22px; color:var(--green)}
+.case[open] summary::after{content:"\2013"}
+.case[open]{border-color:var(--red-dim)}
+.case .body{padding:0 16px 16px 108px}
+@media(max-width:560px){ .case .body{padding:0 16px 16px} }
+.case .body p{margin:0 0 8px}
+.case .lesson{font-family:var(--display); font-weight:700; text-transform:uppercase; color:var(--green); font-size:18px}
+
+/* Checklist */
+.checklist{display:grid; gap:8px; margin-top:12px}
+.ck{display:flex; gap:12px; align-items:flex-start; padding:12px 14px; border:1px solid var(--line); background:var(--panel); cursor:pointer}
+.ck input{width:24px; height:24px; accent-color:var(--green); flex:none; margin:2px 0 0}
+.ck b{display:block}
+.ck span{font-size:15px; color:var(--muted)}
+.ck:has(input:checked){border-color:var(--green)}
+.score{font-family:var(--mono); color:var(--muted); margin-top:10px}
+.score b{color:var(--green); font-size:18px}
+
+/* AitM flow */
+.flow{display:grid; gap:10px; margin-top:14px; counter-reset:step}
+@media(min-width:820px){ .flow{grid-template-columns:repeat(4,1fr)} }
+.flow .panel{counter-increment:step}
+.flow .panel::marker{content:none}
+.flow h3{font-size:20px; color:var(--red)}
+.flow h3::before{content:"Step " counter(step) ". "; color:var(--muted); font-size:15px; display:block; font-family:var(--mono); text-transform:none}
+.flow p{margin:6px 0 0; font-size:15px}
+
+/* MFA ladder */
+.ladder{display:grid; gap:8px; margin-top:14px}
+.rung{display:grid; grid-template-columns:110px 1fr; align-items:center; gap:12px; text-align:left; width:100%; padding:12px 14px; background:var(--panel); border:1px solid var(--line)}
+.rung .lvl{height:10px; background:var(--c); box-shadow:0 0 10px var(--c)}
+.rung .nm{font-family:var(--display); font-weight:700; font-size:20px; text-transform:uppercase}
+.rung .note{grid-column:1/-1; display:none; font-size:15px; color:var(--muted)}
+.rung[aria-expanded="true"]{border-color:var(--c)}
+.rung[aria-expanded="true"] .note{display:block}
+.rung.top .nm{color:var(--green)}
+
+/* Trade card extras */
+.trade .tips{margin-top:12px}
+
+.author-mini{margin:18px 0 0; font-size:15px; color:var(--muted)}
+.author-mini b{color:var(--text)}
+.author{display:grid; gap:4px; justify-items:start}
+.author-name{font-size:clamp(40px,9vw,60px); text-shadow:0 0 18px rgba(43,255,136,.35)}
+.author-role{font-family:var(--display); font-weight:700; font-size:22px; text-transform:uppercase; color:var(--green); margin:0 0 14px}
+</style>
+</head>
+<body>
+
+<div class="hud" role="status" aria-live="off">
+  <span class="dot" aria-hidden="true"></span>
+  <span class="lbl">Lost to fraud since you opened this</span>
+  <span class="amt" id="clock">$0</span>
+  <span class="progress" id="progress"></span>
+</div>
+
+<main>
+
+<!-- 01 HERO -->
+<section class="hero" id="top">
+  <div>
+    <p class="kicker">[ CYBER MONTH 2026 // BRIEF 01 ]</p>
+    <h1>Your best<br>defence<br>is you</h1>
+    <p class="tag">You're already a target. In uniform, at your day job and at home. About 30 minutes. Tap as you go.</p>
+    <a class="btn" href="#incident">Start the brief</a>
+    <p class="author-mini">Authored by <b>Ryan Jorgensen</b>, Founder, ThreatVector762 Labs</p>
+  </div>
+  <div>
+    <svg class="topo" viewBox="0 0 400 420" role="img" aria-label="Illustration: a satellite pass over a topographic map reveals a running route that starts and ends at a home">
+      <defs>
+        <filter id="tg"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2bff88" stop-opacity="0"/><stop offset=".85" stop-color="#2bff88" stop-opacity=".22"/><stop offset="1" stop-color="#2bff88" stop-opacity=".9"/></linearGradient>
+        <clipPath id="frame"><rect x="0" y="0" width="400" height="420"/></clipPath>
+      </defs>
+      <g clip-path="url(#frame)">
+        <rect width="400" height="420" fill="#050b09"/>
+        <line x1="0" y1="0" x2="0" y2="420" class="g"/><line x1="50" y1="0" x2="50" y2="420" class="g"/><line x1="100" y1="0" x2="100" y2="420" class="g"/><line x1="150" y1="0" x2="150" y2="420" class="g"/><line x1="200" y1="0" x2="200" y2="420" class="g"/><line x1="250" y1="0" x2="250" y2="420" class="g"/><line x1="300" y1="0" x2="300" y2="420" class="g"/><line x1="350" y1="0" x2="350" y2="420" class="g"/><line x1="400" y1="0" x2="400" y2="420" class="g"/><line x1="0" y1="0" x2="400" y2="0" class="g"/><line x1="0" y1="50" x2="400" y2="50" class="g"/><line x1="0" y1="100" x2="400" y2="100" class="g"/><line x1="0" y1="150" x2="400" y2="150" class="g"/><line x1="0" y1="200" x2="400" y2="200" class="g"/><line x1="0" y1="250" x2="400" y2="250" class="g"/><line x1="0" y1="300" x2="400" y2="300" class="g"/><line x1="0" y1="350" x2="400" y2="350" class="g"/><line x1="0" y1="400" x2="400" y2="400" class="g"/>
+        <path d="M0 205 C60 215 90 190 140 175 S230 205 290 250 S370 300 400 290" class="river"/>
+        <path d="M280.6 150.0 L281.4 151.9 L281.6 153.8 L281.1 155.7 L280.0 157.5 L278.3 158.9 L276.3 160.1 L274.2 161.0 L272.1 161.8 L270.1 162.4 L268.2 162.9 L266.6 163.5 L265.0 164.2 L263.4 164.8 L261.8 165.4 L260.2 165.9 L258.5 166.3 L256.8 166.5 L255.0 166.4 L253.3 166.3 L251.5 166.1 L249.8 165.8 L248.1 165.6 L246.2 165.4 L244.3 165.2 L242.2 165.0 L240.0 164.7 L237.8 164.1 L235.7 163.3 L234.0 162.1 L232.7 160.5 L232.0 158.8 L231.9 156.9 L232.3 155.0 L233.1 153.2 L234.1 151.5 L235.1 150.0 L236.0 148.6 L236.6 147.3 L236.9 146.0 L237.0 144.6 L236.9 143.1 L236.9 141.4 L237.0 139.7 L237.5 137.9 L238.3 136.3 L239.5 134.9 L241.1 133.7 L242.9 132.9 L244.9 132.3 L247.0 131.9 L249.0 131.7 L251.0 131.6 L253.0 131.6 L255.0 131.6 L257.0 131.7 L258.9 131.9 L260.8 132.3 L262.5 133.0 L264.1 133.9 L265.5 135.1 L266.6 136.4 L267.5 137.8 L268.2 139.2 L268.9 140.4 L269.7 141.6 L270.8 142.5 L272.1 143.5 L273.7 144.4 L275.5 145.5 L277.4 146.8 L279.2 148.3 L280.6 150.0Z" class="cmin"/><path d="M307.3 150.0 L308.4 153.8 L308.2 157.7 L306.5 161.3 L303.7 164.5 L299.9 167.2 L295.6 169.2 L291.1 170.8 L286.9 171.9 L283.0 172.9 L279.5 173.9 L276.5 175.1 L273.7 176.5 L271.0 178.0 L268.2 179.6 L265.2 181.1 L261.9 182.3 L258.5 183.1 L255.0 183.6 L251.4 183.7 L247.8 183.6 L244.1 183.3 L240.4 183.0 L236.4 182.6 L232.3 182.2 L228.0 181.6 L223.6 180.7 L219.3 179.3 L215.4 177.2 L212.2 174.6 L210.0 171.3 L208.9 167.6 L208.9 163.8 L210.0 159.9 L211.8 156.2 L214.0 152.9 L216.1 150.0 L217.9 147.3 L219.0 144.8 L219.6 142.2 L219.6 139.4 L219.3 136.4 L219.1 133.0 L219.3 129.5 L220.1 126.0 L221.8 122.7 L224.2 119.9 L227.4 117.7 L231.1 116.1 L235.1 115.0 L239.2 114.4 L243.3 114.2 L247.3 114.1 L251.2 114.0 L255.0 114.1 L258.8 114.2 L262.6 114.5 L266.4 115.2 L269.9 116.3 L273.2 117.9 L276.2 119.9 L278.6 122.3 L280.7 124.8 L282.6 127.4 L284.4 129.8 L286.3 132.0 L288.7 134.1 L291.5 136.0 L294.8 138.1 L298.4 140.5 L301.9 143.2 L305.0 146.4 L307.3 150.0Z" class="cmin"/><path d="M332.5 150.0 L333.4 155.6 L332.4 161.2 L329.4 166.3 L324.7 170.8 L318.8 174.4 L312.3 177.1 L305.8 179.2 L299.7 180.8 L294.4 182.3 L289.8 184.0 L285.9 186.2 L282.3 188.8 L278.7 191.7 L274.9 194.8 L270.6 197.8 L265.8 200.4 L260.6 202.3 L255.0 203.6 L249.2 204.1 L243.4 204.1 L237.5 203.6 L231.5 202.9 L225.5 201.9 L219.3 200.7 L213.0 199.2 L206.7 197.2 L200.8 194.5 L195.6 190.9 L191.5 186.5 L188.8 181.3 L187.8 175.7 L188.4 169.9 L190.5 164.2 L193.4 158.9 L196.7 154.2 L199.8 150.0 L202.1 146.2 L203.5 142.5 L203.8 138.7 L203.3 134.6 L202.4 129.9 L201.6 124.7 L201.5 119.3 L202.5 113.8 L204.7 108.8 L208.4 104.4 L213.1 101.0 L218.7 98.5 L224.8 97.0 L231.1 96.2 L237.3 95.9 L243.3 95.8 L249.2 95.9 L255.0 96.0 L260.7 96.1 L266.5 96.6 L272.2 97.5 L277.6 99.0 L282.8 101.2 L287.3 104.1 L291.3 107.4 L294.8 111.1 L297.8 114.9 L300.7 118.5 L303.8 122.0 L307.4 125.2 L311.5 128.4 L316.2 131.7 L321.1 135.5 L325.8 139.8 L329.8 144.6 L332.5 150.0Z" class="cmin"/><path d="M356.0 150.0 L356.8 157.3 L355.0 164.5 L350.8 171.0 L344.5 176.7 L336.8 181.3 L328.6 184.8 L320.4 187.6 L313.0 189.9 L306.6 192.3 L301.2 195.1 L296.6 198.7 L292.3 202.9 L287.8 207.8 L282.9 212.7 L277.0 217.5 L270.4 221.5 L262.9 224.5 L255.0 226.3 L246.8 226.9 L238.6 226.4 L230.4 225.2 L222.4 223.4 L214.5 221.2 L206.7 218.7 L198.9 215.7 L191.4 212.2 L184.5 207.8 L178.5 202.6 L174.0 196.5 L171.4 189.6 L170.7 182.2 L171.9 174.8 L174.6 167.7 L178.2 161.1 L182.1 155.2 L185.4 150.0 L187.5 145.2 L188.2 140.3 L187.5 135.2 L185.7 129.3 L183.6 122.7 L181.9 115.4 L181.3 107.7 L182.3 100.0 L185.4 92.9 L190.4 86.9 L197.1 82.1 L204.9 78.9 L213.5 77.0 L222.3 76.3 L230.9 76.2 L239.2 76.6 L247.2 77.1 L255.0 77.6 L262.7 78.1 L270.3 79.0 L277.8 80.3 L285.0 82.3 L291.8 85.2 L298.0 88.9 L303.4 93.3 L308.0 98.2 L312.2 103.1 L316.1 107.9 L320.3 112.5 L324.9 116.9 L330.3 121.2 L336.2 125.8 L342.4 130.8 L348.2 136.5 L353.0 143.0 L356.0 150.0Z" class="cmaj"/><path d="M380.6 150.0 L381.3 159.1 L379.0 167.9 L373.7 176.1 L365.9 183.1 L356.6 188.8 L346.6 193.4 L336.8 197.0 L328.1 200.3 L320.5 203.7 L314.2 207.9 L308.7 212.9 L303.5 218.9 L298.0 225.5 L291.5 232.3 L283.9 238.5 L275.1 243.6 L265.4 247.2 L255.0 249.0 L244.4 249.0 L234.0 247.6 L224.0 245.0 L214.3 241.7 L205.0 237.9 L196.1 233.7 L187.4 229.2 L179.1 224.2 L171.5 218.5 L165.0 212.0 L160.0 204.5 L157.0 196.4 L156.1 187.8 L157.2 179.2 L159.8 170.9 L163.2 163.3 L166.5 156.3 L169.0 150.0 L170.0 143.9 L169.3 137.6 L167.0 130.7 L163.8 122.8 L160.4 113.8 L157.8 104.0 L157.1 93.8 L158.8 83.8 L163.2 74.7 L170.3 67.2 L179.6 61.6 L190.3 58.2 L201.9 56.6 L213.5 56.5 L224.8 57.5 L235.4 58.9 L245.4 60.3 L255.0 61.7 L264.3 62.9 L273.4 64.2 L282.5 66.0 L291.2 68.4 L299.5 71.7 L307.1 76.0 L313.9 81.1 L319.8 86.6 L325.3 92.4 L330.5 98.1 L335.9 103.5 L342.0 108.8 L348.8 114.1 L356.3 119.8 L364.0 126.0 L371.2 133.2 L377.0 141.3 L380.6 150.0Z" class="cmin"/><path d="M408.4 150.0 L408.8 161.0 L405.5 171.8 L398.7 181.6 L389.0 190.0 L377.6 196.9 L365.5 202.3 L353.8 206.7 L343.4 210.8 L334.5 215.2 L327.1 220.4 L320.6 226.8 L314.3 234.2 L307.5 242.4 L299.6 250.6 L290.3 258.0 L279.5 263.9 L267.6 267.7 L255.0 269.3 L242.3 268.6 L230.1 266.0 L218.4 262.0 L207.4 257.2 L197.1 251.9 L187.2 246.4 L177.6 240.7 L168.4 234.7 L159.8 228.1 L152.3 220.7 L146.3 212.4 L142.2 203.4 L140.2 193.9 L140.2 184.3 L141.7 174.9 L144.0 166.0 L146.2 157.8 L147.3 150.0 L147.0 142.2 L144.8 134.1 L141.2 125.0 L137.0 114.8 L133.0 103.3 L130.5 91.1 L130.6 78.6 L133.9 66.7 L140.7 56.2 L150.6 48.0 L163.1 42.4 L177.2 39.5 L191.9 39.0 L206.3 40.4 L220.0 42.8 L232.6 45.6 L244.1 48.3 L255.0 50.4 L265.5 52.0 L275.8 53.4 L286.1 54.9 L296.3 57.0 L306.2 60.0 L315.5 64.1 L324.1 69.1 L332.0 74.8 L339.3 80.9 L346.5 87.1 L353.9 93.2 L361.9 99.4 L370.7 105.8 L380.0 112.7 L389.4 120.5 L397.8 129.3 L404.5 139.3 L408.4 150.0Z" class="cmin"/><path d="M437.5 150.0 L436.6 163.0 L431.4 175.5 L422.3 186.8 L410.1 196.3 L396.0 203.9 L381.6 209.9 L367.9 214.8 L355.8 219.4 L345.7 224.4 L337.4 230.5 L330.2 238.1 L323.3 247.0 L315.7 256.7 L306.7 266.5 L295.9 275.2 L283.4 282.2 L269.6 286.5 L255.0 288.1 L240.4 287.0 L226.3 283.6 L213.0 278.5 L200.6 272.5 L189.0 266.1 L177.8 259.6 L167.0 253.1 L156.4 246.3 L146.4 239.1 L137.2 231.0 L129.6 222.0 L123.8 212.1 L120.2 201.5 L118.8 190.7 L119.0 179.9 L120.1 169.5 L121.2 159.6 L121.4 150.0 L120.3 140.3 L117.5 130.1 L113.5 118.9 L109.2 106.5 L105.7 92.9 L104.4 78.7 L106.1 64.5 L111.8 51.4 L121.3 40.4 L134.4 32.2 L150.1 27.2 L167.3 25.4 L184.7 26.4 L201.4 29.3 L216.8 33.2 L230.7 37.0 L243.3 40.1 L255.0 42.2 L266.4 43.2 L277.9 43.5 L289.7 43.8 L301.8 44.6 L313.9 46.4 L325.8 49.5 L337.1 53.9 L347.6 59.5 L357.6 65.9 L367.3 72.8 L377.0 80.0 L387.1 87.5 L397.6 95.5 L408.4 104.2 L418.7 114.0 L427.8 125.0 L434.3 137.1 L437.5 150.0Z" class="cmin"/><path d="M462.3 150.0 L459.1 164.6 L451.4 178.4 L439.6 190.6 L424.8 200.7 L408.5 208.7 L392.1 214.9 L377.1 220.1 L364.3 225.2 L353.9 231.1 L345.6 238.5 L338.5 247.8 L331.6 258.8 L323.7 270.8 L313.9 282.7 L301.9 293.5 L287.7 302.0 L271.8 307.5 L255.0 309.5 L238.1 308.2 L221.9 304.2 L206.6 298.1 L192.4 291.0 L179.2 283.4 L166.5 275.7 L154.2 268.1 L142.1 260.4 L130.4 252.2 L119.6 243.1 L110.3 233.1 L103.1 221.9 L98.1 210.0 L95.6 197.6 L95.0 185.2 L95.5 173.1 L96.2 161.4 L96.3 150.0 L95.1 138.5 L92.5 126.5 L88.9 113.5 L85.3 99.3 L82.8 84.1 L82.8 68.5 L86.4 53.2 L94.3 39.4 L106.4 28.1 L122.1 20.2 L140.4 15.8 L160.0 15.0 L179.4 17.0 L197.6 20.7 L214.2 25.1 L229.0 28.9 L242.3 31.4 L255.0 32.3 L267.6 31.6 L280.8 29.9 L294.8 28.1 L309.6 26.9 L324.8 27.2 L339.9 29.4 L354.4 33.6 L368.1 39.5 L380.8 46.9 L392.7 55.3 L404.2 64.4 L415.5 74.0 L426.7 84.3 L437.6 95.5 L447.6 107.7 L455.7 121.0 L460.9 135.2 L462.3 150.0Z" class="cmaj"/><path d="M478.4 150.0 L473.1 165.6 L463.3 180.1 L449.8 192.8 L433.6 203.3 L416.3 211.7 L399.5 218.4 L384.6 224.4 L372.3 230.7 L362.7 238.3 L355.3 248.0 L348.9 260.0 L342.3 274.0 L334.1 289.1 L323.3 304.0 L309.6 317.2 L293.2 327.6 L274.6 334.0 L255.0 336.2 L235.3 334.3 L216.5 329.0 L199.0 321.3 L183.0 312.2 L168.2 302.6 L154.3 293.0 L140.8 283.7 L127.7 274.4 L115.0 264.8 L103.2 254.4 L92.9 243.1 L84.7 230.6 L79.0 217.3 L75.8 203.5 L74.8 189.6 L75.1 176.0 L75.8 162.9 L75.8 150.0 L74.7 137.1 L72.2 123.6 L68.8 109.1 L65.5 93.4 L63.6 76.8 L64.6 59.9 L69.5 43.5 L78.9 28.9 L92.9 17.1 L110.6 8.9 L130.8 4.6 L152.2 4.0 L173.2 6.1 L192.8 9.8 L210.5 13.8 L226.3 16.7 L240.9 17.8 L255.0 16.8 L269.5 14.1 L285.1 10.2 L301.9 6.4 L319.9 3.8 L338.5 3.2 L356.9 5.3 L374.5 10.1 L390.7 17.4 L405.2 26.8 L418.3 37.6 L430.2 49.4 L441.3 61.8 L451.7 74.8 L461.4 88.4 L469.7 102.8 L476.0 118.0 L479.2 133.9 L478.4 150.0Z" class="cmin"/><path d="M137.7 255.0 L136.8 256.6 L135.8 258.0 L134.7 259.3 L133.7 260.6 L132.7 261.8 L131.8 262.9 L130.8 264.1 L129.8 265.2 L128.6 266.2 L127.3 267.0 L125.8 267.7 L124.3 268.2 L122.7 268.6 L121.2 268.9 L119.6 269.2 L118.1 269.5 L116.6 270.0 L115.0 270.5 L113.3 271.1 L111.4 271.7 L109.4 272.1 L107.4 272.2 L105.3 272.0 L103.5 271.4 L101.9 270.3 L100.7 269.0 L99.9 267.3 L99.5 265.6 L99.4 264.0 L99.4 262.4 L99.4 261.0 L99.2 259.7 L98.8 258.6 L98.2 257.4 L97.3 256.3 L96.4 255.0 L95.5 253.6 L94.9 252.1 L94.5 250.5 L94.6 248.9 L95.1 247.4 L95.9 246.0 L97.0 244.7 L98.3 243.5 L99.7 242.5 L101.2 241.5 L102.7 240.6 L104.3 239.8 L105.9 239.0 L107.7 238.4 L109.5 238.1 L111.3 238.0 L113.2 238.3 L115.0 238.8 L116.6 239.7 L118.1 240.6 L119.4 241.7 L120.5 242.6 L121.6 243.4 L122.8 244.0 L124.1 244.3 L125.7 244.5 L127.6 244.7 L129.7 244.9 L131.9 245.3 L134.0 246.0 L135.8 247.0 L137.2 248.4 L138.2 249.9 L138.5 251.6 L138.3 253.3 L137.7 255.0Z" class="cmin"/><path d="M159.9 255.0 L157.6 258.1 L155.1 260.8 L152.6 263.3 L150.3 265.5 L148.3 267.7 L146.5 269.9 L144.7 272.1 L142.9 274.2 L140.9 276.2 L138.6 278.1 L136.0 279.6 L133.2 280.9 L130.3 281.9 L127.4 282.8 L124.4 283.7 L121.4 284.6 L118.3 285.7 L115.0 286.9 L111.5 288.1 L107.6 289.3 L103.6 290.0 L99.4 290.2 L95.3 289.6 L91.6 288.2 L88.5 286.0 L86.2 283.1 L84.7 279.9 L83.9 276.4 L83.6 273.0 L83.6 269.9 L83.5 267.1 L83.1 264.5 L82.1 262.2 L80.7 260.0 L78.9 257.6 L77.0 255.0 L75.3 252.2 L74.1 249.1 L73.5 245.9 L73.9 242.7 L75.0 239.7 L76.9 237.0 L79.4 234.6 L82.3 232.5 L85.3 230.6 L88.3 228.9 L91.4 227.4 L94.5 225.9 L97.7 224.6 L101.0 223.6 L104.5 222.8 L108.0 222.6 L111.6 222.9 L115.0 223.7 L118.2 224.9 L121.1 226.5 L123.8 228.1 L126.3 229.6 L128.8 230.8 L131.5 231.6 L134.6 232.1 L138.1 232.4 L142.2 232.7 L146.6 233.3 L151.0 234.3 L155.1 236.0 L158.6 238.3 L161.1 241.2 L162.5 244.6 L162.6 248.1 L161.7 251.6 L159.9 255.0Z" class="cmin"/><path d="M179.2 255.0 L175.3 259.3 L171.1 263.1 L167.3 266.5 L164.1 269.6 L161.4 272.7 L159.2 275.9 L157.2 279.2 L155.2 282.6 L152.8 286.0 L150.0 289.2 L146.7 292.1 L142.9 294.6 L138.7 296.7 L134.3 298.6 L129.8 300.3 L125.1 302.0 L120.2 303.7 L115.0 305.5 L109.4 307.2 L103.5 308.6 L97.2 309.4 L90.9 309.2 L84.9 307.9 L79.5 305.4 L75.1 301.7 L71.9 297.1 L69.9 292.0 L69.0 286.7 L68.8 281.5 L68.9 276.8 L68.8 272.7 L68.1 269.0 L66.6 265.6 L64.4 262.3 L61.6 258.8 L58.6 255.0 L55.9 250.8 L53.9 246.2 L53.1 241.4 L53.7 236.7 L55.5 232.3 L58.5 228.3 L62.4 224.8 L66.7 221.8 L71.3 219.2 L76.0 216.9 L80.6 214.7 L85.1 212.6 L89.7 210.6 L94.5 208.9 L99.5 207.6 L104.7 206.9 L109.9 206.9 L115.0 207.7 L119.9 209.1 L124.5 210.9 L128.8 212.9 L132.9 214.8 L137.0 216.3 L141.4 217.5 L146.4 218.2 L152.0 218.9 L158.1 219.6 L164.6 220.9 L170.9 222.9 L176.7 225.8 L181.2 229.7 L184.2 234.3 L185.4 239.5 L184.8 244.9 L182.6 250.2 L179.2 255.0Z" class="cmin"/><path d="M195.6 255.0 L190.2 260.4 L185.0 265.1 L180.4 269.4 L176.8 273.5 L174.2 277.6 L172.3 282.1 L170.6 286.9 L168.9 292.1 L166.6 297.3 L163.5 302.4 L159.4 307.0 L154.5 311.0 L148.8 314.5 L142.7 317.3 L136.2 319.8 L129.4 321.9 L122.4 324.0 L115.0 325.9 L107.3 327.4 L99.2 328.5 L91.0 328.6 L82.8 327.5 L75.2 325.0 L68.6 321.0 L63.3 315.6 L59.6 309.2 L57.4 302.2 L56.6 295.2 L56.6 288.5 L56.8 282.6 L56.5 277.4 L55.3 272.8 L52.9 268.6 L49.4 264.5 L45.0 260.0 L40.4 255.0 L36.3 249.4 L33.3 243.2 L32.0 236.8 L32.5 230.4 L34.9 224.4 L38.9 219.0 L44.2 214.3 L50.1 210.4 L56.4 207.0 L62.7 203.9 L68.9 201.0 L75.1 198.3 L81.2 195.6 L87.6 193.3 L94.2 191.4 L101.1 190.2 L108.1 190.0 L115.0 190.7 L121.7 192.2 L128.0 194.4 L134.0 196.9 L139.7 199.3 L145.5 201.4 L151.6 203.0 L158.3 204.3 L165.6 205.5 L173.5 207.0 L181.7 209.1 L189.5 212.2 L196.4 216.5 L201.6 221.9 L204.7 228.2 L205.4 235.1 L203.8 242.2 L200.4 248.9 L195.6 255.0Z" class="cmaj"/><path d="M211.9 255.0 L205.7 261.5 L199.9 267.3 L195.1 272.6 L191.7 277.9 L189.5 283.5 L188.2 289.6 L187.1 296.4 L185.6 303.6 L183.2 310.9 L179.4 318.0 L174.2 324.4 L167.7 329.8 L160.1 334.3 L151.7 337.7 L142.9 340.3 L133.8 342.3 L124.5 343.9 L115.0 345.1 L105.3 345.8 L95.5 345.9 L85.6 344.9 L76.1 342.6 L67.4 338.7 L59.9 333.2 L54.1 326.4 L50.0 318.5 L47.7 310.1 L46.8 301.9 L46.5 294.3 L46.2 287.6 L45.1 281.7 L42.6 276.6 L38.4 271.8 L32.8 266.9 L26.2 261.4 L19.5 255.0 L13.6 247.7 L9.3 239.7 L7.3 231.3 L7.9 223.0 L11.1 215.3 L16.6 208.4 L23.6 202.5 L31.7 197.7 L40.1 193.6 L48.6 190.1 L56.8 186.8 L64.8 183.7 L72.7 180.7 L80.8 177.9 L89.1 175.7 L97.7 174.3 L106.4 174.0 L115.0 174.8 L123.4 176.6 L131.3 179.2 L138.8 182.1 L146.0 185.1 L153.3 187.7 L160.9 189.9 L169.1 191.7 L178.0 193.4 L187.6 195.5 L197.3 198.4 L206.5 202.5 L214.4 207.9 L220.3 214.7 L223.6 222.6 L224.1 231.0 L221.9 239.5 L217.6 247.6 L211.9 255.0Z" class="cmin"/><path d="M230.6 255.0 L223.8 262.8 L217.6 269.8 L212.6 276.5 L209.3 283.1 L207.4 290.3 L206.4 298.3 L205.5 307.0 L203.9 316.2 L200.9 325.4 L196.1 334.2 L189.3 342.0 L180.8 348.4 L170.9 353.2 L160.1 356.6 L148.9 358.7 L137.6 359.9 L126.3 360.5 L115.0 360.6 L103.8 360.3 L92.6 359.3 L81.6 357.3 L71.0 354.1 L61.4 349.3 L53.1 343.0 L46.5 335.3 L41.7 326.6 L38.7 317.6 L36.8 308.8 L35.5 300.7 L33.7 293.5 L30.8 287.2 L26.1 281.5 L19.5 276.0 L11.3 270.0 L2.2 263.1 L-6.7 255.0 L-14.3 245.7 L-19.4 235.6 L-21.4 225.0 L-19.8 214.8 L-14.9 205.3 L-7.2 197.2 L2.6 190.4 L13.5 185.1 L24.7 180.9 L35.7 177.5 L46.1 174.4 L56.1 171.4 L65.7 168.4 L75.3 165.5 L85.0 163.1 L94.9 161.5 L105.0 161.0 L115.0 161.6 L124.8 163.4 L134.1 166.0 L143.1 169.0 L151.8 172.1 L160.5 174.9 L169.7 177.3 L179.7 179.3 L190.4 181.3 L201.8 183.8 L213.4 187.3 L224.2 192.3 L233.5 198.9 L240.3 207.1 L244.1 216.5 L244.6 226.5 L242.0 236.6 L237.1 246.2 L230.6 255.0Z" class="cmin"/><path d="M348.0 330.0 L347.9 331.3 L347.7 332.6 L347.4 333.8 L346.8 335.0 L346.0 336.1 L345.0 337.1 L343.9 338.0 L342.7 338.8 L341.6 339.5 L340.5 340.2 L339.4 341.0 L338.4 341.9 L337.4 342.9 L336.2 344.0 L334.9 345.1 L333.5 346.0 L331.8 346.7 L330.0 347.1 L328.2 347.0 L326.4 346.5 L324.9 345.7 L323.6 344.5 L322.5 343.2 L321.7 341.8 L321.0 340.6 L320.3 339.5 L319.6 338.5 L318.7 337.8 L317.6 337.1 L316.4 336.4 L315.1 335.7 L313.8 334.8 L312.7 333.8 L311.8 332.6 L311.1 331.4 L310.8 330.0 L310.7 328.6 L310.9 327.2 L311.2 325.9 L311.6 324.5 L312.1 323.2 L312.8 321.8 L313.5 320.5 L314.4 319.3 L315.6 318.2 L317.0 317.3 L318.6 316.6 L320.4 316.3 L322.2 316.3 L324.1 316.6 L325.8 317.1 L327.4 317.7 L328.7 318.2 L330.0 318.6 L331.2 318.7 L332.5 318.6 L333.8 318.3 L335.4 317.9 L337.1 317.5 L339.0 317.2 L341.0 317.2 L342.8 317.5 L344.5 318.1 L345.8 319.1 L346.9 320.3 L347.5 321.7 L347.9 323.1 L348.1 324.6 L348.1 326.0 L348.1 327.4 L348.0 328.7 L348.0 330.0Z" class="cmin"/><path d="M364.9 330.0 L364.6 332.5 L364.2 334.9 L363.5 337.4 L362.4 339.7 L361.0 341.9 L359.2 343.8 L357.2 345.6 L355.0 347.2 L352.8 348.7 L350.7 350.3 L348.7 351.9 L346.8 353.8 L344.7 355.9 L342.4 358.0 L339.9 360.1 L336.9 362.0 L333.6 363.3 L330.0 364.0 L326.4 363.8 L322.9 362.8 L319.8 361.1 L317.2 358.8 L315.1 356.2 L313.3 353.7 L311.8 351.3 L310.4 349.2 L308.7 347.5 L306.7 346.0 L304.3 344.7 L301.6 343.4 L298.8 341.9 L296.1 340.1 L293.7 338.0 L291.9 335.5 L290.8 332.8 L290.3 330.0 L290.5 327.2 L291.2 324.4 L292.3 321.7 L293.6 319.1 L295.0 316.6 L296.6 314.2 L298.4 311.9 L300.4 309.6 L302.8 307.7 L305.5 306.1 L308.6 304.9 L311.9 304.3 L315.4 304.3 L318.8 304.7 L322.0 305.4 L324.9 306.2 L327.5 306.8 L330.0 307.1 L332.5 306.9 L335.1 306.3 L338.1 305.4 L341.4 304.3 L345.2 303.3 L349.2 302.7 L353.3 302.8 L357.1 303.5 L360.4 305.0 L363.1 307.2 L364.9 309.9 L366.0 312.9 L366.4 316.1 L366.4 319.1 L366.1 322.1 L365.7 324.8 L365.3 327.5 L364.9 330.0Z" class="cmin"/><path d="M379.1 330.0 L378.7 333.5 L378.2 337.0 L377.5 340.4 L376.5 343.9 L374.9 347.2 L372.7 350.2 L370.2 353.1 L367.4 355.7 L364.5 358.3 L361.6 360.9 L358.7 363.7 L355.8 366.7 L352.7 369.9 L349.2 373.2 L345.2 376.4 L340.6 379.1 L335.4 381.0 L330.0 381.8 L324.5 381.4 L319.3 379.7 L314.7 377.0 L310.7 373.5 L307.5 369.6 L304.9 365.7 L302.6 362.1 L300.3 359.1 L297.6 356.5 L294.5 354.4 L290.8 352.5 L286.7 350.5 L282.4 348.2 L278.3 345.4 L274.8 342.1 L272.3 338.3 L270.8 334.2 L270.5 330.0 L271.2 325.8 L272.7 321.7 L274.8 317.9 L277.1 314.2 L279.6 310.7 L282.2 307.4 L284.9 304.1 L287.8 301.0 L291.2 298.2 L295.0 295.8 L299.2 294.0 L303.8 292.8 L308.6 292.4 L313.4 292.5 L317.9 293.0 L322.2 293.5 L326.1 293.9 L330.0 293.7 L333.9 293.0 L338.2 291.8 L343.0 290.1 L348.4 288.5 L354.4 287.2 L360.6 286.6 L366.7 287.0 L372.3 288.7 L377.0 291.4 L380.5 295.2 L382.7 299.7 L383.7 304.6 L383.6 309.5 L382.8 314.2 L381.7 318.6 L380.7 322.7 L379.8 326.4 L379.1 330.0Z" class="cmin"/><path d="M391.0 330.0 L391.1 334.4 L391.3 338.9 L391.4 343.5 L390.9 348.2 L389.7 352.8 L387.8 357.4 L385.1 361.7 L381.9 365.7 L378.3 369.6 L374.6 373.5 L370.6 377.5 L366.4 381.7 L361.9 386.1 L356.8 390.4 L351.0 394.3 L344.5 397.5 L337.4 399.5 L330.0 400.1 L322.6 398.9 L315.8 396.2 L309.7 392.2 L304.6 387.2 L300.5 381.8 L297.2 376.6 L294.3 371.8 L291.3 367.9 L287.8 364.6 L283.5 362.0 L278.5 359.6 L272.9 357.0 L267.1 354.1 L261.5 350.4 L256.9 346.1 L253.5 341.1 L251.7 335.6 L251.4 330.0 L252.6 324.4 L254.8 319.1 L257.7 314.1 L261.0 309.4 L264.4 304.9 L267.8 300.6 L271.3 296.3 L275.0 292.2 L279.2 288.3 L283.9 284.9 L289.2 282.2 L295.0 280.2 L301.1 279.1 L307.2 278.7 L313.3 278.8 L319.0 278.9 L324.5 278.9 L330.0 278.4 L335.6 277.3 L341.7 275.6 L348.4 273.6 L355.8 271.8 L363.8 270.6 L371.9 270.5 L379.7 271.7 L386.7 274.6 L392.3 278.9 L396.1 284.5 L398.2 290.9 L398.5 297.6 L397.6 304.1 L396.0 310.3 L394.1 315.9 L392.5 321.0 L391.5 325.6 L391.0 330.0Z" class="cmaj"/>
+        <text x="3" y="11" class="tk">00</text><text x="53" y="11" class="tk">01</text><text x="103" y="11" class="tk">02</text><text x="153" y="11" class="tk">03</text><text x="203" y="11" class="tk">04</text><text x="253" y="11" class="tk">05</text><text x="303" y="11" class="tk">06</text><text x="353" y="11" class="tk">07</text><text x="3" y="47" class="tk">00</text><text x="3" y="97" class="tk">01</text><text x="3" y="147" class="tk">02</text><text x="3" y="197" class="tk">03</text><text x="3" y="247" class="tk">04</text><text x="3" y="297" class="tk">05</text><text x="3" y="347" class="tk">06</text><text x="3" y="397" class="tk">07</text>
+        <path d="M78 372 C83.3 367.5 98.0 352.0 110 345 C122.0 338.0 137.5 339.2 150 330 C162.5 320.8 175.8 305.0 185 290 C194.2 275.0 202.5 256.7 205 240 C207.5 223.3 198.3 210.0 200 190 C201.7 170.0 204.2 137.5 215 120 C225.8 102.5 247.5 86.7 265 85 C282.5 83.3 308.3 95.8 320 110 C331.7 124.2 338.3 152.5 335 170 C331.7 187.5 314.2 205.8 300 215 C285.8 224.2 262.5 216.7 250 225 C237.5 233.3 235.0 249.2 225 265 C215.0 280.8 204.2 305.5 190 320 C175.8 334.5 155.8 343.7 140 352 C124.2 360.3 105.3 366.7 95 370 C84.7 373.3 80.8 371.7 78 372" class="track" pathLength="1000" filter="url(#tg)"/>
+        <g class="home" transform="translate(78 372)" filter="url(#tg)">
+          <circle r="16" class="ping"/>
+          <path d="M-9 2 L0 -8 L9 2 L9 10 L-9 10 Z" class="house"/>
+        </g>
+        <g class="scanbar"><rect x="0" y="-60" width="400" height="60" fill="url(#scan)"/><line x1="0" y1="0" x2="400" y2="0" stroke="#2bff88" stroke-width="1.5"/></g>
+      </g>
+      <rect x="1" y="1" width="398" height="418" fill="none" stroke="#1b4734"/>
+      <path d="M1 24 V1 H24 M376 1 H399 V24 M399 396 V419 H376 M24 419 H1 V396" fill="none" stroke="#2bff88" stroke-width="2.5"/>
+    </svg>
+    <div class="readout"><span id="ro1">SAT PASS // ACQUIRING</span><span id="ro2">LAT &#9608;&#9608;.&#9608;&#9608;&#9608;&#9608;&#9608; &nbsp;LON &#9608;&#9608;&#9608;.&#9608;&#9608;&#9608;&#9608;&#9608;</span></div>
+    <p class="topo-cap">Illustration. One public run, one satellite pass.</p>
+    
+  </div>
+</section>
+
+<!-- 02 INCIDENT -->
+<section id="incident">
+  <p class="kicker red">[02] // Incident // Canada, Oct 2025</p>
+  <h2>They turned the dials.</h2>
+  <p class="lede">Hacktivists reached control systems at Canadian sites straight from the internet. The Cyber Centre and the RCMP got multiple reports.</p>
+  <div class="grid g3" id="gauges">
+    <div class="panel red gauge">
+      <svg viewBox="0 0 220 130" aria-hidden="true"><path d="M20 112 A90 90 0 0 1 200 112" fill="none" stroke="#1c2a25" stroke-width="14"/><path d="M20 112 A90 90 0 0 1 155 34" fill="none" stroke="#1c6b47" stroke-width="14"/><path d="M155 34 A90 90 0 0 1 200 112" fill="none" stroke="#ff2e3d" stroke-width="14" style="filter:drop-shadow(0 0 6px #ff2e3d)"/><line class="needle" x1="110" y1="112" x2="110" y2="40" stroke="#ff2e3d" stroke-width="5" stroke-linecap="round" style="filter:drop-shadow(0 0 5px #ff2e3d)"/><circle cx="110" cy="112" r="9" fill="#e6f2ec"/></svg>
+      <h3>Water</h3><p>Pressure tampered with. Service to a community degraded.</p>
+    </div>
+    <div class="panel red gauge">
+      <svg viewBox="0 0 220 130" aria-hidden="true"><path d="M20 112 A90 90 0 0 1 200 112" fill="none" stroke="#1c2a25" stroke-width="14"/><path d="M20 112 A90 90 0 0 1 155 34" fill="none" stroke="#1c6b47" stroke-width="14"/><path d="M155 34 A90 90 0 0 1 200 112" fill="none" stroke="#ff2e3d" stroke-width="14" style="filter:drop-shadow(0 0 6px #ff2e3d)"/><line class="needle" x1="110" y1="112" x2="110" y2="40" stroke="#ff2e3d" stroke-width="5" stroke-linecap="round" style="filter:drop-shadow(0 0 5px #ff2e3d);transition-delay:.25s"/><circle cx="110" cy="112" r="9" fill="#e6f2ec"/></svg>
+      <h3>Oil and gas</h3><p>Tank gauge manipulated. False alarms triggered.</p>
+    </div>
+    <div class="panel red gauge">
+      <svg viewBox="0 0 220 130" aria-hidden="true"><path d="M20 112 A90 90 0 0 1 200 112" fill="none" stroke="#1c2a25" stroke-width="14"/><path d="M20 112 A90 90 0 0 1 155 34" fill="none" stroke="#1c6b47" stroke-width="14"/><path d="M155 34 A90 90 0 0 1 200 112" fill="none" stroke="#ff2e3d" stroke-width="14" style="filter:drop-shadow(0 0 6px #ff2e3d)"/><line class="needle" x1="110" y1="112" x2="110" y2="40" stroke="#ff2e3d" stroke-width="5" stroke-linecap="round" style="filter:drop-shadow(0 0 5px #ff2e3d);transition-delay:.5s"/><circle cx="110" cy="112" r="9" fill="#e6f2ec"/></svg>
+      <h3>Farm</h3><p>Grain silo temperature and humidity changed. Potentially unsafe conditions.</p>
+    </div>
+  </div>
+  <p class="punch"><b>No target list needed.</b> Being reachable was enough.</p>
+
+  <div class="panel explain">
+    <h3>How it happened</h3>
+    <p>These were <span class="term">industrial control systems (ICS)</span>. A <span class="term">PLC</span> is the small industrial computer that opens a valve or runs a pump. An <span class="term">HMI</span> is the screen an operator uses to watch and change it. Both are built to sit on a closed plant network. When one answers to the open internet, anyone who finds it can try to get in.</p>
+    <p>The Cyber Centre says organizations may not be chosen targets at all. They become victims of opportunity because their devices are exposed. Its fixes:</p>
+    <ul class="fixlist">
+      <li>Inventory every internet-accessible ICS device and ask whether it needs to be reachable.</li>
+      <li>Replace direct exposure with a VPN that requires multi-factor authentication.</li>
+      <li>Apply the Cyber Centre's Cyber Security Readiness Goals.</li>
+    </ul>
+  </div>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>Know what at your site answers to the internet: vendor remote access, cameras, building and plant systems. If you can't answer that, find the person who can.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>Your router, doorbell camera and baby monitor are the home version of an exposed PLC. Change default passwords, keep firmware updated, and turn off remote access you don't use.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://cyber.gc.ca/en/alerts-advisories/al25-016-internet-accessible-industrial-control-systems-ics-abused-hacktivists" target="_blank" rel="noopener">Cyber Centre Alert AL25-016</a> (29 Oct 2025); <a href="https://lethbridgeherald.com/?p=1146560" target="_blank" rel="noopener">The Canadian Press</a>; <a href="https://securityaffairs.com/?p=184007" target="_blank" rel="noopener">Security Affairs</a> and <a href="https://www.bleepingcomputer.com/news/security/canada-says-hacktivists-breached-water-and-energy-facilities/" target="_blank" rel="noopener">BleepingComputer</a> summaries of the alert's recommendations. The alert named no attacker.</p>
+</section>
+
+<!-- 03 BLUF -->
+<section id="bluf">
+  <p class="kicker">[03] // BLUF</p>
+  <h2>Three things. Remember them.</h2>
+  <div class="grid g3 bluf">
+    <div class="panel"><span class="n">01</span><h3>It's here</h3><p>Water, energy and farm controls tampered with in 2025. $704M in reported fraud losses.</p></div>
+    <div class="panel"><span class="n">02</span><h3>It's a war domain</h3><p>NATO fights in cyberspace. Canada stood up CAF Cyber Command in 2024.</p></div>
+    <div class="panel"><span class="n">03</span><h3>You're in it</h3><p>Your phone, your watch, your logins and your day job all make you useful to an adversary. Protect. Notice. Report.</p></div>
+  </div>
+</section>
+
+<!-- 04 COST -->
+<section id="cost">
+  <p class="kicker">[04] // The cost</p>
+  <h2>Guess first.</h2>
+  <p class="lede">How much did Canadians report losing to fraud in 2025?</p>
+  <div class="opts" id="guess">
+    <button class="opt" data-v="70" aria-pressed="false">$70M</button>
+    <button class="opt" data-v="250" aria-pressed="false">$250M</button>
+    <button class="opt" data-v="704" aria-pressed="false">$704M</button>
+    <button class="opt" data-v="1500" aria-pressed="false">$1.5B</button>
+  </div>
+  <div class="reveal" id="costReveal">
+    <p class="verdict" id="guessVerdict"></p>
+    <div class="grid g2" style="margin-top:12px">
+      <div class="panel">
+        <p class="kicker" style="margin:0">Fraud losses reported to the CAFC</p>
+        <div class="bars" id="bars">
+          <div class="bar" data-h="380"><span>$380M</span></div>
+          <div class="bar" data-h="530"><span>$530M</span></div>
+          <div class="bar" data-h="554"><span>$554M</span></div>
+          <div class="bar" data-h="638"><span>$638M</span></div>
+          <div class="bar now" data-h="704"><span>$704M</span></div>
+        </div>
+        <div class="years"><div>2021</div><div>2022</div><div>2023</div><div>2024</div><div>2025</div></div>
+      </div>
+      <div class="grid">
+        <div class="panel red">
+          <p class="kicker red" style="margin:0 0 8px">Cost clock</p>
+          <div class="big">$1,340</div><p class="muted" style="margin:4px 0 0">every minute. $80K an hour. $1.9M a day.</p>
+        </div>
+        <div class="panel">
+          <h3 style="color:var(--green)">Only 1 or 2 in 20 report it</h3>
+          <div class="ppl" id="ppl" aria-label="20 people, 2 highlighted"></div>
+          <p style="margin:0">The real losses are far higher.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel explain">
+      <h3>Two tricks behind the numbers</h3>
+      <p><span class="term">Caller ID spoofing.</span> The name and number on your screen are set by whoever places the call. They prove nothing. The CAFC has warned that fraudsters spoof police phone numbers and fake CAFC letterhead to sound official.</p>
+      <p><span class="term">Business email compromise.</span> A criminal gets into, or imitates, a real email account (a supplier, a boss, a lawyer) and sends one message changing where the money goes. The CAFC tracks it under spear phishing: $67.9M lost in 2025, second only to investment fraud.</p>
+    </div>
+    <div class="tips">
+      <div class="tip"><div class="who">At work</div><p>Any change to payment or banking details gets confirmed by phone, on a number you already had, before money moves. No exceptions for urgency or rank.</p></div>
+      <div class="tip home"><div class="who">At home</div><p>"Police," "your bank" or "CRA" calling? Hang up. Call back on a number you look up yourself. Same rule for a contractor or a house deposit that suddenly needs a new account.</p></div>
+    </div>
+    <p class="src">Sources: <a href="https://antifraudcentre-centreantifraude.ca/features-vedette/2026/02/top-fraud-2025-fraudes-plus-courantes-eng.htm" target="_blank" rel="noopener">CAFC Top 10 frauds 2025</a>; <a href="https://antifraudcentre-centreantifraude.ca/news-nouvelles/2024/2024-07-02-eng.htm" target="_blank" rel="noopener">CAFC impersonation warning (2024)</a>; <a href="https://canada.ca/en/competition-bureau/news/2025/02/fraud-prevention-month-to-focus-on-impersonation-fraud-one-of-the-fastest-growing-forms-of-fraud.html" target="_blank" rel="noopener">Competition Bureau 2025</a>; <a href="https://blueline.ca/fraud-prevention-month-2023-fraud-losses-in-canada-reach-another-historic-level" target="_blank" rel="noopener">RCMP 2023</a>; <a href="https://kingsvilletimes.ca/2024/03/opp-and-partners-launch-20th-edition-of-fraud-prevention-month/" target="_blank" rel="noopener">OPP/CAFC 2024</a>. Figures as first published; the CAFC revises totals upward later. Clock is the 2025 total divided by time.</p>
+  </div>
+</section>
+
+<!-- 05 TIMELINE -->
+<section id="history">
+  <p class="kicker">[05] // How we got here</p>
+  <h2>From filing cabinets to a war domain.</h2>
+  <p class="lede">You already do information security: classification, need-to-know, safe custody. Cyber is the same job on new terrain.</p>
+  <div class="tl" tabindex="0" aria-label="Timeline, scroll sideways">
+    <div class="ev panel"><div class="yr">1988</div><div class="nm">MORRIS WORM</div><p>First major attack on the internet, per the FBI. The first emergency response team followed within days.</p></div>
+    <div class="ev panel"><div class="yr">2007</div><div class="nm">ESTONIA</div><p>About three weeks of DDoS on government, banks and media during a dispute with Russia.</p></div>
+    <div class="ev panel"><div class="yr">2010</div><div class="nm">STUXNET</div><p>Code damages centrifuges at Iran's Natanz plant. Cyber with physical effects.</p></div>
+    <div class="ev panel"><div class="yr">2016</div><div class="nm">NATO</div><p>Allies recognize cyberspace as a domain of operations.</p></div>
+    <div class="ev panel"><div class="yr">2017</div><div class="nm">NOTPETYA</div><p>Destructive malware worldwide. CSE assessed actors in Russia were responsible.</p></div>
+    <div class="ev panel red"><div class="yr">2024</div><div class="nm">CAF CYBER COMMAND</div><p>Stood up in September. $2.8B over 20 years for joint CAF-CSE cyber operations.</p></div>
+  </div>
+  <p class="hint">Swipe the timeline sideways.</p>
+  <p class="src">Sources: <a href="https://www.fbi.gov/news/stories/morris-worm-30-years-since-first-major-attack-on-internet-110218" target="_blank" rel="noopener">FBI</a>; <a href="https://stratcomcoe.org/hybrid-threats-2007-cyber-attacks-estonia" target="_blank" rel="noopener">NATO StratCom COE</a>; <a href="https://cyberlaw.ccdcoe.org/wiki/Stuxnet_(2010)" target="_blank" rel="noopener">NATO CCDCOE</a>; <a href="https://www.nato.int/cps/en/natohq/news_133280.htm" target="_blank" rel="noopener">NATO</a>; <a href="https://www.cse-cst.gc.ca/en/media/2018-02-15" target="_blank" rel="noopener">CSE</a>; <a href="https://www.canada.ca/en/department-national-defence/news/2024/09/canadian-armed-forces-establishes-a-new-cyber-command.html" target="_blank" rel="noopener">DND</a>; <a href="https://www.canada.ca/en/department-national-defence/news/2024/04/our-north-strong-and-free-a-renewed-vision-for-canadas-defence.html" target="_blank" rel="noopener">Our North, Strong and Free</a>.</p>
+</section>
+
+<!-- 06 THREAT -->
+<section id="threat">
+  <p class="kicker red">[06] // Threat assessment</p>
+  <h2>Disrupt. Divide. Pre-position.</h2>
+  <div class="grid g2 threat">
+    <div class="panel red"><h3>PRC</h3><p>The most sophisticated and active state cyber threat to Canada.</p></div>
+    <div class="panel red"><h3>Pre-positioning</h3><p>State actors very likely getting into critical infrastructure now, to be ready for disruption later. Think of it as quietly emplacing a capability in peacetime, then holding it.</p></div>
+    <div class="panel red"><h3>Ransomware</h3><p>The top cybercrime threat to Canada's critical infrastructure.</p></div>
+    <div class="panel red"><h3>AI</h3><p>Fakes look and sound real now. "Looks legit" is no longer a test, so verify through a second channel.</p></div>
+  </div>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>Small oddities are how quiet access gets caught: an account logging in at 3 a.m., a setting nobody changed, a device you don't recognize. Report them. Let the specialists decide if it matters.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>Turn on automatic updates for your phone, computer and router. Most intrusions use holes that already have a fix.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://cyber.gc.ca/en/guidance/national-cyber-threat-assessment-2025-2026" target="_blank" rel="noopener">National Cyber Threat Assessment 2025-2026</a>; <a href="https://www.getcybersafe.gc.ca/en/cyber-security-awareness-month" target="_blank" rel="noopener">Get Cyber Safe, Cyber Month 2026</a>.</p>
+</section>
+
+<!-- 07 PATTERN OF LIFE -->
+<section id="pol">
+  <p class="kicker red">[07] // Pattern of life</p>
+  <h2>Your watch is reporting your position.</h2>
+  <p class="lede">A fitness app doesn't need to be hacked to give you away. It publishes four things, and together they build a pattern of life.</p>
+  <div class="anat">
+    <div class="panel"><h3>Where</h3><p>The GPS trace of every route.</p></div>
+    <div class="panel"><h3>When</h3><p>The timestamp on every activity.</p></div>
+    <div class="panel"><h3>Who</h3><p>A public profile, often under your real name.</p></div>
+    <div class="panel red"><h3>Routine</h3><p>Repeated start points. That's your front door, your unit lines, your shift.</p></div>
+  </div>
+  <p class="anat-sum">Combine them and anyone can see <b>where you sleep, when you leave and when you're gone.</b></p>
+
+  <p class="lede" style="margin-top:28px">Open each case file.</p>
+  <div class="cases">
+    <details class="case">
+      <summary><span class="yr">2018</span><span class="ttl">The global heatmap<small>Bases light up in the dark</small></span></summary>
+      <div class="body">
+        <p>Strava published a heatmap built from users' activities. Analysts quickly pointed out that military bases and patrol routes in places like Afghanistan and Syria stood out clearly, because few locals used the app.</p>
+        <p class="lesson">Aggregate data still shows where you are.</p>
+      </div>
+    </details>
+    <details class="case">
+      <summary><span class="yr">2024</span><span class="ttl">StravaLeaks: the bodyguards<small>Close protection, exposed</small></span></summary>
+      <div class="body">
+        <p>Le Monde found Strava users among the protection details of world leaders: 26 US agents, 12 members of France's presidential security group and six officers of Russia's FSO.</p>
+        <p>One Secret Service agent's profile revealed the San Francisco hotel where President Biden later stayed for his 2023 talks with Xi Jinping. Macron's bodyguards' runs placed him at a private weekend in Normandy.</p>
+        <p>The Secret Service told Le Monde its staff can't use personal devices on protective duty, but it doesn't ban off-duty social media.</p>
+        <p class="lesson">Your off-duty run can locate the person you protect.</p>
+      </div>
+    </details>
+    <details class="case">
+      <summary><span class="yr">2025</span><span class="ttl">Submarines<small>French Navy, January</small></span></summary>
+      <div class="body">
+        <p>Le Monde reported that crews of several French Navy nuclear-powered submarines had logged movements on the app while their boats were underway.</p>
+        <p class="lesson">The quietest platforms leak through the loudest habits.</p>
+      </div>
+    </details>
+    <details class="case">
+      <summary><span class="yr">2026</span><span class="ttl">The carrier strike group<small>Charles de Gaulle, March</small></span></summary>
+      <div class="body">
+        <p>On 13 March, during the Iran war deployment, a French officer logged a seven-kilometre, 35-minute run on the deck of the Charles de Gaulle. His profile was public. Le Monde matched it to satellite imagery taken about an hour later, which showed the carrier roughly six kilometres from the run, northwest of Cyprus.</p>
+        <p>His earlier runs had already traced the group's movements: off the Cotentin coast in February, then Copenhagen, then the eastern Mediterranean. France said it was taking appropriate measures.</p>
+        <p class="lesson">One public profile tracked a carrier group across a continent.</p>
+      </div>
+    </details>
+    <details class="case">
+      <summary><span class="yr">2026</span><span class="ttl">Again, in August<small>US bases during the Iran war</small></span></summary>
+      <div class="body">
+        <p>Sky News found Strava data once again exposing US bases and troops in the Middle East, eight years after the heatmap. Strava's response: it offers privacy controls and expects people in sensitive professions to use them.</p>
+        <p class="lesson">The app won't protect you. Your settings will.</p>
+      </div>
+    </details>
+  </div>
+  <p class="muted" style="margin-top:14px">Home addresses too: in 2023, NC State researchers showed they could identify some users' home addresses from Strava's "anonymous" heatmap.</p>
+
+  <div class="panel explain">
+    <h3>Lock it down: Strava</h3>
+    <p class="muted" style="margin-bottom:4px">Tick each one as you do it. Garmin, Apple, Google and others have similar settings.</p>
+    <div class="checklist" id="strava">
+      <label class="ck"><input type="checkbox"><div><b>Settings, then Privacy Controls</b><span>Set profile and activities to Followers or Only You, not Everyone.</span></div></label>
+      <label class="ck"><input type="checkbox"><div><b>Map Visibility</b><span>Hide start and end points, or hide all maps. Hiding only the ends isn't enough if you run the same routes often.</span></div></label>
+      <label class="ck"><input type="checkbox"><div><b>Aggregated Data Usage: off</b><span>Takes your activities out of the Global Heatmap and similar features.</span></div></label>
+      <label class="ck"><input type="checkbox"><div><b>Edit Past Activities</b><span>Apply the new settings to everything you've already posted.</span></div></label>
+      <label class="ck"><input type="checkbox"><div><b>Review followers</b><span>Remove anyone you can't put a face to.</span></div></label>
+    </div>
+    <p class="score">Locked down: <b id="stravaScore">0</b> / 5</p>
+  </div>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>On duty, on exercise, on a tasking or near any site: tracking off, or don't wear it. Follow your chain of command's direction on devices. If you see a colleague's public route through the lines, tell them quietly.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>Check your family's apps too. A spouse's or teenager's public run that starts at your door gives away the same address.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://www.wgbh.org/news/2018-01-29/pentagon-reviews-gps-policies-after-soldiers-strava-tracks-are-seemingly-exposed" target="_blank" rel="noopener">NPR (2018)</a>; <a href="https://computing.co.uk/news/2024/security/world-leaders-locations-exposed-strava" target="_blank" rel="noopener">Computing</a> and <a href="https://www.wbay.com/2024/10/29/fitness-app-strava-gives-away-location-biden-trump-other-leaders-french-newspaper-says/" target="_blank" rel="noopener">AP</a> on Le Monde (2024); <a href="https://www.bairdmaritime.com/amp/story/security/naval/naval-ships/report-says-use-of-fitness-app-may-have-revealed-french-aircraft-carriers-location" target="_blank" rel="noopener">Baird Maritime</a>; <a href="https://www.lemonde.fr/en/international/article/2026/03/20/stravaleaks-france-s-aircraft-carrier-located-in-real-time-by-le-monde-through-fitness-app_6751640_4.html" target="_blank" rel="noopener">Le Monde (2026)</a>; <a href="https://gizmodo.com/stravas-fitness-app-exposed-the-real-time-location-of-a-french-aircraft-carrier-2000736266" target="_blank" rel="noopener">Gizmodo</a>; <a href="https://www.lbc.co.uk/article/iran-french-ship-strava-war-5HjdWdq_2/" target="_blank" rel="noopener">LBC</a>; <a href="https://www.standard-journal.com/ap/world/article_0516504c-a11b-50f9-a85d-94e53773aa23.html" target="_blank" rel="noopener">AP (2026)</a>; <a href="https://taskandpurpose.com/news/us-iran-war-strava-bases/" target="_blank" rel="noopener">Task &amp; Purpose (Aug 2026)</a>; <a href="https://www.newswise.com/articles/fitness-app-loophole-allows-access-to-home-addresses" target="_blank" rel="noopener">NC State (2023)</a>; settings per <a href="https://www.kaspersky.com/blog/running-apps-privacy-settings-part2-strava/52409" target="_blank" rel="noopener">Kaspersky</a> and <a href="https://tomsguide.com/wellness/fitness/how-to-adjust-your-strava-privacy-settings" target="_blank" rel="noopener">Tom's Guide</a>; app menus change, so check yours.</p>
+</section>
+
+<!-- 08 IDENTITY -->
+<section id="identity">
+  <p class="kicker">[08] // Identity</p>
+  <h2>Your MFA can be walked through.</h2>
+  <p class="lede">MFA blocks most account takeovers. But one technique, adversary-in-the-middle phishing, walks straight through the common kinds. The Cyber Centre detected over 100 of these campaigns against Microsoft cloud accounts between 2023 and early 2025.</p>
+  <div class="flow">
+    <div class="panel red"><h3>The bait</h3><p>A link to a login page that looks exactly like yours.</p></div>
+    <div class="panel red"><h3>The relay</h3><p>The fake page passes your password and MFA code to the real site, live.</p></div>
+    <div class="panel red"><h3>The token</h3><p>The real site issues a session token, the "stay signed in" pass. The attacker catches it.</p></div>
+    <div class="panel red"><h3>The takeover</h3><p>With the token, they're in. No password or code needed again.</p></div>
+  </div>
+  <p class="punch" style="margin-top:22px">The MFA ladder. <span class="muted" style="font-family:var(--body); text-transform:none; font-size:16px">Tap a rung.</span></p>
+  <div class="ladder" id="ladder">
+    <button class="rung top" style="--c:#2bff88" aria-expanded="false"><span class="lvl" style="width:100%"></span><span class="nm">Passkey or security key</span><span class="note">Phishing-resistant. The key checks it's talking to the real site, so a fake page gets nothing it can reuse. The Government of Canada's MFA guideline prefers FIDO2 security keys.</span></button>
+    <button class="rung" style="--c:#9be35a" aria-expanded="false"><span class="lvl" style="width:75%"></span><span class="nm">Push with number matching</span><span class="note">Better than a plain push, because you have to type the number shown on the login screen. Still not phishing-resistant.</span></button>
+    <button class="rung" style="--c:#ffd23f" aria-expanded="false"><span class="lvl" style="width:55%"></span><span class="nm">Authenticator app code</span><span class="note">Beats SMS, but a fake page can still relay the six digits in real time.</span></button>
+    <button class="rung" style="--c:#ff8c3a" aria-expanded="false"><span class="lvl" style="width:35%"></span><span class="nm">Text message code</span><span class="note">Can be relayed, and your number can be hijacked through a SIM swap. Better than nothing.</span></button>
+    <button class="rung" style="--c:#ff2e3d" aria-expanded="false"><span class="lvl" style="width:12%"></span><span class="nm">Password only</span><span class="note">One leaked or guessed password and the account is gone.</span></button>
+  </div>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>An MFA prompt you didn't start means someone already has your password. Deny it, then report it right away. Attackers sometimes send prompt after prompt hoping you'll tap yes to make it stop.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>Turn on passkeys for your email and bank where they're offered. If not, use an authenticator app over text messages.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://www.cyber.gc.ca/sites/default/files/itsm.30.031-e.pdf" target="_blank" rel="noopener">Cyber Centre ITSM.30.031, phishing-resistant MFA (2025)</a>; <a href="https://www.cyber.gc.ca/en/guidance/secure-your-accounts-and-devices-multi-factor-authentication-itsap30030" target="_blank" rel="noopener">Cyber Centre ITSAP.30.030</a>; <a href="https://www.canada.ca/en/government/system/digital-government/guideline-multi-factor-authentication.html" target="_blank" rel="noopener">GC Guideline on MFA</a>.</p>
+</section>
+
+<!-- 09 DAY JOB -->
+<section id="dayjob">
+  <p class="kicker">[09] // Off duty, still a target</p>
+  <h2>Same threat. Different uniform.</h2>
+  <p class="lede">Pick your civilian job.</p>
+  <div class="chips" role="tablist" id="chips">
+    <button class="chip" role="tab" aria-selected="true" data-t="0">Police, corrections, bylaw</button>
+    <button class="chip" role="tab" aria-selected="false" data-t="1">Teachers</button>
+    <button class="chip" role="tab" aria-selected="false" data-t="2">Finance</button>
+    <button class="chip" role="tab" aria-selected="false" data-t="3">IT</button>
+  </div>
+  <div class="panel trade" role="tabpanel" aria-live="polite">
+    <h3 id="tradeH"></h3>
+    <p id="tradeP" style="margin:8px 0 0"></p>
+    <div class="tips">
+      <div class="tip"><div class="who">At work</div><p id="tradeW"></p></div>
+      <div class="tip home"><div class="who">At home</div><p id="tradeHm"></p></div>
+    </div>
+    <p class="src" id="tradeS" style="margin-top:10px"></p>
+  </div>
+</section>
+
+<!-- 10 SPOT THE FAKE -->
+<section id="fake">
+  <p class="kicker">[10] // Latvia, 2017</p>
+  <h2>Spot the fake.</h2>
+  <p class="lede">Canada leads NATO's battlegroup in Latvia. Russia-linked accounts spread lies about our soldiers. No hack needed. Tap the one you think is fake.</p>
+  <div class="grid g2" id="fakes">
+    <button class="fake real" data-pick="real"><div class="letter">A</div><div class="who"><span class="av"></span><div><div class="nm">Global News</div><div class="meta">News outlet, Nov 2017</div></div></div><div class="hl">NATO chief says Canadian troops in Latvia are being smeared by Russia-backed online propaganda</div><div class="stamp">Real</div></button>
+    <button class="fake false" data-pick="fake"><div class="letter">B</div><div class="who"><span class="av"></span><div><div class="nm">Baltic Truth Now</div><div class="meta">Page, just now</div></div></div><div class="hl">LEAKED MEMO: Canadian troops told to stop paying for local fuel and food. Share before it's deleted!</div><div class="stamp">Fake</div></button>
+  </div>
+  <div class="reveal panel red" id="fakeReveal" style="margin-top:14px">
+    <p class="verdict" id="fakeVerdict"></p>
+    <p style="margin:6px 0 0">A is real (Global News / Canadian Press, 2017, headline paraphrased). B and its page are invented for this brief. The tells: an unknown page, a "leak" nobody can check, pressure to share fast, and a story built to turn locals against the troops.</p>
+    <p class="punch" style="font-size:20px">Before you share: who published it? Who else confirms it? Who gains?</p>
+  </div>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>If a story about the CAF or your unit is spreading fast, flag it up the chain before anyone reacts to it publicly.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>Teach the three questions at the dinner table. Kids share fastest and check least.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://globalnews.ca/news/3868991" target="_blank" rel="noopener">Global News</a>; <a href="https://www.cbc.ca/1.4162612" target="_blank" rel="noopener">CBC 2017</a>; <a href="https://www.cbc.ca/1.5581248" target="_blank" rel="noopener">CBC 2020</a>.</p>
+</section>
+
+<!-- 11 ROLE -->
+<section id="role">
+  <p class="kicker">[11] // Your role</p>
+  <h2>Protect. Notice. Report.</h2>
+  <div class="grid g3">
+    <div class="panel role"><h3>Protect</h3><p>Your DND and personal accounts, your phone and watch, and what you post about training, taskings and your section.</p></div>
+    <div class="panel role"><h3>Notice</h3><p>Strangers or "recruiters" asking about your unit. Pressure to act fast or keep quiet. Prompts you didn't start. Stories built to provoke.</p></div>
+    <div class="panel red role red"><h3>Report</h3><p>Military: chain of command, USS / UISSO. Personal fraud: police and the CAFC at <a href="tel:18884958501">1-888-495-8501</a>. Scam texts: forward to 7726.</p></div>
+  </div>
+  <div class="panel explain">
+    <h3>What to capture when you report</h3>
+    <ul class="fixlist">
+      <li>A screenshot showing the sender's full address or number, and the time.</li>
+      <li>What you did: clicked, typed a password, approved a prompt, nothing at all.</li>
+      <li>If you entered a password, change it from a different device and say so in your report.</li>
+      <li>Don't forward the suspicious message to coworkers to ask "is this real?" Use your organization's reporting method instead.</li>
+    </ul>
+  </div>
+  <p class="punch"><b style="color:var(--green)">You observe and report.</b> Credentialed MP or police investigate. Report fast, even if you clicked, even if you're not sure.</p>
+</section>
+
+<!-- 12 ACTION -->
+<section id="action">
+  <p class="kicker">[12] // Before you go</p>
+  <h2>One action. One conversation.</h2>
+  <div class="grid g2">
+    <div class="panel">
+      <h3 style="color:var(--green)">Do it now</h3>
+      <p>Turn on multi-factor authentication for your personal email, a passkey if it's offered. Email is the reset key for every other account. Look in security settings for "2-step verification" or "passkeys."</p>
+      <label class="check"><input type="checkbox" id="mfa"><span>Done. MFA is on.</span></label>
+      <p class="done-msg" id="mfaMsg" hidden>Good. Every account tied to that email just got harder to take.</p>
+    </div>
+    <div class="panel">
+      <h3 style="color:var(--green)">Take it home</h3>
+      <ul class="home">
+        <li>Everyone: pause before you click, reply or share.</li>
+        <li>Check the family's fitness apps for public maps.</li>
+        <li>Kids: the free <a href="https://www.getcybersafe.gc.ca/en/resources/get-cyber-safe-agency" target="_blank" rel="noopener">Get Cyber Safe Agency</a> workbook.</li>
+        <li>Parents: <a href="https://www.getcybersafe.gc.ca/en/blogs/how-help-older-adult-your-life-get-cyber-safe" target="_blank" rel="noopener">helping older adults stay safe online</a>.</li>
+        <li style="color:var(--red)">A sign-in prompt you didn't start? Deny it.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="stopped panel red">
+    <button class="btn red" id="stop">Stop the clock</button>
+    <div id="stopOut" hidden>
+      <p class="kicker red" style="margin:16px 0 6px">Clock stopped</p>
+      <div class="big" id="stopAmt">$0</div>
+      <p style="margin:6px 0 0">reported lost to fraud in Canada, on average, in the <span id="stopTime">0 minutes</span> you spent here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 SOURCES -->
+<section id="sources">
+  <p class="kicker">[13] // Sources</p>
+  <h2>Verify everything.</h2>
+  <details>
+    <summary>All sources</summary>
+    <ol id="srcList"></ol>
+  </details>
+</section>
+
+</main>
+<footer><i aria-hidden="true"></i>OPEN SOURCES ONLY</footer>
+
+<script>
+(function(){
+  const RATE = 704e6 / (365*24*3600);
+  const start = Date.now(); let stoppedAt = null;
+  const fmt = v => '$' + Math.round(v).toLocaleString('en-CA');
+  const clock = document.getElementById('clock');
+  setInterval(() => { if (!stoppedAt) clock.textContent = fmt((Date.now()-start)/1000*RATE); }, 250);
+
+
+  // Hero map sequence
+  const topo = document.querySelector('.topo'), ro1 = document.getElementById('ro1');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setRo(t, hit){ ro1.textContent = t; ro1.classList.toggle('hit', !!hit); }
+  if (reduce) { topo.classList.add('run','found'); setRo('START POINT: HOME', true); }
+  else {
+    const cycle = () => {
+      topo.classList.remove('run','found','scan'); void topo.getBoundingClientRect();
+      setRo('SAT PASS // ACQUIRING'); topo.classList.add('scan');
+      setTimeout(() => { topo.classList.add('run'); setRo('TRACK LOGGED // 7.2 KM // 35 MIN'); }, 2300);
+      setTimeout(() => { topo.classList.add('found'); setRo('START POINT: HOME', true); }, 7100);
+    };
+    cycle(); setInterval(cycle, 12500);
+  }
+  const prog = document.getElementById('progress');
+  addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - innerHeight; prog.style.width = (h > 0 ? scrollY / h * 100 : 0) + '%'; }, {passive:true});
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('armed'); io.unobserve(e.target); } }), {threshold:.35});
+  io.observe(document.getElementById('gauges'));
+
+  const ppl = document.getElementById('ppl');
+  for (let i=0;i<20;i++) ppl.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 20 28" aria-hidden="true"><circle cx="10" cy="7" r="6" fill="${i<2?'#ff2e3d':'#2e4a3e'}"/><path d="M1 28 C1 17 5 15 10 15 S19 17 19 28Z" fill="${i<2?'#ff2e3d':'#2e4a3e'}"/></svg>`);
+
+  const guess = document.getElementById('guess');
+  guess.addEventListener('click', e => {
+    const b = e.target.closest('.opt'); if (!b || guess.dataset.done) return;
+    guess.dataset.done = 1; const right = b.dataset.v === '704';
+    b.setAttribute('aria-pressed','true'); b.classList.add(right ? 'right' : 'wrong');
+    guess.querySelector('[data-v="704"]').classList.add('answer');
+    const v = document.getElementById('guessVerdict'); v.textContent = right ? 'Correct. $704 million.' : 'It was $704 million.'; v.style.color = right ? 'var(--green)' : 'var(--red)';
+    document.getElementById('costReveal').classList.add('show');
+    setTimeout(() => document.querySelectorAll('.bar').forEach(x => x.style.height = (x.dataset.h/760*100)+'%'), 80);
+  });
+
+  // Strava checklist
+  const sc = document.getElementById('stravaScore');
+  document.getElementById('strava').addEventListener('change', () => { sc.textContent = document.querySelectorAll('#strava input:checked').length; });
+
+  // MFA ladder
+  document.getElementById('ladder').addEventListener('click', e => { const r = e.target.closest('.rung'); if (r) r.setAttribute('aria-expanded', r.getAttribute('aria-expanded') !== 'true'); });
+
+  // Trades
+  const CAFC25 = '<a href="https://antifraudcentre-centreantifraude.ca/features-vedette/2026/02/top-fraud-2025-fraudes-plus-courantes-eng.htm" target="_blank" rel="noopener">CAFC Top 10 2025</a>';
+  const trades = [
+    ['Criminals borrow your badge',
+     'The CAFC warns fraudsters spoof police phone numbers and fake CAFC letterhead. "Fraud investigator" scams, where callers pose as police or bank investigators, cost Canadians $28.3M in 2025. Your name and face are often public through court, news or enforcement work.',
+     'If a "colleague" or "another agency" calls asking for information, call back through your switchboard or a number you already trust. Spoofed caller ID looks identical.',
+     'Lock down personal profiles, and your family\'s. Don\'t post your agency, shift or vehicle. Search your own name and address the way someone with a grudge would.',
+     'Sources: <a href="https://antifraudcentre-centreantifraude.ca/news-nouvelles/2024/2024-07-02-eng.htm" target="_blank" rel="noopener">CAFC warning (2024)</a>; ' + CAFC25],
+    ['Your records are already out there',
+     'The PowerSchool breach, found in late December 2024, exposed personal information of students and staff at school boards across Canada. Stolen records make follow-up scams look legitimate because they quote real details.',
+     'Treat any message quoting student or staff records to win your trust with suspicion, and send it to your board\'s IT or privacy office.',
+     'Your own data may be in that breach. Watch for messages that know your employee details, and set up MFA on your personal accounts.',
+     'Source: <a href="https://www.cbc.ca/1.7457446" target="_blank" rel="noopener">CBC (2025)</a>'],
+    ['One email moves the money',
+     'Spear phishing, which the CAFC has described as business email compromise, cost $67.9M in 2025. A "vendor" or "executive" changes payment details by email, often from a real account that\'s been taken over.',
+     'Callback verification on a known number for every banking change. Two people approve large transfers. Urgency from above is a warning sign, not a reason to skip the check.',
+     'Same play hits home buyers and renovators: "new account for your deposit." Call the lawyer, realtor or contractor on a number you already had.',
+     'Sources: ' + CAFC25 + '; <a href="https://kingsvilletimes.ca/2024/03/opp-and-partners-launch-20th-edition-of-fraud-prevention-month/" target="_blank" rel="noopener">OPP/CAFC (2024)</a>'],
+    ['You hold the keys',
+     'Admin accounts are worth more to an attacker than anyone else\'s. Adversary-in-the-middle phishing goes after exactly these cloud logins.',
+     'Separate admin account from your daily account. Phishing-resistant MFA on anything privileged. Treat an unexpected MFA prompt as an incident, not an annoyance.',
+     'You\'re your family\'s help desk. Set up their MFA and automatic updates before a scammer gets to them first.',
+     'Source: <a href="https://www.cyber.gc.ca/sites/default/files/itsm.30.031-e.pdf" target="_blank" rel="noopener">Cyber Centre ITSM.30.031</a>. Tips are advice, no statistic claimed.']
+  ];
+  const chips = document.getElementById('chips');
+  const show = i => { const t = trades[i];
+    document.getElementById('tradeH').textContent = t[0]; document.getElementById('tradeP').textContent = t[1];
+    document.getElementById('tradeW').textContent = t[2]; document.getElementById('tradeHm').textContent = t[3]; document.getElementById('tradeS').innerHTML = t[4];
+    chips.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-selected', c.dataset.t == i)); };
+  chips.addEventListener('click', e => { const c = e.target.closest('.chip'); if (c) show(+c.dataset.t); });
+  show(0);
+
+  const fakes = document.getElementById('fakes');
+  fakes.addEventListener('click', e => {
+    const f = e.target.closest('.fake'); if (!f || fakes.classList.contains('answered')) return;
+    fakes.classList.add('answered'); const ok = f.dataset.pick === 'fake';
+    const v = document.getElementById('fakeVerdict'); v.textContent = ok ? 'Correct. B is the fake.' : 'Not this time. B is the fake.'; v.style.color = ok ? 'var(--green)' : 'var(--red)';
+    document.getElementById('fakeReveal').classList.add('show');
+  });
+
+  document.getElementById('mfa').addEventListener('change', e => { document.getElementById('mfaMsg').hidden = !e.target.checked; });
+
+  document.getElementById('stop').addEventListener('click', e => {
+    if (!stoppedAt) stoppedAt = Date.now();
+    const secs = (stoppedAt - start)/1000, m = Math.floor(secs/60), s = Math.round(secs%60);
+    document.getElementById('stopAmt').textContent = fmt(secs*RATE); clock.textContent = fmt(secs*RATE);
+    document.getElementById('stopTime').textContent = (m ? m + ' min ' : '') + s + ' sec';
+    document.getElementById('stopOut').hidden = false; e.target.textContent = 'Clock stopped';
+  });
+
+  // Sources list
+  const S = [
+    ['Get Cyber Safe, Cyber Month 2026','https://www.getcybersafe.gc.ca/en/cyber-security-awareness-month'],
+    ['Cyber Centre, Alert AL25-016 (Oct 2025)','https://cyber.gc.ca/en/alerts-advisories/al25-016-internet-accessible-industrial-control-systems-ics-abused-hacktivists'],
+    ['The Canadian Press on AL25-016','https://lethbridgeherald.com/?p=1146560'],
+    ['Security Affairs on AL25-016','https://securityaffairs.com/?p=184007'],
+    ['BleepingComputer on AL25-016','https://www.bleepingcomputer.com/news/security/canada-says-hacktivists-breached-water-and-energy-facilities/'],
+    ['Cyber Centre, National Cyber Threat Assessment 2025-2026','https://cyber.gc.ca/en/guidance/national-cyber-threat-assessment-2025-2026'],
+    ['Cyber Centre, ITSM.30.031 phishing-resistant MFA','https://www.cyber.gc.ca/sites/default/files/itsm.30.031-e.pdf'],
+    ['Cyber Centre, ITSAP.30.030 MFA','https://www.cyber.gc.ca/en/guidance/secure-your-accounts-and-devices-multi-factor-authentication-itsap30030'],
+    ['Government of Canada, Guideline on MFA','https://www.canada.ca/en/government/system/digital-government/guideline-multi-factor-authentication.html'],
+    ['CAFC, Top 10 frauds in 2025','https://antifraudcentre-centreantifraude.ca/features-vedette/2026/02/top-fraud-2025-fraudes-plus-courantes-eng.htm'],
+    ['CAFC, impersonation warning (Jul 2024)','https://antifraudcentre-centreantifraude.ca/news-nouvelles/2024/2024-07-02-eng.htm'],
+    ['Competition Bureau, Fraud Prevention Month 2026','https://www.canada.ca/en/competition-bureau/news/2026/03/fraud-prevention-month-to-bring-hidden-crime-into-the-spotlight.html'],
+    ['Competition Bureau, Fraud Prevention Month 2025','https://www.canada.ca/en/competition-bureau/news/2025/02/fraud-prevention-month-to-focus-on-impersonation-fraud-one-of-the-fastest-growing-forms-of-fraud.html'],
+    ['RCMP release via Blue Line (2023)','https://blueline.ca/fraud-prevention-month-2023-fraud-losses-in-canada-reach-another-historic-level'],
+    ['OPP/CAFC release via Kingsville Times (2024)','https://kingsvilletimes.ca/2024/03/opp-and-partners-launch-20th-edition-of-fraud-prevention-month/'],
+    ['NPR, Strava heatmap (2018)','https://www.wgbh.org/news/2018-01-29/pentagon-reviews-gps-policies-after-soldiers-strava-tracks-are-seemingly-exposed'],
+    ['Computing, StravaLeaks (2024)','https://computing.co.uk/news/2024/security/world-leaders-locations-exposed-strava'],
+    ['AP, StravaLeaks (2024)','https://www.wbay.com/2024/10/29/fitness-app-strava-gives-away-location-biden-trump-other-leaders-french-newspaper-says/'],
+    ['Baird Maritime, French submarines and carrier','https://www.bairdmaritime.com/amp/story/security/naval/naval-ships/report-says-use-of-fitness-app-may-have-revealed-french-aircraft-carriers-location'],
+    ['Le Monde, Charles de Gaulle located (2026)','https://www.lemonde.fr/en/international/article/2026/03/20/stravaleaks-france-s-aircraft-carrier-located-in-real-time-by-le-monde-through-fitness-app_6751640_4.html'],
+    ['Gizmodo, Charles de Gaulle (2026)','https://gizmodo.com/stravas-fitness-app-exposed-the-real-time-location-of-a-french-aircraft-carrier-2000736266'],
+    ['LBC, Charles de Gaulle (2026)','https://www.lbc.co.uk/article/iran-french-ship-strava-war-5HjdWdq_2/'],
+    ['AP, France takes measures (2026)','https://www.standard-journal.com/ap/world/article_0516504c-a11b-50f9-a85d-94e53773aa23.html'],
+    ['Task & Purpose, US bases exposed again (Aug 2026)','https://taskandpurpose.com/news/us-iran-war-strava-bases/'],
+    ['NC State research via Newswise (2023)','https://www.newswise.com/articles/fitness-app-loophole-allows-access-to-home-addresses'],
+    ['Kaspersky, Strava privacy settings','https://www.kaspersky.com/blog/running-apps-privacy-settings-part2-strava/52409'],
+    ['Tom\'s Guide, Strava privacy settings','https://tomsguide.com/wellness/fitness/how-to-adjust-your-strava-privacy-settings'],
+    ['CBC, PowerSchool breach (2025)','https://www.cbc.ca/1.7457446'],
+    ['CBC, propaganda greets troops in Latvia (2017)','https://www.cbc.ca/1.4162612'],
+    ['CBC, Latvia pandemic disinformation (2020)','https://www.cbc.ca/1.5581248'],
+    ['Global News, NATO head on Latvia (2017)','https://globalnews.ca/news/3868991'],
+    ['FBI, The Morris Worm (2018)','https://www.fbi.gov/news/stories/morris-worm-30-years-since-first-major-attack-on-internet-110218'],
+    ['NATO StratCom COE, Estonia 2007','https://stratcomcoe.org/hybrid-threats-2007-cyber-attacks-estonia'],
+    ['NATO CCDCOE, Stuxnet','https://cyberlaw.ccdcoe.org/wiki/Stuxnet_(2010)'],
+    ['NATO, Warsaw Summit (2016)','https://www.nato.int/cps/en/natohq/news_133280.htm'],
+    ['CSE, NotPetya statement (2018)','https://www.cse-cst.gc.ca/en/media/2018-02-15'],
+    ['DND, Our North, Strong and Free (2024)','https://www.canada.ca/en/department-national-defence/news/2024/04/our-north-strong-and-free-a-renewed-vision-for-canadas-defence.html'],
+    ['DND, CAF Cyber Command (2024)','https://www.canada.ca/en/department-national-defence/news/2024/09/canadian-armed-forces-establishes-a-new-cyber-command.html']
+  ];
+  const ol = document.getElementById('srcList');
+  S.forEach(([t,u]) => { const li = document.createElement('li'); const a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener'; a.textContent = t; li.appendChild(a); ol.appendChild(li); });
+  document.querySelector('#sources summary').textContent = 'All sources (' + S.length + ')';
+})();
+</script>
+</body>
+</html>
