@@ -6,7 +6,7 @@ tags: [homelab, opnsense, tailscale, networking, proxmox]
 excerpt: "The Proxmox host was running, but every VM sat on the same flat network as my phone and everything else in the house. Here is how I fixed that with an internal bridge, OPNsense, and a Tailscale gateway."
 ---
 
-Proxmox was up. Ubuntu Server was running as my first VM. And every part of that lab sat on the exact same 192.168.x.0/24 network as my phone and everything else in the house.
+Proxmox was up. Ubuntu Server was running as my first VM. And every part of that lab sat on the exact same flat home network as my phone and everything else in the house.
 
 That bothered me before the first build was even finished. A typo'd scan target, a compromised VM during malware analysis, a misconfigured rule somewhere down the line, any of those could reach devices that had nothing to do with the lab. Fixing that meant building real network segmentation, and getting there took a second SIEM-adjacent VM, a firewall, and a lot more troubleshooting than I expected.
 
