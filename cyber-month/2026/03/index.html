@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Built to Wait | Cyber Month 2026 Brief 03</title>
+<meta name="description" content="A 20-minute interactive brief on pre-positioning in critical infrastructure for military and law enforcement professionals. Open sources only.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ThreatVector762">
+<meta property="og:title" content="Built to Wait | Cyber Month 2026 Brief 03">
+<meta property="og:description" content="Why states park quiet access in critical infrastructure, what it looked like in Canada, and the router in your house. 20 minutes. Open sources only.">
+<meta property="og:url" content="https://threatvector762.dev/cyber-month/2026/03/">
+<meta property="og:image" content="https://threatvector762.dev/cyber-month/2026/03/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://threatvector762.dev/cyber-month/2026/03/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/brief.css">
+</head>
+<body data-brief="03">
+
+<div class="hud" role="status" aria-live="off">
+  <span class="dot" aria-hidden="true"></span>
+  <span class="lbl">Lost to fraud since you opened this</span>
+  <span class="amt" id="clock">$0</span>
+  <span class="progress" id="progress"></span>
+</div>
+
+<main>
+
+<!-- 01 HERO -->
+<section class="hero" id="top">
+  <div>
+    <a class="hub-link" href="../">&larr; All Cyber Month 2026 briefs</a>
+    <p class="kicker" data-series-pos>[ CYBER MONTH 2026 // BRIEF 03 ]</p>
+    <h1>Built<br>to<br>wait</h1>
+    <p class="tag">They aren't breaking in to steal. They're breaking in to wait.</p>
+    <p class="metaline">20 MIN // INTERACTIVE // PHONE OR PC</p>
+    <a class="btn" href="#valve">Start the brief</a>
+    <p class="author-mini">Authored by <b>Ryan Jorgensen</b>, Founder, ThreatVector762 Labs</p>
+  </div>
+  <div>
+    <svg class="gridhero" id="gh" viewBox="0 0 400 420" role="img" aria-label="Illustration: a power grid diagram where a quiet foothold waits for months, then a trigger takes the downstream grid dark">
+      <defs><filter id="ghglow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <rect width="400" height="420" fill="#050b09"/>
+      <g class="g">
+        <line x1="50" y1="0" x2="50" y2="420"/><line x1="100" y1="0" x2="100" y2="420"/><line x1="150" y1="0" x2="150" y2="420"/><line x1="200" y1="0" x2="200" y2="420"/><line x1="250" y1="0" x2="250" y2="420"/><line x1="300" y1="0" x2="300" y2="420"/><line x1="350" y1="0" x2="350" y2="420"/>
+        <line x1="0" y1="50" x2="400" y2="50"/><line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="150" x2="400" y2="150"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="0" y1="300" x2="400" y2="300"/><line x1="0" y1="350" x2="400" y2="350"/><line x1="0" y1="400" x2="400" y2="400"/>
+      </g>
+      <g filter="url(#ghglow)">
+        <path class="ln" d="M78 210H140"/>
+        <g class="down">
+          <path class="ln" d="M150 200V120H242"/>
+          <path class="ln" d="M150 220V300H242"/>
+          <path class="ln" d="M258 120L330 74"/>
+          <path class="ln" d="M258 120L330 166"/>
+          <path class="ln" d="M258 300L330 254"/>
+          <path class="ln" d="M258 300L330 346"/>
+        </g>
+        <circle class="nd" cx="60" cy="210" r="18"/>
+        <rect class="nd bus" x="140" y="200" width="20" height="20"/>
+        <g class="down">
+          <rect class="nd" x="242" y="112" width="16" height="16"/>
+          <rect class="nd" x="242" y="292" width="16" height="16"/>
+          <circle class="nd" cx="340" cy="70" r="10"/>
+          <circle class="nd" cx="340" cy="170" r="10"/>
+          <circle class="nd" cx="340" cy="250" r="10"/>
+          <circle class="nd" cx="340" cy="350" r="10"/>
+        </g>
+      </g>
+      <text class="lbl" x="44" y="244">GEN</text>
+      <text class="lbl" x="134" y="240">BUS</text>
+      <text class="lbl" x="232" y="106">SUB A</text>
+      <text class="lbl" x="232" y="328">SUB B</text>
+      <g class="foot" filter="url(#ghglow)">
+        <path class="fl" d="M106 130L146 204"/>
+        <rect class="fd" x="92" y="112" width="18" height="18" transform="rotate(45 101 121)"/>
+        <text class="lbl" x="66" y="100">FOOTHOLD</text>
+      </g>
+      <rect x="1" y="1" width="398" height="418" fill="none" stroke="#1b4734"/>
+      <path d="M1 24V1H24M376 1H399V24M399 396V419H376M24 419H1V396" fill="none" stroke="#2bff88" stroke-width="2.5"/>
+    </svg>
+    <div class="readout"><span id="ro1">GRID: NORMAL</span><span id="ro2">DAYS HELD: --</span></div>
+    <p class="topo-cap">Illustration. Invented numbers, not a real site.</p>
+  </div>
+</section>
+
+<!-- 02 HOOK: THE VALVE -->
+<section id="valve">
+  <p class="kicker red">[02] // Incident // Norway, April 2025</p>
+  <h2>A valve opened for four hours.</h2>
+  <p class="lede">At a dam in Bremanger, western Norway, someone reached the remote-control panel for one of the valves and opened it to 100%. It took the dam's operators about four hours to find and reverse it.</p>
+  <div class="tl" tabindex="0" aria-label="Timeline, scroll sideways">
+    <div class="ev panel red"><div class="yr">7 Apr</div><div class="nm">THE ACCESS</div><p>Unauthorized access to a remote-control panel at the dam. A valve is opened all the way.</p></div>
+    <div class="ev panel"><div class="yr">+4 hrs</div><div class="nm">DETECTED</div><p>The dam's owner spots it and reverses it. About 497 litres a second more water than the minimum flows out.</p></div>
+    <div class="ev panel"><div class="yr">Jun</div><div class="nm">THE VIDEO</div><p>Investigators find a three-minute video of the control panel with a pro-Russian group's watermark.</p></div>
+    <div class="ev panel"><div class="yr">13 Aug</div><div class="nm">ATTRIBUTION</div><p>Norway's security service says pro-Russian hackers did it, aiming to create fear or unrest.</p></div>
+    <div class="ev panel"><div class="yr">After</div><div class="nm">DENIAL</div><p>Russia's embassy calls the claim "unfounded and politically motivated."</p></div>
+  </div>
+  <p class="hint">Swipe the timeline sideways.</p>
+  <p class="punch"><b>No one was hurt.</b> The security service described it as less about causing damage than about showing what the hackers could do.</p>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>Near anything remote-operated (valves, gates, pumps, breakers), ask one question: who can reach its control panel from outside the building? You don't need the answer. Someone should have it.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>Same logic for your garage door, cameras and thermostat. Use the maker's secure app, and turn off remote access you don't use.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://aa.com.tr/en/europe/norway-security-service-says-pro-russian-hackers-behind-dam-sabotage/3658521" target="_blank" rel="noopener">Anadolu Agency</a>; <a href="https://www.arctictoday.com/norway-spy-chief-blames-russian-hackers-for-dam-sabotage-in-april/" target="_blank" rel="noopener">Reuters via Arctic Today</a>; <a href="https://www.bleepingcomputer.com/news/security/pro-russian-hackers-blamed-for-water-dam-sabotage-in-norway/" target="_blank" rel="noopener">BleepingComputer</a>. Attribution is Norway's; Russia denies it.</p>
+</section>
+
+<!-- 03 BLUF -->
+<section id="bluf">
+  <p class="kicker">[03] // BLUF</p>
+  <h2>Three things. Remember them.</h2>
+  <div class="grid g3 bluf">
+    <div class="panel"><span class="n">01</span><h3>Waiting is the weapon</h3><p>Pre-positioning means holding quiet access to critical systems so they can be switched off later, in a crisis. It isn't theft.</p></div>
+    <div class="panel"><span class="n">02</span><h3>It's not only over there</h3><p>A Canadian telecom was compromised in February 2025, and the Cyber Centre says the activity likely reaches beyond telecom.</p></div>
+    <div class="panel"><span class="n">03</span><h3>The doorway is ordinary</h3><p>Old routers, unpatched edge devices and normal admin tools. You can close one of those doors tonight.</p></div>
+  </div>
+</section>
+
+<!-- 04 WHICH IS IT -->
+<section id="which">
+  <p class="kicker">[04] // Which is it?</p>
+  <h2>Crime. Spy. Or something else?</h2>
+  <p class="lede">Crime wants money. Espionage wants secrets. Pre-positioning wants a switch. Three invented cases. Name each one.</p>
+  <div id="sorter">
+    <div class="round" data-answer="crime">
+      <div class="artifact"><div class="hdr">CASE 1</div>A regional hospital's systems lock up overnight. A message on every screen demands payment in cryptocurrency.</div>
+      <div class="choices"><button data-c="crime">Crime</button><button data-c="espionage">Espionage</button><button data-c="prepos">Pre-positioning</button></div>
+      <div class="why panel"><p><b style="color:var(--green)">Crime.</b> The goal is money, and the attacker wants you to know. The Cyber Centre rates ransomware as the top cybercrime threat to Canada's critical infrastructure.</p></div>
+    </div>
+    <div class="round" data-answer="espionage">
+      <div class="artifact"><div class="hdr">CASE 2</div>Over six months, someone quietly copies design files from a defence supplier. Production never stops.</div>
+      <div class="choices"><button data-c="crime">Crime</button><button data-c="espionage">Espionage</button><button data-c="prepos">Pre-positioning</button></div>
+      <div class="why panel"><p><b style="color:var(--green)">Espionage.</b> The goal is secrets, and the attacker hopes you never notice. Nothing is broken, because breaking things would end the access.</p></div>
+    </div>
+    <div class="round" data-answer="prepos">
+      <div class="artifact"><div class="hdr">CASE 3</div>A water utility's IT network shows no data theft, no ransom and no damage. For a long time, a few admin accounts quietly sit one step away from the control systems.</div>
+      <div class="choices"><button data-c="crime">Crime</button><button data-c="espionage">Espionage</button><button data-c="prepos">Pre-positioning</button></div>
+      <div class="why panel"><p><b style="color:var(--green)">Pre-positioning.</b> Nothing is taken or broken, because the access itself is the prize. The goal is to be able to act later.</p></div>
+    </div>
+  </div>
+  <p class="score">Score: <b id="sortScore">0</b> / 3</p>
+  <div class="panel explain reveal" id="sortReveal">
+    <h3>What the Five Eyes said</h3>
+    <p>In February 2024, cyber agencies from the US, Canada, Australia, the UK and New Zealand warned that PRC state-sponsored actors were pre-positioning on IT networks, using tools already on those networks, so they could move on to operational technology and disrupt functions in a major crisis or conflict. The US agencies assessed this with high confidence, and said the targets and behaviour weren't consistent with traditional espionage. Canada's Cyber Centre co-signed it.</p>
+  </div>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>When you report something odd, say what you saw, not what you think it is. Whether it's crime, spying or something else is for the specialists to work out.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>A router or camera that behaves strangely (slow for no reason, settings you didn't change) is worth a look, not a shrug.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://cisa.gov/news-events/alerts/2024/02/07/cisa-and-partners-release-advisory-prc-sponsored-volt-typhoon-activity-and-supplemental-living-land" target="_blank" rel="noopener">CISA release (Feb 2024)</a>; <a href="https://www.cisa.gov/sites/default/files/2024-02/aa24-038a-jcsa-prc-state-sponsored-actors-compromise-us-critical-infrastructure_1.pdf" target="_blank" rel="noopener">Joint advisory AA24-038A</a>; <a href="https://cyber.gc.ca/en/guidance/national-cyber-threat-assessment-2025-2026" target="_blank" rel="noopener">National Cyber Threat Assessment 2025-2026</a>.</p>
+</section>
+
+<!-- 05 EVIDENCE MOVED CLOSER -->
+<section id="evidence">
+  <p class="kicker red">[05] // Threat assessment</p>
+  <h2>The evidence moved closer to home.</h2>
+  <div class="grid g3">
+    <div class="panel stage"><p class="when">Feb 2024 // the warning</p><h3 style="color:var(--green)">Canada co-signs</h3><p>The Cyber Centre's own read: the direct threat to Canada's critical infrastructure was likely lower than the threat to the US, but a US disruption would likely affect Canada too, because the infrastructure is so connected across the border.</p></div>
+    <div class="panel stage"><p class="when">Oct 2024 // the national view</p><h3 style="color:var(--green)">"Very likely"</h3><p>The National Cyber Threat Assessment says state-sponsored actors are very likely getting into critical infrastructure networks to be ready to disrupt them later.</p></div>
+    <div class="panel red stage"><p class="when">Jun 2025 // proof at home</p><h3 style="color:var(--red)">A Canadian telecom</h3><p>The Cyber Centre and the FBI confirm a Canadian telecom was compromised in February 2025, and say the activity likely reaches beyond telecom.</p></div>
+  </div>
+  <p class="punch">Same threat. <b>Evidence closer each time.</b></p>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>You don't have to be in a "critical" sector to be in the chain. Suppliers, contractors and shared services connect to the ones that are.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>Telecoms carry your calls, banking and alerts. Keep a paper list of key phone numbers and a battery bank for your phone.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://www.cisa.gov/sites/default/files/2024-02/aa24-038a-jcsa-prc-state-sponsored-actors-compromise-us-critical-infrastructure_1.pdf" target="_blank" rel="noopener">Joint advisory AA24-038A</a> (Canada's assessment, quoted via <a href="https://thecyberwire.com/newsletters/daily-briefing/13/27" target="_blank" rel="noopener">The CyberWire</a> and <a href="https://www.itbusiness.ca/?p=127216" target="_blank" rel="noopener">IT Business</a>); <a href="https://cyber.gc.ca/en/guidance/national-cyber-threat-assessment-2025-2026" target="_blank" rel="noopener">NCTA 2025-2026</a>; <a href="https://cyber.gc.ca/en/guidance/cyber-threat-bulletin-prc-cyber-actors-target-telecommunications-companies-global-cyberespionage-campaign" target="_blank" rel="noopener">Cyber Centre bulletin (Jun 2025)</a>.</p>
+</section>
+
+<!-- 06 SPOT THE INTRUDER -->
+<section id="intruder">
+  <p class="kicker">[06] // Living off the land</p>
+  <h2>Spot the intruder.</h2>
+  <p class="lede">"Living off the land" means using the tools already on your systems, so there's no malware to catch. CISA called it a hallmark of Volt Typhoon. Here are three entries from an invented system log. One is the intruder.</p>
+  <div class="logs" id="logs">
+    <button class="logline" data-i="a"><span class="ts">02:00</span><span class="who">backup-svc</span><span class="what">Runs the built-in admin utility to copy the nightly backup. <b>From: backup server.</b></span></button>
+    <button class="logline" data-i="b"><span class="ts">10:45</span><span class="who">ops-engineer</span><span class="what">Opens a remote session to a control workstation. <b>From: office PC, during shift.</b></span></button>
+    <button class="logline" data-i="c"><span class="ts">03:12</span><span class="who">it-admin</span><span class="what">Runs the same built-in admin utility and lists every account and file share. <b>From: a device this account has never used.</b></span></button>
+  </div>
+  <div class="reveal panel red" id="logReveal" style="margin-top:14px">
+    <p class="verdict" id="logVerdict"></p>
+    <p style="margin:6px 0 0">The intruder is the 3 a.m. entry. It uses the same tool as the backup job, so antivirus sees nothing wrong. What gives it away is the time, the source and the purpose. That's why logging matters: the joint guidance stresses it, because you can't spot "different" if you never recorded "normal."</p>
+  </div>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>An account logging in at 3 a.m., a setting nobody changed, a device you don't recognize: report it, even if it turns out to be nothing. Let the specialists decide.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>Look at your router's list of connected devices once. Anything you can't name is worth chasing down.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://www.cisa.gov/resources-tools/resources/identifying-and-mitigating-living-land-techniques" target="_blank" rel="noopener">CISA et al., Identifying and Mitigating Living Off the Land Techniques</a>; <a href="https://www.cisa.gov/sites/default/files/2024-02/aa24-038a-jcsa-prc-state-sponsored-actors-compromise-us-critical-infrastructure_1.pdf" target="_blank" rel="noopener">AA24-038A</a>. Log entries are invented for training.</p>
+</section>
+
+<!-- 07 IT HAPPENED HERE -->
+<section id="canada">
+  <p class="kicker red">[07] // Canada, February 2025</p>
+  <h2>It happened here.</h2>
+  <p class="lede">Three network devices at a Canadian telecom were compromised. The attackers used a known Cisco flaw to read configuration files, and changed at least one to set up a tunnel that let them collect traffic.</p>
+  <div class="stats4">
+    <div class="panel red"><div class="big2">3</div><p>network devices compromised</p></div>
+    <div class="panel red"><div class="big2">2023</div><p>year the flaw was catalogued</p></div>
+    <div class="panel red"><div class="big2">Feb 2025</div><p>when it was used here</p></div>
+    <div class="panel red"><div class="big2">2 yrs</div><p>how long the Cyber Centre expects it to continue</p></div>
+  </div>
+  <div class="age" id="age">
+    <div class="age-track"><div class="age-fill"></div></div>
+    <div class="age-ends"><div><b>2023</b>flaw catalogued</div><div><b>Feb 2025</b>exploited at a Canadian telecom</div></div>
+  </div>
+  <p style="margin-top:16px">The Cyber Centre said the actors were almost certainly PRC state-sponsored, specifically Salt Typhoon, that the targeting likely goes beyond telecom, and that it will "almost certainly continue." Reporting at the time said at least one major Canadian carrier still hadn't patched the flaw.</p>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>Routers, firewalls and VPN gateways sit at the edge of every network. Each one needs a named owner and a patch deadline. If you're in IT or OT, find out who owns yours.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>Your router is your edge device, and nobody patches it for you unless you set it up. Section 8 shows how to check.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://cyber.gc.ca/en/guidance/cyber-threat-bulletin-prc-cyber-actors-target-telecommunications-companies-global-cyberespionage-campaign" target="_blank" rel="noopener">Cyber Centre bulletin</a>; <a href="https://bleepingcomputer.com/news/security/canada-says-salt-typhoon-hacked-telecom-firm-via-cisco-flaw" target="_blank" rel="noopener">BleepingComputer</a>; <a href="https://securityaffairs.com/?p=179278" target="_blank" rel="noopener">Security Affairs</a>; <a href="https://www.techmonitor.ai/?p=417743" target="_blank" rel="noopener">Tech Monitor</a>.</p>
+</section>
+
+<!-- 08 THE ROUTER -->
+<section id="router">
+  <p class="kicker">[08] // The router in your house</p>
+  <h2>Old gear is a doorway.</h2>
+  <p class="lede">Volt Typhoon hid its tracks behind hundreds of hijacked home and small-office routers. Tap through a router's life.</p>
+  <div class="chips" role="tablist" id="rchips">
+    <button class="chip" role="tab" aria-selected="true" data-s="sup">Supported</button>
+    <button class="chip" role="tab" aria-selected="false" data-s="eol">End-of-life</button>
+    <button class="chip" role="tab" aria-selected="false" data-s="hij">Hijacked</button>
+  </div>
+  <div class="panel" role="tabpanel" aria-live="polite">
+    <div class="router"><div class="box"><span class="led" id="rled"></span></div><div class="state" id="rstate"></div></div>
+    <p id="rtext" style="margin:0"></p>
+  </div>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>Branch-office routers, cameras and printers count too. Anything that has reached end-of-life and still sits on a network is a risk with a name on it.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>Check your router's age and support status tonight. Section 10 has the steps.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://www.bleepingcomputer.com/news/security/fbi-disrupts-chinese-botnet-by-wiping-malware-from-infected-routers/" target="_blank" rel="noopener">BleepingComputer (US Justice Department release)</a>; <a href="https://www.infosecurity-magazine.com/news/us-thwarts-volt-typhoon-espionage" target="_blank" rel="noopener">Infosecurity Magazine</a>; <a href="https://www.hackread.com/fbi-disrupts-china-volt-typhoon-kv-botnet/" target="_blank" rel="noopener">Hackread</a>; <a href="https://cyber.gc.ca/en/guidance/routers-cyber-security-best-practices-itsap80019" target="_blank" rel="noopener">Cyber Centre ITSAP.80.019</a>.</p>
+</section>
+
+<!-- 09 ACCOUNTABILITY -->
+<section id="law">
+  <p class="kicker">[09] // Accountability</p>
+  <h2>The rules are coming.</h2>
+  <p class="lede">Canada's critical-infrastructure cyber law passed in June 2026. Some of it applies now. The part that regulates operators doesn't yet.</p>
+  <div class="tl" tabindex="0" aria-label="Timeline, scroll sideways">
+    <div class="ev panel"><div class="yr">2025</div><div class="nm">BILL C-8</div><p>Introduced in the 45th Parliament as An Act respecting cyber security.</p></div>
+    <div class="ev panel"><div class="yr">26 Mar</div><div class="nm">HOUSE</div><p>The House of Commons passes it.</p></div>
+    <div class="ev panel"><div class="yr">4 Jun</div><div class="nm">SENATE</div><p>The Senate adopts it.</p></div>
+    <div class="ev panel"><div class="yr">Jun 2026</div><div class="nm">ROYAL ASSENT</div><p>It becomes law. The Telecommunications Act changes take effect right away.</p></div>
+    <div class="ev panel red"><div class="yr">Not yet</div><div class="nm">PART 2</div><p>The Critical Cyber Systems Protection Act needs a government order to come into force, and then designations of which operators it covers.</p></div>
+  </div>
+  <p class="hint">Swipe the timeline sideways.</p>
+  <div class="panel explain">
+    <h3>What it means</h3>
+    <p>The government says the Act will require designated operators in finance, telecommunications, energy and transportation to protect their critical cyber systems, and that it will be phased in. <b>Nothing changes for you tomorrow.</b> The point is that accountability is coming for the operators that run the systems in this brief, so there's no reason to wait for it to arrive.</p>
+    <p style="margin-top:8px" class="muted">Status as of early October 2026, from the government's release and law-firm analyses. Check LEGISinfo for the latest.</p>
+  </div>
+  <div class="tips">
+    <div class="tip"><div class="who">At work</div><p>If your employer is in one of those four sectors, ask whether anyone has started preparing. It's not your job to fix. It's worth asking.</p></div>
+    <div class="tip home"><div class="who">At home</div><p>You don't need to do anything. It helps to know that the rules for the companies that keep your lights and phones on are getting stricter.</p></div>
+  </div>
+  <p class="src">Sources: <a href="https://www.canada.ca/en/public-safety-canada/news/2026/06/government-of-canada-strengthens-cyber-security-and-critical-infrastructure-with-royal-assent-of-bill-c8.html" target="_blank" rel="noopener">Public Safety Canada (16 Jun 2026)</a>; <a href="https://digitalpolicyalert.org/change/15321" target="_blank" rel="noopener">Digital Policy Alert</a>; <a href="https://www.lavery.ca/en/publications/our-publications/6475-bill-c-8-a-new-federal-cyber-security-framework-for-telecommunications-and-critical-cyber-systems.html" target="_blank" rel="noopener">Lavery (21 Sep 2026)</a>; <a href="https://www.parl.ca/legisinfo/" target="_blank" rel="noopener">LEGISinfo</a>. Parliament records Royal Assent on 15 June; the government's release is dated 16 June.</p>
+</section>
+
+<!-- 10 ACTION -->
+<section id="action">
+  <p class="kicker">[10] // Before you go</p>
+  <h2>One action. One conversation.</h2>
+  <div class="grid g2">
+    <div class="panel">
+      <h3 style="color:var(--green)">Do it tonight</h3>
+      <p>Find your home router's make and model, and check whether it still gets security updates.</p>
+      <label class="check"><input type="checkbox" id="done1"><span>Done. I know if mine is supported.</span></label>
+      <p class="done-msg" id="doneMsg" hidden>Good. That's one fewer old door for someone to walk through.</p>
+      <p class="muted" style="margin:16px 0 8px">While you're in there (Cyber Centre guidance):</p>
+      <div class="checklist" id="rcheck">
+        <label class="ck"><input type="checkbox"><div><b>Firmware is up to date</b><span>Turn on automatic updates if your router offers them.</span></div></label>
+        <label class="ck"><input type="checkbox"><div><b>Default passwords are changed</b><span>Both the Wi-Fi password and the router's admin login.</span></div></label>
+        <label class="ck"><input type="checkbox"><div><b>WPA2 or WPA3, and WPS off</b><span>Strong Wi-Fi encryption, and no convenience feature that weakens it.</span></div></label>
+        <label class="ck"><input type="checkbox"><div><b>Guests and smart devices on a guest network</b><span>Keeps cameras and TVs away from your computers.</span></div></label>
+      </div>
+      <p class="score">Done: <b id="rscore">0</b> / 4</p>
+    </div>
+    <div class="panel">
+      <h3 style="color:var(--green)">Take it home</h3>
+      <ul class="home">
+        <li>Parents and grandparents: ask them to read the model number off their router, and help them check it.</li>
+        <li>Anyone with a router older than they can remember: replace it. It's a cheap fix for a large risk.</li>
+        <li>At work: ask who owns the list of routers, firewalls and VPNs, and who patches them.</li>
+        <li style="color:var(--red)">If you see something that looks like tampering with a control system: stop, don't touch it, and report it now.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="panel explain" style="margin-top:14px">
+    <h3>Where to report</h3>
+    <ul class="fixlist tight">
+      <li>At work: your supervisor and your security team first. Don't investigate on your own.</li>
+      <li>Organizations can report to the Cyber Centre through its online form. The Cyber Centre isn't law enforcement.</li>
+      <li>An imminent threat to life, or a crime: 911, local police or the RCMP.</li>
+      <li>Personal fraud: the CAFC at <a href="tel:18884958501">1-888-495-8501</a>.</li>
+    </ul>
+    <p class="muted" style="margin-top:8px">If someone calls claiming to be the Cyber Centre, verify at 1-833-CYBER-88 before you share anything.</p>
+  </div>
+  <div class="stopped panel red">
+    <button class="btn red" id="stop">Stop the clock</button>
+    <div id="stopOut" hidden>
+      <p class="kicker red" style="margin:16px 0 6px">Clock stopped</p>
+      <div class="big" id="stopAmt">$0</div>
+      <p style="margin:6px 0 0">reported lost to fraud in Canada, on average, in the <span id="stopTime">0 minutes</span> you spent here.</p>
+    </div>
+  </div>
+  <p class="src">Sources: <a href="https://cyber.gc.ca/en/guidance/routers-cyber-security-best-practices-itsap80019" target="_blank" rel="noopener">Cyber Centre ITSAP.80.019, routers</a>; <a href="https://www.cyber.gc.ca/en/incident-management" target="_blank" rel="noopener">Cyber Centre, report a cyber incident</a>; <a href="https://antifraudcentre-centreantifraude.ca/features-vedette/2026/02/top-fraud-2025-fraudes-plus-courantes-eng.htm" target="_blank" rel="noopener">CAFC</a>.</p>
+</section>
+
+<!-- 11 SOURCES -->
+<section id="sources">
+  <p class="kicker">[11] // Sources</p>
+  <h2>Verify everything.</h2>
+  <details>
+    <summary>All sources</summary>
+    <ol id="srcList"></ol>
+  </details>
+</section>
+
+</main>
+<nav class="series-nav" id="seriesNav" aria-label="Brief series"></nav>
+<footer><i aria-hidden="true"></i>OPEN SOURCES ONLY</footer>
+
+<script src="../assets/series.js"></script>
+<script src="../assets/brief.js"></script>
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Hero: a foothold waits, then a trigger takes the downstream grid dark
+  const gh = document.getElementById('gh'), ro1 = document.getElementById('ro1'), ro2 = document.getElementById('ro2');
+  const setRo = (t, c) => { ro1.textContent = t; ro1.className = c || ''; };
+  let raf;
+  const count = (to, ms) => { const t0 = performance.now(); cancelAnimationFrame(raf);
+    (function step(t){ const p = Math.min(1, (t - t0) / ms); ro2.textContent = 'DAYS HELD: ' + String(Math.round(p * to)).padStart(3, '0'); if (p < 1) raf = requestAnimationFrame(step); })(t0); };
+  if (reduce) { gh.classList.add('seen', 'trig'); setRo('TRIGGER // OUTPUT 0%', 'hit'); ro2.textContent = 'DAYS HELD: 387'; }
+  else {
+    const cycle = () => {
+      gh.classList.remove('seen', 'trig'); setRo('GRID: NORMAL'); ro2.textContent = 'DAYS HELD: --';
+      setTimeout(() => { gh.classList.add('seen'); setRo('ACCESS HELD, NOT DETECTED', 'amber'); count(387, 4200); }, 2200);
+      setTimeout(() => { gh.classList.add('trig'); setRo('TRIGGER // OUTPUT 0%', 'hit'); }, 7600);
+    };
+    cycle(); setInterval(cycle, 12500);
+  }
+
+  // Which is it? three-way sorter
+  let sc = 0, done = 0;
+  document.querySelectorAll('#sorter .round').forEach(r => r.addEventListener('click', e => {
+    const b = e.target.closest('button[data-c]'); if (!b || r.classList.contains('answered')) return;
+    r.classList.add('answered'); const ok = b.dataset.c === r.dataset.answer;
+    b.classList.add(ok ? 'right' : 'wrong');
+    if (!ok) r.querySelector('button[data-c="' + r.dataset.answer + '"]').classList.add('right');
+    if (ok) document.getElementById('sortScore').textContent = ++sc;
+    if (++done === 3) document.getElementById('sortReveal').classList.add('show');
+  }));
+
+  // Spot the intruder
+  const logs = document.getElementById('logs');
+  logs.addEventListener('click', e => {
+    const l = e.target.closest('.logline'); if (!l || logs.classList.contains('answered')) return;
+    logs.classList.add('answered'); const ok = l.dataset.i === 'c';
+    if (ok) l.classList.add('right'); else { l.classList.add('wrong'); logs.querySelector('[data-i="c"]').classList.add('right'); }
+    const v = document.getElementById('logVerdict'); v.textContent = ok ? 'Correct. Entry 3 is the intruder.' : 'Not this one. Entry 3 is the intruder.'; v.style.color = ok ? 'var(--green)' : 'var(--red)';
+    document.getElementById('logReveal').classList.add('show');
+  });
+
+  // Age bar
+  const age = document.getElementById('age');
+  const oa = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { age.classList.add('go'); oa.disconnect(); } }), {threshold:.5});
+  oa.observe(age);
+
+  // Router states
+  const RS = {
+    sup: ['Supported', '', 'Still gets security fixes from its maker. Keeping the firmware up to date closes known holes, and the Cyber Centre advises turning on automatic updates if your router offers them.'],
+    eol: ['End-of-life', 'amber', 'No more patches, ever. Every new flaw found in it stays open. The Cyber Centre says to confirm whether your router is end-of-life or no longer receiving firmware updates.'],
+    hij: ['Hijacked', 'red', 'A compromised router can be pulled into a botnet. Volt Typhoon used hundreds of hijacked home and small-office routers, mostly end-of-life Cisco and Netgear units, to hide where its attacks came from. The FBI wiped the malware under a court order and urged owners to replace end-of-life routers.']
+  };
+  const rchips = document.getElementById('rchips');
+  const showR = k => { const s = RS[k];
+    document.getElementById('rstate').textContent = s[0]; document.getElementById('rled').className = 'led ' + s[1]; document.getElementById('rtext').textContent = s[2];
+    rchips.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-selected', c.dataset.s === k)); };
+  rchips.addEventListener('click', e => { const c = e.target.closest('.chip'); if (c) showR(c.dataset.s); });
+  showR('sup');
+
+  // Checklist and commitment
+  document.getElementById('rcheck').addEventListener('change', () => { document.getElementById('rscore').textContent = document.querySelectorAll('#rcheck input:checked').length; });
+  document.getElementById('done1').addEventListener('change', e => { document.getElementById('doneMsg').hidden = !e.target.checked; });
+
+  // Sources
+  const S = [
+    ['Anadolu Agency, Norway security service blames pro-Russian hackers (Aug 2025)','https://aa.com.tr/en/europe/norway-security-service-says-pro-russian-hackers-behind-dam-sabotage/3658521'],
+    ['Reuters via Arctic Today, Norway spy chief blames Russian hackers for dam sabotage','https://www.arctictoday.com/norway-spy-chief-blames-russian-hackers-for-dam-sabotage-in-april/'],
+    ['BleepingComputer, Pro-Russian hackers blamed for water dam sabotage in Norway','https://www.bleepingcomputer.com/news/security/pro-russian-hackers-blamed-for-water-dam-sabotage-in-norway/'],
+    ['CISA, advisory on PRC-sponsored Volt Typhoon activity (Feb 2024)','https://cisa.gov/news-events/alerts/2024/02/07/cisa-and-partners-release-advisory-prc-sponsored-volt-typhoon-activity-and-supplemental-living-land'],
+    ['Joint advisory AA24-038A, PRC state-sponsored actors compromise and maintain persistent access to US critical infrastructure','https://www.cisa.gov/sites/default/files/2024-02/aa24-038a-jcsa-prc-state-sponsored-actors-compromise-us-critical-infrastructure_1.pdf'],
+    ['The CyberWire, Five Eyes publish report on Volt Typhoon (Canada\'s assessment)','https://thecyberwire.com/newsletters/daily-briefing/13/27'],
+    ['IT Business, Canada joins Five Eyes advisory','https://www.itbusiness.ca/?p=127216'],
+    ['CISA et al., Identifying and Mitigating Living Off the Land Techniques','https://www.cisa.gov/resources-tools/resources/identifying-and-mitigating-living-land-techniques'],
+    ['Cyber Centre, National Cyber Threat Assessment 2025-2026','https://cyber.gc.ca/en/guidance/national-cyber-threat-assessment-2025-2026'],
+    ['Cyber Centre, PRC cyber actors target telecommunications companies (bulletin, Jun 2025)','https://cyber.gc.ca/en/guidance/cyber-threat-bulletin-prc-cyber-actors-target-telecommunications-companies-global-cyberespionage-campaign'],
+    ['BleepingComputer, Canada says Salt Typhoon hacked telecom firm via Cisco flaw','https://bleepingcomputer.com/news/security/canada-says-salt-typhoon-hacked-telecom-firm-via-cisco-flaw'],
+    ['Security Affairs, China-linked Salt Typhoon targets Canadian telecom companies','https://securityaffairs.com/?p=179278'],
+    ['Tech Monitor, Salt Typhoon targeting Canadian telecom companies','https://www.techmonitor.ai/?p=417743'],
+    ['BleepingComputer, FBI disrupts Chinese botnet by wiping malware from infected routers','https://www.bleepingcomputer.com/news/security/fbi-disrupts-chinese-botnet-by-wiping-malware-from-infected-routers/'],
+    ['Infosecurity Magazine, US thwarts Volt Typhoon through router disruption','https://www.infosecurity-magazine.com/news/us-thwarts-volt-typhoon-espionage'],
+    ['Hackread, FBI disrupts Volt Typhoon KV botnet','https://www.hackread.com/fbi-disrupts-china-volt-typhoon-kv-botnet/'],
+    ['Cyber Centre, Routers cyber security best practices (ITSAP.80.019)','https://cyber.gc.ca/en/guidance/routers-cyber-security-best-practices-itsap80019'],
+    ['Public Safety Canada, Royal Assent of Bill C-8 (16 Jun 2026)','https://www.canada.ca/en/public-safety-canada/news/2026/06/government-of-canada-strengthens-cyber-security-and-critical-infrastructure-with-royal-assent-of-bill-c8.html'],
+    ['Digital Policy Alert, Bill C-8 stages','https://digitalpolicyalert.org/change/15321'],
+    ['Lavery, Bill C-8: a new federal cyber security framework (21 Sep 2026)','https://www.lavery.ca/en/publications/our-publications/6475-bill-c-8-a-new-federal-cyber-security-framework-for-telecommunications-and-critical-cyber-systems.html'],
+    ['Parliament of Canada, LEGISinfo','https://www.parl.ca/legisinfo/'],
+    ['Cyber Centre, Report a cyber incident','https://www.cyber.gc.ca/en/incident-management'],
+    ['CAFC, Top 10 frauds in 2025','https://antifraudcentre-centreantifraude.ca/features-vedette/2026/02/top-fraud-2025-fraudes-plus-courantes-eng.htm']
+  ];
+  const ol = document.getElementById('srcList');
+  S.forEach(([t,u]) => { const li = document.createElement('li'); const a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener'; a.textContent = t; li.appendChild(a); ol.appendChild(li); });
+  document.querySelector('#sources summary').textContent = 'All sources (' + S.length + ')';
+})();
+</script>
+</body>
+</html>

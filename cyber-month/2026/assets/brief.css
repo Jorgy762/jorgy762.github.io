@@ -370,3 +370,64 @@ a.bcard:hover{border-color:var(--green); box-shadow:0 0 18px rgba(43,255,136,.15
 .qr svg{width:96px; height:96px}
 /* Code word generator */
 .codeword{font-family:var(--display); font-weight:800; font-size:clamp(30px,7vw,46px); color:var(--green); text-shadow:0 0 14px rgba(43,255,136,.45); letter-spacing:.02em; margin:8px 0}
+
+/* ===== Brief 03 components ===== */
+/* Hero: grid diagram. A quiet foothold waits, then the downstream grid goes dark. */
+.gridhero{width:min(86vw,400px); display:block; margin:0 auto}
+.gridhero .g{stroke:#2bff88; stroke-opacity:.07; stroke-width:1}
+.gridhero .ln{fill:none; stroke:#2bff88; stroke-width:2.5; transition:stroke .7s, opacity .7s}
+.gridhero .nd{fill:#08120f; stroke:#2bff88; stroke-width:2.5; transition:stroke .7s, fill .7s}
+.gridhero .lbl{font-family:var(--mono); font-size:9px; fill:#5e7a6e; letter-spacing:.08em}
+.gridhero .foot{opacity:0; transition:opacity .9s}
+.gridhero .foot .fl{fill:none; stroke:#ffb020; stroke-width:2; stroke-dasharray:5 5; transition:stroke .5s}
+.gridhero .foot .fd{fill:#ffb020; stroke:#ffb020; transition:fill .5s, stroke .5s}
+.gridhero .foot .lbl{fill:#ffb020}
+.gridhero.seen .foot{opacity:1}
+.gridhero.trig .foot .fl{stroke:#ff2e3d}
+.gridhero.trig .foot .fd{fill:#ff2e3d; stroke:#ff2e3d}
+.gridhero.trig .foot .lbl{fill:#ff2e3d}
+.gridhero.trig .bus{stroke:#ff2e3d}
+.gridhero.trig .down .ln{stroke:#25332d}
+.gridhero.trig .down .nd{stroke:#25332d; fill:#050b09}
+.readout .amber{color:#ffb020; text-shadow:0 0 8px rgba(255,176,32,.5)}
+
+/* Stage panels (three-step evidence) */
+.when{font-family:var(--mono); font-size:12px; letter-spacing:.12em; color:var(--green); text-transform:uppercase; margin:0 0 6px}
+.panel.red .when{color:var(--red)}
+.stage h3{font-size:24px; margin-bottom:8px}
+.stage p{margin:0}
+
+/* Log spotter */
+.logs{display:grid; gap:10px; margin-top:14px}
+.logline{display:grid; grid-template-columns:64px 130px 1fr; gap:6px 14px; text-align:left; width:100%; padding:14px 16px; background:var(--panel); border:1px solid var(--line)}
+.logline .ts{font-family:var(--mono); color:var(--green)}
+.logline .who{font-family:var(--mono); color:var(--text)}
+.logline .what{color:var(--muted); font-size:15px; line-height:1.5}
+.logline .what b{color:var(--text); font-weight:600}
+.logline.right{border-color:var(--red); box-shadow:0 0 14px rgba(255,46,61,.3)}
+.logline.right .ts{color:var(--red)}
+.logline.wrong{border-color:var(--faint); opacity:.75}
+.logs.answered .logline:not(.right){opacity:.6}
+@media(max-width:640px){ .logline{grid-template-columns:1fr; gap:3px} }
+
+/* Age bar (flaw to breach) */
+.age{margin-top:18px}
+.age-track{position:relative; height:16px; background:#0d1a15; border:1px solid var(--line)}
+.age-fill{position:absolute; left:0; top:0; bottom:0; width:0; background:linear-gradient(90deg,var(--green-dim),var(--red)); box-shadow:0 0 12px rgba(255,46,61,.45); transition:width 2.2s ease}
+.age.go .age-fill{width:100%}
+.age-ends{display:flex; justify-content:space-between; gap:12px; margin-top:8px; font-family:var(--mono); font-size:12px; color:var(--muted)}
+.age-ends b{display:block; color:var(--text); font-family:var(--display); font-size:22px; text-transform:uppercase; letter-spacing:.02em}
+.age-ends div:last-child{text-align:right} .age-ends div:last-child b{color:var(--red)}
+
+/* Router status */
+.router{display:flex; align-items:center; gap:16px; margin:4px 0 10px}
+.router .box{position:relative; width:150px; height:46px; background:#0d1a15; border:1px solid var(--line); border-radius:4px; flex:none}
+.router .box::before,.router .box::after{content:""; position:absolute; top:-22px; width:3px; height:22px; background:#2e4a3e}
+.router .box::before{left:30px; transform:rotate(-12deg)} .router .box::after{right:30px; transform:rotate(12deg)}
+.router .led{position:absolute; right:14px; top:50%; width:12px; height:12px; margin-top:-6px; border-radius:50%; background:var(--green); box-shadow:0 0 10px var(--green); transition:background .4s, box-shadow .4s}
+.router .led.amber{background:#ffb020; box-shadow:0 0 10px #ffb020}
+.router .led.red{background:var(--red); box-shadow:0 0 12px var(--red); animation:blink 1.2s steps(2) infinite}
+.router .state{font-family:var(--display); font-weight:800; font-size:26px; text-transform:uppercase}
+
+/* Panel variants */
+.fixlist.tight li{margin:4px 0}
