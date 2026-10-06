@@ -17,6 +17,13 @@ layout: default
   <div class="container">
     <div class="tv-hero-grid">
       <div>
+        {% if site.show_cyber_month %}
+        <a class="tv-event" href="{{ '/cyber-month/2026/' | relative_url }}">
+          <span class="tv-event-tag"><span class="tv-live" aria-hidden="true">&#9679;</span>Live this October</span>
+          <span class="tv-event-title">Cyber Month 2026 Briefings</span>
+          <span class="tv-event-go" aria-hidden="true">&rarr;</span>
+        </a>
+        {% endif %}
         <p class="tv-eyebrow">Secure systems &middot; Sound judgement</p>
         <h1 class="tv-name">Ryan<br><span>Jorgensen</span></h1>
         <p class="tv-role"><span id="hero-role">Cybersecurity Analyst</span><span class="tv-cursor" aria-hidden="true">_</span></p>

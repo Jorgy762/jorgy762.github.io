@@ -14,6 +14,10 @@ author:
   linkedin: "rjorg762"
   location: "Calgary, AB, Canada"
 
+# Home-page call-out for the Cyber Month briefings (cyber-month/2026/).
+# Set to false after October to hide it. Nothing else needs to change.
+show_cyber_month: true
+
 # Build
 markdown: kramdown
 highlighter: rouge
