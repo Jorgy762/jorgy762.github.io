@@ -308,3 +308,65 @@ a.bcard:hover{border-color:var(--green); box-shadow:0 0 18px rgba(43,255,136,.15
 .status.live{color:var(--green)} .status.done{color:#7fd1ff} .status.soon{color:var(--faint)}
 .bcard.planned{opacity:.5}
 .bcard.planned .num{color:var(--faint); text-shadow:none}
+
+/* ===== Brief 02 components ===== */
+.metaline{font-family:var(--mono); font-size:12px; color:var(--green); letter-spacing:.14em; margin:0 0 22px}
+/* Incoming-call hero */
+.callcard{width:min(86vw,380px); margin:0 auto; background:#050b09; border:1px solid var(--line); padding:18px; position:relative}
+.callcard::before,.callcard::after{content:""; position:absolute; width:18px; height:18px; border-color:var(--green); border-style:solid}
+.callcard::before{top:-1px; left:-1px; border-width:2px 0 0 2px}
+.callcard::after{bottom:-1px; right:-1px; border-width:0 2px 2px 0}
+.callcard .who{font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.12em}
+.callcard .name{font-family:var(--display); font-weight:800; font-size:44px; line-height:1; margin:4px 0 2px}
+.callcard .num{font-family:var(--mono); font-size:13px; color:var(--muted)}
+.wave{display:flex; align-items:center; gap:3px; height:110px; margin:18px 0 10px}
+.wave i{flex:1; background:var(--green); border-radius:2px; box-shadow:0 0 8px rgba(43,255,136,.5); transform-origin:center; height:var(--h); transition:background .3s, box-shadow .3s}
+.callcard.live .wave i{animation:talk .9s ease-in-out infinite alternate; animation-delay:var(--d)}
+@keyframes talk{from{transform:scaleY(.25)}to{transform:scaleY(1)}}
+.callcard.glitch .wave i.g{background:var(--red); box-shadow:0 0 10px rgba(255,46,61,.7)}
+.callcard .status{font-family:var(--mono); font-size:13px; color:var(--green); min-height:1.4em}
+.callcard .status.hit{color:var(--red); text-shadow:0 0 8px rgba(255,46,61,.6)}
+.callcard .stamp{margin-top:12px; padding:10px; text-align:center; border:2px solid var(--red); color:var(--red); font-family:var(--display); font-weight:800; font-size:22px; text-transform:uppercase; opacity:0; transform:scale(.9); transition:all .35s}
+.callcard.done .stamp{opacity:1; transform:scale(1); box-shadow:0 0 16px rgba(255,46,61,.35)}
+.callcap{width:min(86vw,380px); margin:8px auto 0; font-size:13px; color:var(--faint)}
+/* Stat tiles */
+.stats4{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:16px 0}
+@media(min-width:720px){ .stats4{grid-template-columns:repeat(4,1fr)} }
+.stats4 .panel .big2{font-family:var(--display); font-weight:800; font-size:40px; line-height:1; color:var(--red); text-shadow:0 0 12px rgba(255,46,61,.5)}
+.stats4 .panel p{margin:6px 0 0; font-size:15px}
+/* Confidence gap bars */
+.gap{display:grid; gap:12px; margin-top:8px}
+.gap .row{display:grid; grid-template-columns:1fr; gap:4px}
+.gap .lbl{font-size:15px}
+.gap .track{height:16px; background:#0d1a15; border:1px solid var(--line)}
+.gap .fill{height:100%; width:0; transition:width 1.4s ease}
+.gap .fill.r{background:var(--red); box-shadow:0 0 10px rgba(255,46,61,.5)}
+.gap .fill.g{background:var(--green); box-shadow:0 0 10px rgba(43,255,136,.5)}
+.gap .pct{font-family:var(--display); font-weight:800; font-size:26px}
+/* Red-flag tagger */
+.sms{max-width:520px; background:#0b1512; border:1px solid var(--line); padding:16px; border-radius:4px}
+.sms .from{font-family:var(--mono); font-size:12px; color:var(--muted); margin-bottom:8px}
+.sms .bubble{background:#16251f; padding:14px 16px; border-radius:14px 14px 14px 4px; font-size:17px; line-height:1.7}
+.flag{background:none; border:0; padding:0 2px; color:inherit; font:inherit; border-bottom:2px dashed var(--faint); cursor:pointer}
+.flag.on{color:var(--red); border-bottom-color:var(--red); text-shadow:0 0 8px rgba(255,46,61,.5)}
+.flag .tagname{display:none; font-family:var(--mono); font-size:11px; background:var(--red); color:#000; padding:1px 5px; margin-left:4px; vertical-align:middle; letter-spacing:.06em}
+.flag.on .tagname{display:inline}
+.moves{display:grid; gap:8px; margin-top:16px}
+@media(min-width:720px){ .moves{grid-template-columns:repeat(5,1fr)} }
+.move{border:1px solid var(--line); padding:10px; text-align:center; font-family:var(--display); font-weight:700; text-transform:uppercase; color:var(--faint)}
+.move.on{border-color:var(--red); color:var(--red); box-shadow:0 0 10px rgba(255,46,61,.25)}
+.move small{display:block; font-family:var(--body); font-weight:400; text-transform:none; font-size:13px; color:var(--muted); margin-top:4px}
+/* Rounds */
+.round{margin-top:16px}
+.round .artifact{background:#0b1512; border:1px solid var(--line); padding:16px; font-size:16px}
+.round .artifact .hdr{font-family:var(--mono); font-size:12px; color:var(--muted); margin-bottom:8px; letter-spacing:.06em}
+.round .choices{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+.round .choices button{padding:12px 16px; border:1px solid var(--line); background:var(--panel); font-family:var(--display); font-weight:700; font-size:18px; text-transform:uppercase}
+.round .choices button.right{border-color:var(--green); color:var(--green)}
+.round .choices button.wrong{border-color:var(--red); color:var(--red)}
+.round .why{display:none; margin-top:10px}
+.round.answered .why{display:block}
+.qr{display:grid; grid-template-columns:96px 1fr; gap:14px; align-items:center}
+.qr svg{width:96px; height:96px}
+/* Code word generator */
+.codeword{font-family:var(--display); font-weight:800; font-size:clamp(30px,7vw,46px); color:var(--green); text-shadow:0 0 14px rgba(43,255,136,.45); letter-spacing:.02em; margin:8px 0}

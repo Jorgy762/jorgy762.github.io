@@ -9,7 +9,8 @@ window.CM_SERIES = {
   briefs: [
     { n: '01', status: 'live', minutes: 30, title: 'Your Best Defence Is You',
       blurb: 'The numbers, how cyber became a war domain, pattern-of-life leaks from fitness apps, MFA that holds up, and where you fit.' },
-    { n: '02', status: 'planned' },
+    { n: '02', status: 'live', minutes: 20, title: 'Everyone Has a Button',
+      blurb: 'Social engineering and AI fakes: the five-move playbook, cloned voices, recruitment and sextortion approaches, and the verification habit that beats them.' },
     { n: '03', status: 'planned' },
     { n: '04', status: 'planned' },
     { n: '05', status: 'planned' }
