@@ -15,15 +15,34 @@ layout: default
 <!-- ── Hero ─────────────────────────────────────────────────── -->
 <section class="tv-hero">
   <div class="container">
+    {% if site.show_cyber_month %}
+    <a class="tv-event" href="{{ '/cyber-month/2026/' | relative_url }}">
+      <span class="tv-event-sweep" aria-hidden="true"></span>
+      <span class="tv-event-main">
+        <span class="tv-event-kicker"><span class="tv-event-dot" aria-hidden="true"></span>Live now // new briefs through October</span>
+        <span class="tv-event-title">Cyber Month 2026 Briefings</span>
+        <span class="tv-event-clock" id="tv-event-clock" hidden aria-hidden="true">
+          <span class="tv-event-amt" id="tv-event-amt">$0</span>
+          <span class="tv-event-lbl">avg. reported fraud loss in Canada since you opened this page</span>
+        </span>
+      </span>
+      <span class="tv-event-go">Open the briefings <span aria-hidden="true">&rarr;</span></span>
+    </a>
+    <script>
+      /* Live counter: CAFC 2025 reported fraud losses ($704M) spread evenly over a year.
+         Runs in the browser only; nothing is stored or sent. */
+      (function () {
+        var box = document.getElementById('tv-event-clock'), amt = document.getElementById('tv-event-amt');
+        if (!box || !amt) return;
+        var rate = 704e6 / (365 * 24 * 3600), t0 = Date.now();
+        var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function tick() { amt.textContent = '$' + Math.round((Date.now() - t0) / 1000 * rate).toLocaleString('en-CA'); }
+        box.hidden = false; tick(); setInterval(tick, calm ? 5000 : 250);
+      })();
+    </script>
+    {% endif %}
     <div class="tv-hero-grid">
       <div>
-        {% if site.show_cyber_month %}
-        <a class="tv-event" href="{{ '/cyber-month/2026/' | relative_url }}">
-          <span class="tv-event-tag"><span class="tv-live" aria-hidden="true">&#9679;</span>Live this October</span>
-          <span class="tv-event-title">Cyber Month 2026 Briefings</span>
-          <span class="tv-event-go" aria-hidden="true">&rarr;</span>
-        </a>
-        {% endif %}
         <p class="tv-eyebrow">Secure systems &middot; Sound judgement</p>
         <h1 class="tv-name">Ryan<br><span>Jorgensen</span></h1>
         <p class="tv-role"><span id="hero-role">Cybersecurity Analyst</span><span class="tv-cursor" aria-hidden="true">_</span></p>

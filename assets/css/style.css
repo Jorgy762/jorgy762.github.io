@@ -1306,16 +1306,61 @@ a.tv-card:hover { border-left-color:var(--sand); border-left-width:3px; backgrou
 
 
 /* ─── Cyber Month call-out (home hero) ───────────────────
+   Styled to match the briefing pages (neon green HUD).
    Toggle with show_cyber_month in _config.yml. */
-.tv-event { position:relative; display:grid; grid-template-columns:1fr auto; align-items:center; gap:4px 18px; max-width:520px; margin:0 0 2rem; padding:13px 20px 13px 24px; border:1px solid var(--olive-deep); background:linear-gradient(90deg, var(--olive-faint), transparent 88%); text-decoration:none; transition:border-color var(--transition), background var(--transition); }
-.tv-event::before { content:''; position:absolute; left:-1px; top:-1px; bottom:-1px; width:3px; background:var(--olive); }
-.tv-event-tag { grid-column:1; display:flex; align-items:center; gap:8px; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--olive); }
-.tv-event-title { grid-column:1; font-size:clamp(1.05rem, 2.4vw, 1.35rem); letter-spacing:1.5px; text-transform:uppercase; line-height:1.15; color:var(--text); }
-.tv-event-go { grid-column:2; grid-row:1 / span 2; font-size:1.7rem; line-height:1; color:var(--brown); transition:transform var(--transition), color var(--transition); }
-.tv-event:hover { border-color:var(--brown); background:linear-gradient(90deg, var(--olive-faint), var(--sand-faint) 92%); text-decoration:none; }
-.tv-event:hover .tv-event-go { transform:translateX(6px); color:var(--sand); }
-.tv-event:focus-visible { outline:var(--focus-ring); outline-offset:3px; }
-@media (max-width: 480px) {
-  .tv-event { padding:12px 16px 12px 20px; gap:3px 12px; margin-bottom:1.5rem; }
-  .tv-event-tag { letter-spacing:2px; }
+@keyframes tv-cm-glow {
+  0%,100% { box-shadow:0 0 0 1px rgba(43,255,136,.18), 0 0 20px rgba(43,255,136,.14); }
+  50%     { box-shadow:0 0 0 1px rgba(43,255,136,.40), 0 0 40px rgba(43,255,136,.34); }
 }
+@keyframes tv-cm-sweep { from { left:-160px; } to { left:100%; } }
+@keyframes tv-cm-blink { 50% { opacity:.25; } }
+.tv-event {
+  --cm-g:#2bff88; --cm-r:#ff2e3d; --cm-bg:#04080a; --cm-line:#1b4734; --cm-text:#e6f2ec; --cm-mute:#8fa89c;
+  --cm-display:'Barlow Condensed','Arial Narrow','Helvetica Neue',Arial,sans-serif;
+  position:relative; display:grid; grid-template-columns:1fr auto; align-items:center; gap:18px 32px;
+  margin:0 0 2.5rem; padding:22px 28px; overflow:hidden; text-decoration:none; color:var(--cm-text);
+  border:1px solid var(--cm-line);
+  background:
+    linear-gradient(rgba(43,255,136,.05) 1px, transparent 1px) 0 0/36px 36px,
+    linear-gradient(90deg, rgba(43,255,136,.05) 1px, transparent 1px) 0 0/36px 36px,
+    radial-gradient(120% 180% at 0% 0%, rgba(43,255,136,.18), transparent 62%),
+    var(--cm-bg);
+  animation:tv-cm-glow 3s ease-in-out infinite;
+}
+.tv-event::before {   /* corner brackets */
+  content:''; position:absolute; inset:-1px; pointer-events:none; z-index:3;
+  background:
+    linear-gradient(var(--cm-g),var(--cm-g)) top left/24px 2px no-repeat,    linear-gradient(var(--cm-g),var(--cm-g)) top left/2px 24px no-repeat,
+    linear-gradient(var(--cm-g),var(--cm-g)) top right/24px 2px no-repeat,   linear-gradient(var(--cm-g),var(--cm-g)) top right/2px 24px no-repeat,
+    linear-gradient(var(--cm-g),var(--cm-g)) bottom left/24px 2px no-repeat, linear-gradient(var(--cm-g),var(--cm-g)) bottom left/2px 24px no-repeat,
+    linear-gradient(var(--cm-g),var(--cm-g)) bottom right/24px 2px no-repeat,linear-gradient(var(--cm-g),var(--cm-g)) bottom right/2px 24px no-repeat;
+}
+.tv-event::after {    /* scanlines */
+  content:''; position:absolute; inset:0; pointer-events:none; z-index:2;
+  background:repeating-linear-gradient(0deg, rgba(255,255,255,.028) 0 1px, transparent 1px 4px);
+}
+.tv-event-sweep { position:absolute; top:0; bottom:0; left:-160px; width:140px; z-index:1; pointer-events:none;
+  background:linear-gradient(90deg, transparent, rgba(43,255,136,.24), transparent); animation:tv-cm-sweep 4.8s linear infinite; }
+.tv-event-main { position:relative; z-index:4; display:flex; flex-direction:column; gap:8px; min-width:0; }
+.tv-event-kicker { display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--cm-g); }
+.tv-event-dot { width:9px; height:9px; border-radius:50%; background:var(--cm-r); box-shadow:0 0 10px var(--cm-r); animation:tv-cm-blink 1.2s steps(2) infinite; flex:none; }
+.tv-event-title { font-family:var(--cm-display); font-weight:800; font-size:clamp(2rem, 4.6vw, 3rem); line-height:.95; letter-spacing:.02em; text-transform:uppercase; color:var(--cm-text); text-shadow:0 0 22px rgba(43,255,136,.45); }
+.tv-event-clock { display:flex; align-items:center; gap:14px; margin-top:2px; }
+.tv-event-clock[hidden] { display:none; }
+.tv-event-amt { font-family:var(--cm-display); font-weight:800; font-size:2rem; line-height:1; color:var(--cm-r); text-shadow:0 0 16px rgba(255,46,61,.6); font-variant-numeric:tabular-nums; min-width:3.4ch; }
+.tv-event-lbl { font-family:var(--font-mono); font-size:10px; letter-spacing:1.5px; line-height:1.45; text-transform:uppercase; color:var(--cm-mute); }
+.tv-event-go { position:relative; z-index:4; display:inline-flex; align-items:center; gap:10px; padding:18px 28px; background:var(--cm-g); color:var(--cm-bg);
+  font-family:var(--cm-display); font-weight:800; font-size:1.4rem; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap;
+  box-shadow:0 0 22px rgba(43,255,136,.55), inset 0 0 12px rgba(255,255,255,.25); transition:background var(--transition), gap var(--transition), box-shadow var(--transition); }
+.tv-event:hover { text-decoration:none; }
+.tv-event:hover .tv-event-go { background:#8dffc0; gap:18px; box-shadow:0 0 34px rgba(43,255,136,.85), inset 0 0 12px rgba(255,255,255,.35); }
+.tv-event:focus-visible { outline:var(--focus-ring); outline-offset:4px; }
+@media (max-width: 760px) {
+  .tv-event { grid-template-columns:1fr; padding:18px 18px 16px; margin-bottom:2rem; gap:14px; }
+  .tv-event-kicker { font-size:10px; letter-spacing:1.2px; gap:8px; }
+  .tv-event-title { font-size:2.05rem; }
+  .tv-event-amt { font-size:1.6rem; }
+  .tv-event-lbl { letter-spacing:1px; }
+  .tv-event-go { justify-content:space-between; padding:11px 18px; font-size:1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) { .tv-event-sweep { display:none; } }
