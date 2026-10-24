@@ -16,6 +16,7 @@ window.CM_SERIES = {
     { n: '04', status: 'live', minutes: 20, title: 'The First Hour',
       blurb: 'Reporting culture: why nobody speaks up, what to say when someone does, the official CAF and Canadian routes for who to call, and the first hour after a click or a threat.' },
     { n: '05', status: 'live', minutes: 20, title: 'Below the Line',
-      blurb: 'The gray zone: hostile activity built to stay below the line of war, aimed at the systems towns and bases share. A Baltic cable case, five tools, what CSIS says about Canada, and who does what.' }
+      blurb: 'The gray zone: hostile activity built to stay below the line of war, aimed at the systems towns and bases share. A Baltic cable case, five tools, what CSIS says about Canada, and who does what.' },
+    { n: '06', status: 'planned' }
   ]
 };
