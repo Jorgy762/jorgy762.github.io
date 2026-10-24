@@ -501,3 +501,31 @@ a.bcard:hover{border-color:var(--green); box-shadow:0 0 18px rgba(43,255,136,.15
 /* Thin scroll-progress line (replaces the old top bar) */
 .progress-line{position:fixed; top:0; left:0; right:0; height:3px; z-index:60; pointer-events:none}
 .progress-line span{display:block; height:100%; width:0; background:var(--green); box-shadow:0 0 8px var(--green)}
+
+/* ===== Brief 05 components (Below the Line) ===== */
+/* Hero: activity swarms beneath the threshold and never crosses it */
+.thr{width:min(86vw,400px); display:block; margin:0 auto}
+.thr .g{stroke:#2bff88; stroke-opacity:.07; stroke-width:1}
+.thr .line{stroke:#ff2e3d; stroke-width:2.5; stroke-dasharray:9 6; filter:drop-shadow(0 0 6px rgba(255,46,61,.7))}
+.thr .lt{font-family:var(--mono); font-size:10px; letter-spacing:.1em; fill:#ff2e3d}
+.thr .zone{font-family:var(--mono); font-size:10px; letter-spacing:.1em; fill:#35493f}
+.thr .nd{fill:#ffb020; filter:drop-shadow(0 0 5px rgba(255,176,32,.8))}
+.thr .nl{font-family:var(--mono); font-size:9px; letter-spacing:.08em; fill:#c9a24a; text-anchor:middle}
+.thr .tail{stroke:#ffb020; stroke-opacity:.35; stroke-width:1.5; stroke-dasharray:2 5}
+.readout #ro2.amber{color:#ffb020; text-shadow:0 0 8px rgba(255,176,32,.5)}
+
+/* Toolbox panel */
+.use dt{font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--green); margin-top:12px}
+.use dd{margin:2px 0 0; font-size:17px}
+
+/* Seven baseline requirements */
+.seven{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0}
+.seven div{padding:12px 14px; background:var(--panel); border:1px solid var(--line); font-size:16px; line-height:1.35}
+.seven b{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--green); margin-bottom:4px}
+
+/* Three-way tips: work, uniform, home */
+.tip.mil{border-left-color:#ffb020; background:rgba(255,176,32,.05)}
+.tip.mil .who{color:#ffb020}
+@media(min-width:821px){ .tips.three{grid-template-columns:repeat(3,minmax(0,1fr))} }
+.use dd + dt{margin-top:12px}
+.parts-note{font-family:var(--mono); font-size:12px; letter-spacing:.08em; color:var(--muted); text-transform:uppercase; margin:16px 0 4px}
