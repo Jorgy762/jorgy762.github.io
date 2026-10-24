@@ -20,12 +20,16 @@
 
   const stop = document.getElementById('stop');
   if (stop) stop.addEventListener('click', () => {
-    if (!stoppedAt) stoppedAt = Date.now();
-    const secs = (stoppedAt - start)/1000, m = Math.floor(secs/60), s = Math.round(secs%60);
-    const amt = fmt(secs*RATE);
-    document.getElementById('stopAmt').textContent = amt; if (clock) clock.textContent = amt;
-    document.getElementById('stopTime').textContent = (m ? m + ' min ' : '') + s + ' sec';
-    document.getElementById('stopOut').hidden = false; stop.textContent = 'Clock stopped';
+    // Briefs with the fraud clock show the total; later briefs just mark completion.
+    const sa = document.getElementById('stopAmt');
+    if (sa) {
+      if (!stoppedAt) stoppedAt = Date.now();
+      const secs = (stoppedAt - start)/1000, m = Math.floor(secs/60), s = Math.round(secs%60);
+      const amt = fmt(secs*RATE);
+      sa.textContent = amt; if (clock) clock.textContent = amt;
+      const st = document.getElementById('stopTime'); if (st) st.textContent = (m ? m + ' min ' : '') + s + ' sec';
+    }
+    document.getElementById('stopOut').hidden = false; stop.textContent = sa ? 'Clock stopped' : 'Marked complete';
     markDone();
   });
 

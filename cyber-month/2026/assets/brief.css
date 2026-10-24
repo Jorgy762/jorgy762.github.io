@@ -431,3 +431,73 @@ a.bcard:hover{border-color:var(--green); box-shadow:0 0 18px rgba(43,255,136,.15
 
 /* Panel variants */
 .fixlist.tight li{margin:4px 0}
+
+/* ===== Brief 04 components ===== */
+/* Hero: two ripples from the same dot. One report contains it, silence lets it spread. */
+.rip{width:min(86vw,400px); display:block; margin:0 auto}
+.rip .g{stroke:#2bff88; stroke-opacity:.07; stroke-width:1}
+.rip .ring{fill:none; stroke-width:2.5; opacity:0; transition:opacity .6s}
+.rip .L .ring{stroke:#2bff88}
+.rip .R .ring{stroke:#ff2e3d}
+.rip .core{transition:fill .5s, stroke .5s}
+.rip .L .core{fill:#2bff88; stroke:#2bff88}
+.rip .R .core{fill:#ff2e3d; stroke:#ff2e3d}
+.rip .wash{fill:#ff2e3d; opacity:0; transition:opacity 1.2s}
+.rip .wall{fill:none; stroke:#2bff88; stroke-width:4; stroke-dasharray:3 6; opacity:0; transition:opacity .6s}
+.rip .tag{font-family:var(--mono); font-size:10px; letter-spacing:.08em}
+.rip .L .tag{fill:#2bff88} .rip .R .tag{fill:#ff2e3d}
+.rip.l1 .L .a,.rip.l2 .L .a,.rip.l2 .L .b{opacity:1}
+.rip.r1 .R .a{opacity:1} .rip.r2 .R .b{opacity:1} .rip.r3 .R .c{opacity:1} .rip.r4 .R .d{opacity:1} .rip.r5 .R .e{opacity:1}
+.rip.r2 .R .a,.rip.r3 .R .a,.rip.r3 .R .b,.rip.r4 .R .a,.rip.r4 .R .b,.rip.r4 .R .c,.rip.r5 .R .a,.rip.r5 .R .b,.rip.r5 .R .c,.rip.r5 .R .d{opacity:1}
+.rip.held .L .wall{opacity:1}
+.rip.r5 .wash{opacity:.14}
+.readout .grn{color:#2bff88}
+.readout .redt{color:#ff2e3d; text-shadow:0 0 8px rgba(255,46,61,.6)}
+.readout #ro2.redt{color:#ff2e3d; text-shadow:0 0 8px rgba(255,46,61,.6)}
+
+/* Reply buttons (say the right thing) */
+.replies{display:grid; gap:10px; margin-top:12px}
+.reply{display:block; width:100%; text-align:left; padding:14px 16px; background:var(--panel); border:1px solid var(--line); font-size:17px; line-height:1.5}
+.reply small{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--muted); margin-bottom:4px; text-transform:uppercase}
+.reply.right{border-color:var(--green); box-shadow:0 0 14px rgba(43,255,136,.3)}
+.reply.wrong{border-color:var(--red)}
+.replies.answered .reply:not(.right):not(.wrong){opacity:.55}
+
+/* Report or skip rows */
+.rs{display:grid; gap:10px; margin-top:12px}
+.rs-row{display:grid; grid-template-columns:1fr auto; gap:6px 14px; align-items:center; padding:14px 16px; background:var(--panel); border:1px solid var(--line)}
+.rs-row .q{font-size:16px; line-height:1.5}
+.rs-row .btns{display:flex; gap:8px}
+.rs-row .btns button{padding:10px 16px; border:1px solid var(--line); background:var(--bg); font-family:var(--display); font-weight:700; font-size:18px; text-transform:uppercase}
+.rs-row .why{grid-column:1/-1; display:none; font-size:15px; color:var(--muted); margin:0}
+.rs-row.answered .why{display:block}
+.rs-row.answered .btns button{opacity:.5}
+.rs-row .btns button.right{opacity:1; border-color:var(--green); color:var(--green); box-shadow:0 0 10px rgba(43,255,136,.3)}
+.rs-row .btns button.wrong{opacity:1; border-color:var(--red); color:var(--red)}
+@media(max-width:560px){ .rs-row{grid-template-columns:1fr} }
+
+/* Who gets the call */
+.call h3{color:var(--green); text-shadow:0 0 10px rgba(43,255,136,.4); margin:0 0 8px}
+.call .lines{margin:0; padding:0; list-style:none}
+.call .lines li{margin:8px 0; padding-left:16px; position:relative}
+.call .lines li::before{content:">"; position:absolute; left:0; color:var(--green); font-family:var(--mono)}
+.call .num{font-family:var(--mono); color:var(--text); white-space:nowrap}
+.call .warn{border-left:3px solid var(--red); padding:8px 12px; background:rgba(255,46,61,.06); margin-top:12px; font-size:15px}
+
+/* Contact card builder */
+.field{display:grid; gap:4px; margin:10px 0}
+.field label{font-family:var(--mono); font-size:12px; letter-spacing:.08em; color:var(--muted); text-transform:uppercase}
+.field input{width:100%; padding:12px 14px; background:#050b09; color:var(--text); border:1px solid var(--line); font-family:var(--mono); font-size:15px}
+.field input:focus{outline:2px solid var(--green); outline-offset:1px}
+.card-out{display:block; width:100%; margin-top:12px; padding:14px 16px; background:#050b09; border:1px solid var(--green); color:var(--green); font-family:var(--mono); font-size:13.5px; line-height:1.7; white-space:pre-wrap; box-shadow:0 0 14px rgba(43,255,136,.2)}
+.btn-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+.btn.small{font-size:17px; padding:10px 16px}
+
+/* Honour the HTML hidden attribute even where a component sets its own display */
+[hidden]{display:none!important}
+
+
+
+/* Thin scroll-progress line (replaces the old top bar) */
+.progress-line{position:fixed; top:0; left:0; right:0; height:3px; z-index:60; pointer-events:none}
+.progress-line span{display:block; height:100%; width:0; background:var(--green); box-shadow:0 0 8px var(--green)}
